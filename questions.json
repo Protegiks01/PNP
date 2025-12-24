@@ -2,61 +2,61 @@
   {
     "question": "./contracts/PanopticPool.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_f62a30a9-d483-45ae-9b19-2a4daf70d4b4",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/RiskEngine.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_31fc571c-deb8-4a21-bb96-cd814c3d090b",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/types/OraclePack.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_34bef8c1-d9d0-42c0-9f6d-aed8c3982b47",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/types/MarketState.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_d4d801d1-aafb-46f9-adb6-aea6c0627a62",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/types/PoolData.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_c7a00a8f-2bec-4105-9a01-b79967824dc1",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/types/RiskParameters.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_f0f12eab-e01b-4fb2-bd3c-365e6176bde0",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/SemiFungiblePositionManager.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_8b24a2b9-d8ff-473f-bdf2-a89b1b7599d4",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/SemiFungiblePositionManagerV4.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_058ff65d-a86c-47d0-ba4b-7b6b0132c7ef",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/CollateralTracker.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_e8d9fcaa-899e-47fd-abaa-88cf29ce2b85",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/libraries/PanopticMath.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_1634394a-88cb-4b07-9298-e79fb70ba81a",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/libraries/Math.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_f8e2556c-bb15-478a-8f62-fab69efa693e",
-    "questions_generated": false
+    "questions_generated": true
   },
   {
     "question": "./contracts/types/TokenId.sol",
     "url": "https://deepwiki.com/search/-generate-150-targeted-securit_70871a23-bf82-4ae8-8dd7-0b83b47252c9",
-    "questions_generated": false
+    "questions_generated": true
   }
 ]
