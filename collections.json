@@ -1348,5 +1348,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_159ac740-cf6f-4cfd-b843-7b4e9c78e603",
     "timestamp": "2025-12-24 18:10:25.641532",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Integer Overflow] Can an attacker cause the borrowIndex parameter to exceed 80 bits (2**80 - 1 = 1.2e24) through repeated interest accrual, causing the value to overflow into the marketEpoch bits and corrupting the entire MarketState, leading to protocol insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1b26715f-8ff2-4a2e-918d-af5aca50df5d",
+    "timestamp": "2025-12-24 18:11:54.452546",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Bit Collision] If _borrowIndex is exactly 2**80 when passed to storeMarketState(), will the assembly addition in line 66-69 cause bits to overflow into the marketEpoch field (bits 80-111), potentially setting an incorrect epoch that breaks interest rate calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_547bb418-62eb-4b71-93f9-0259fd4b403c",
+    "timestamp": "2025-12-24 18:12:07.260550",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [Type Safety] Since updateBorrowIndex() accepts a uint80 parameter but the assembly at line 85 performs an OR operation without masking, can an attacker pass a malicious newIndex value that has been type-casted from a larger uint256 with high bits set, causing corruption of adjacent packed fields?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_14956566-5a54-4c1d-b57e-0e66dd8256d5",
+    "timestamp": "2025-12-24 18:12:20.811942",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [State Corruption] If the borrowIndex reaches its maximum value of 2**80-1 (representing ~1.75 years at 800% interest as documented in line 14), does the protocol have safeguards against overflow, or can this cause the index to wrap around to zero and allow attackers to drain funds by paying no interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4ea0be91-b4be-4a3e-b78e-e3cb34428b5e",
+    "timestamp": "2025-12-24 18:12:34.519752",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: borrowIndex()] [Precision Loss] The borrowIndex() getter at line 157 masks with 0xFFFFFFFFFFFFFFFFFFFF (20 bytes), but the constant BORROW_INDEX_MASK at line 37 uses (1 << 80) - 1. Are these masks equivalent, and if not, can this inconsistency cause precision loss or allow index manipulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_eadad29f-9241-4342-bf41-b49be61776ff",
+    "timestamp": "2025-12-24 18:12:49.303192",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Compound Interest Exploit] Given that borrowIndex starts at 1e18 (WAD) and compounds over time, if an attacker can manipulate the time delta between interest accruals in CollateralTracker._calculateCurrentInterestState(), can they cause borrowIndex to grow exponentially faster than intended and reach the 80-bit limit prematurely, freezing the protocol?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6a4bd505-f34c-4443-a7df-c2c4b1c02217",
+    "timestamp": "2025-12-24 18:13:05.323724",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [Non-Monotonic Index] Does the updateBorrowIndex() function enforce that newIndex must be greater than or equal to the current borrowIndex to maintain the monotonically increasing invariant, or can an attacker call it with a lower value to reduce their interest obligations and steal from lenders?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4f87cc82-2ef7-431a-b3ec-bcb4170c6d28",
+    "timestamp": "2025-12-24 18:13:23.040880",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: borrowIndex()] [Assembly Masking] The assembly at line 157 uses a hardcoded mask 0xFFFFFFFFFFFFFFFFFFFF instead of BORROW_INDEX_MASK. If BORROW_INDEX_MASK is ever changed in a future upgrade, can this discrepancy cause the getter to return incorrect values and break solvency calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ac214d25-31ab-4c97-8d6a-889a2c36e9fb",
+    "timestamp": "2025-12-24 18:13:42.511188",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Unchecked Arithmetic] The assembly code at lines 66-69 uses unchecked additions (add operations in assembly). If the sum of _borrowIndex + (marketEpoch << 80) + (rateAtTarget << 112) + (unrealizedInterest << 150) exceeds 2**256, will it silently wrap around and create an invalid state that could brick user positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8ee9cb74-7f84-4e0e-a0bb-a3d8790badde",
+    "timestamp": "2025-12-24 18:14:03.239188",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [Bit Clearing Error] At line 83, the code clears the lowest 80 bits using and(self, not(BORROW_INDEX_MASK)). If BORROW_INDEX_MASK is incorrectly defined or has off-by-one errors, can this clear additional bits and corrupt the marketEpoch field, causing interest calculations to use wrong timestamps?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7ecf19dc-0abe-4f7f-ae01-081788c14376",
+    "timestamp": "2025-12-24 18:14:25.030235",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [Epoch Overflow] The marketEpoch uses only 32 bits (bits 80-111) to store block.timestamp >> 2. Since uint32 max is 4,294,967,295, and epochs are timestamps divided by 4, does the protocol break after Unix timestamp 17,179,869,180 (year 2514), and can attackers exploit this in a fork scenario with manipulated block times?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_79cc473b-6ba3-44a9-904c-331ed0d4fbfb",
+    "timestamp": "2025-12-24 18:14:47.952688",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [Time Travel Attack] If an attacker can influence block.timestamp through miner manipulation or L2 sequencer control, can they set a future marketEpoch value that causes CollateralTracker._calculateCurrentInterestState() to calculate a massive deltaTime at line 1003, leading to extreme interest accrual and protocol insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dd0b7329-78ad-4a60-bfbb-59ad590deefa",
+    "timestamp": "2025-12-24 18:15:11.708450",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: marketEpoch()] [Epoch Extraction] The marketEpoch() getter at line 166 right-shifts by 80 and masks with 0xFFFFFFFF. If there's a mismatch between the shift amount and EPOCH_MASK definition, can this return an incorrect epoch that causes interest to accrue for the wrong time period?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fef669f9-31c5-4a70-a17d-f3ce332da0d5",
+    "timestamp": "2025-12-24 18:15:36.220569",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [Backwards Time] Does updateMarketEpoch() enforce that newEpoch must be greater than or equal to the current epoch, or can an attacker set an earlier epoch to reverse time and avoid interest payments, effectively stealing from lenders?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4ee28b26-18cd-4522-9669-4358fc7e9707",
+    "timestamp": "2025-12-24 18:16:02.295308",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Epoch Bit Collision] When _marketEpoch is left-shifted by 80 bits in the storeMarketState() assembly at line 67, if _marketEpoch is near its uint32 maximum (4.29 billion), can the shifted value collide with the rateAtTarget bits (112-149) and corrupt the interest rate?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1bcc82d9-26f4-4ea2-87eb-18edd56e3a53",
+    "timestamp": "2025-12-24 18:16:28.339699",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [Mask Bypass] At line 99, the code clears bits 80-111 using not(EPOCH_MASK). If EPOCH_MASK is incorrectly defined as ((1 << 32) - 1) << 80, can boundary values cause the mask to not properly clear all 32 bits, leaving residual data that corrupts subsequent operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_85500c46-a956-491b-a916-e74c7aec9391",
+    "timestamp": "2025-12-24 18:16:54.463182",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: marketEpoch()] [Precision Loss] Since epochs are stored as uint32 (block.timestamp / 4), the protocol loses 2 bits of timestamp precision. Can this cause issues when CollateralTracker multiplies back by 4 at line 1003 (deltaTime = uint32(currentEpoch - previousEpoch) << 2), potentially leading to off-by-3-seconds interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_04b5f20b-a2b8-4ea8-adc8-a55db3afb960",
+    "timestamp": "2025-12-24 18:17:21.796203",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [Type Casting] The function accepts uint32 newEpoch but the assembly directly uses shl(80, newEpoch). If the caller mistakenly passes a uint256 that gets truncated to uint32 by the compiler, can this cause silent data loss and incorrect epoch storage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_eed9e18f-cda4-4eae-9cc1-28dac05e944c",
+    "timestamp": "2025-12-24 18:17:50.818222",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Epoch Validation] Does storeMarketState() validate that _marketEpoch is actually equal to block.timestamp >> 2, or can an attacker pass an arbitrary epoch value to manipulate interest accrual timing and extract value from the protocol?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_329307c6-5788-4484-8d7a-bf46f26b65c9",
+    "timestamp": "2025-12-24 18:18:21.043886",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: marketEpoch()] [Y2K38 Problem] The documentation at line 202 in RiskEngine mentions 'convert from epoch to time. Used to avoid Y2K38', but marketEpoch only uses 32 bits. Can the protocol still face a Y2K38-style overflow when timestamps exceed uint32 range in year 2106, bricking all interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2ef230f0-f1c5-46cc-9a06-8ee24171f6e5",
+    "timestamp": "2025-12-24 18:18:49.567190",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateRateAtTarget()] [Parameter Type Mismatch] The function signature at line 111 accepts uint40 newRate, but line 119 masks it to 38 bits (0x3FFFFFFFFF = 2**38-1). Can this 2-bit discrepancy cause confusion in calling contracts like CollateralTracker._updateInterestRate() at line 1052, potentially passing values that get silently truncated and causing incorrect interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d64a26d8-55d4-4a30-879f-d31aa9c2776f",
+    "timestamp": "2025-12-24 18:19:16.816283",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateRateAtTarget()] [Rate Overflow] If RiskEngine._borrowRate() returns an endRateAtTarget value that exceeds 38 bits (> 2.74e11, representing > 800% interest rate as documented in line 16), the mask at line 119 will truncate high bits. Can this cause the protocol to store a much lower rate than intended, subsidizing borrowers at lender expense?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7aec87ca-2f35-4286-bb9e-2681535c8734",
+    "timestamp": "2025-12-24 18:19:44.567285",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: rateAtTarget()] [Extraction Mask] The rateAtTarget() getter at line 175 masks with 0x3FFFFFFFFF after right-shifting by 112. If this mask is wider than TARGET_RATE_MASK (which should only be 38 bits), can it extract bits from the neighboring unrealizedInterest field and return a corrupted rate?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f1dee49e-d9e6-48cf-8bf7-cf0f961862de",
+    "timestamp": "2025-12-24 18:20:12.280187",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateRateAtTarget()] [Negative Rate Attack] While rateAtTarget is stored as uint40, RiskEngine._borrowRate() works with signed integers (int256 endRateAtTarget at line 2206) before casting to uint256 at line 2182. If endRateAtTarget is negative due to extreme under-utilization, can the cast cause it to become a massive positive uint256 that overflows the 38-bit storage and corrupts the state?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4bf04c07-2cde-451c-b5c6-f71569383239",
+    "timestamp": "2025-12-24 18:20:40.010222",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Rate Bit Overlap] When _rateAtTarget is shifted left by 112 bits at line 67, if _rateAtTarget is exactly 2**38, will it overflow into bit 150 and corrupt the unrealizedInterest field, causing the protocol to miscalculate asset reserves and become insolvent?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6f6d16b4-161f-4cf8-ad15-e8c76e0907fb",
+    "timestamp": "2025-12-24 18:21:06.660294",
+    "report_generated": false
   }
 ]
