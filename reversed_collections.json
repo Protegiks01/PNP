@@ -898,5 +898,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c9a4dee6-d66e-4c0e-b8a2-c2779a82e3f9",
     "timestamp": "2025-12-24 17:18:52.629336",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getCrossBalances()] [Price precision boundary] At prices exactly equal to Constants.FP96 (2^96), which branch is taken? Can an attacker exploit this exact boundary to cause inconsistent collateral calculations across different calls?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cc2c2ee1-0799-4713-b8c6-667a7a4ec582",
+    "timestamp": "2025-12-24 17:20:06.190529",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getCrossBalances()] [Conversion asymmetry exploitation] Can an attacker exploit the asymmetry where balances use convert1to0/convert0to1 but requirements use convert1to0RoundingUp/convert0to1RoundingUp to pass solvency checks with insufficient actual collateral?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1047a65d-ba2e-403c-a3cf-dfb234ecd7c9",
+    "timestamp": "2025-12-24 17:20:19.218787",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getCrossBalances()] [LeftRight slot addition overflow] When adding `tokenData0.rightSlot() + convert1to0(...)`, can the sum overflow uint256, especially for positions with maximum balances in both tokens?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6ee78be6-a531-4304-9488-2f38c8df07de",
+    "timestamp": "2025-12-24 17:20:32.407909",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getCrossBalances()] [Cross-collateral rounding exploitation] The function uses convert1to0 for balances (rounding down) and convert1to0RoundingUp for requirements - can an attacker exploit this rounding difference to show artificially higher collateral values while minimizing requirement calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_07a8b858-d1bd-466e-9f8b-233c3d8b813c",
+    "timestamp": "2025-12-24 17:20:46.175181",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getCrossBalances()] [Price threshold manipulation] The function switches behavior at `sqrtPriceX96 < Constants.FP96` (price < 1) - can an attacker manipulate the pool price to cross this threshold at strategic times to exploit differences in conversion direction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f040f3e7-863d-416f-8f8b-9a0f616f4ce4",
+    "timestamp": "2025-12-24 17:21:00.794930",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0RoundingUp(int256)] [Double rounding inconsistency] The function applies rounding up in mulDivRoundingUp and then applies sign - can this create scenarios where negative amounts get rounded more favorably than positive amounts, enabling value extraction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_842db7fe-825b-4705-bb7c-e4705a92965a",
+    "timestamp": "2025-12-24 17:21:16.543525",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0()] [mulDiv64 composition error] The high-price branch uses `Math.mulDiv64(sqrtPriceX96, sqrtPriceX96)` as the divisor - can errors in this 64-bit composition propagate to create exploitable conversion errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5ef0179a-d4de-4b6f-bc99-7a0750706e39",
+    "timestamp": "2025-12-24 17:21:33.306043",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0()] [Price boundary switching] At the tick 443636 boundary, can an attacker exploit the switch from 2^192 to 2^128 precision to create positions that benefit from the precision change during price movements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_723acad5-f105-4422-995d-5a1690361586",
+    "timestamp": "2025-12-24 17:21:52.554078",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0(int256)] [Negative amount division] For negative amounts, does the division maintain correct sign behavior, or can an attacker exploit cases where `-absResult` produces different values than expected due to asymmetric rounding?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58b1eb5a-9581-4bc5-9220-c7781519a334",
+    "timestamp": "2025-12-24 17:22:12.360017",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0RoundingUp()] [Rounding up on division] When rounding up in mulDivRoundingUp, can an attacker repeatedly convert small amounts to accumulate extra tokens from rounding, draining value from the protocol?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7cab33e6-03d2-4eae-94b7-68acf7776a31",
+    "timestamp": "2025-12-24 17:22:33.429700",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0()] [2^192 numerator precision] Using `2 ** 192` as numerator in the division - does this fixed precision level create exploitable rounding patterns for specific price ranges?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d66e68c7-6281-4cc2-ad37-19ce8b0c7df5",
+    "timestamp": "2025-12-24 17:22:56.361724",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0()] [Division by sqrtPrice squared] The function divides by `uint256(sqrtPriceX96) ** 2` - can this division by a very large number cause precision loss that rounds amounts down to zero, enabling dust attacks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3dab8e25-a61c-4e25-98a0-e190ee9fb237",
+    "timestamp": "2025-12-24 17:23:19.690665",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert1to0()] [Inverse conversion consistency] Since convert1to0 is the inverse of convert0to1, can an attacker exploit rounding differences where `convert1to0(convert0to1(x)) != x`, accumulating value through repeated conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_43f6d08c-236f-4e60-aa68-6b95b92880fd",
+    "timestamp": "2025-12-24 17:23:43.153862",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1()] [Maximum amount overflow] Can an attacker convert amounts near type(uint256).max where the multiplication in mulDiv192 or mulDiv128 would overflow despite the division, causing reverts or incorrect results?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9d3e38c0-a5e6-404b-87fe-4849f4c95ead",
+    "timestamp": "2025-12-24 17:24:07.703197",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1()] [Zero amount edge case] What happens if amount=0 is converted? Does this produce exactly 0 or could rounding in the multiplication operations produce non-zero dust amounts that accumulate over many operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2a5b8d71-e648-4914-a5ca-ca823ca53d21",
+    "timestamp": "2025-12-24 17:24:32.491670",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1RoundingUp(int256)] [Negative rounding inconsistency] When amount is negative and rounding up is applied to the absolute value, does the final sign application `amount < 0 ? -absResult : absResult` correctly preserve rounding direction, or can this create exploitable inconsistencies?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4d82ac8d-ec3c-42c3-8f41-72d7e352c100",
+    "timestamp": "2025-12-24 17:24:57.481886",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1(int256)] [toInt256 overflow] After computing absResult, the conversion `.toInt256()` could overflow for very large uint256 values - can this be exploited to corrupt amount calculations in signed arithmetic contexts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1c19f388-9ff1-4e5b-82bd-7df5b611ab1a",
+    "timestamp": "2025-12-24 17:25:23.660653",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1(int256)] [Math.absUint overflow] The conversion to absolute value using `Math.absUint(amount)` could fail for `amount = type(int256).min` - can an attacker exploit this boundary case to cause reverts or incorrect conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fda7aac0-dd6b-483e-9f22-b6dd2d3a4d0c",
+    "timestamp": "2025-12-24 17:25:50.272761",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1(int256)] [Negative amount handling] When converting negative amounts, the function uses `amount < 0 ? -absResult : absResult` - can an attacker exploit edge cases where negative conversions produce different rounding behavior than positive conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cdbaf4a7-2f48-4d4d-84b4-3ea53a55554b",
+    "timestamp": "2025-12-24 17:26:17.253042",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1RoundingUp()] [Rounding direction manipulation] Can an attacker craft transactions where they benefit from rounding up in convert0to1RoundingUp() during position opening but then benefit from rounding down in convert0to1() during closure, extracting value from rounding differences?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ad050747-76a1-443b-a0e6-d2c6fe21f28d",
+    "timestamp": "2025-12-24 17:26:43.898921",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1()] [mulDiv64 double application] The high-price branch uses `Math.mulDiv64(sqrtPriceX96, sqrtPriceX96)` to square the price - can the double application of mulDiv64 create compounding precision errors that an attacker could exploit?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3def25c4-b7d1-4985-b845-6c7800a9e077",
+    "timestamp": "2025-12-24 17:27:08.227602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1()] [Precision loss in mulDiv128] For high prices using mulDiv128 instead of mulDiv192, the 64-bit precision reduction could cause significant precision loss - can an attacker exploit this to create positions where token conversions consistently round in their favor?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58da00bc-14a4-4885-a3a1-9c3497c1c744",
+    "timestamp": "2025-12-24 17:27:31.951002",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1()] [sqrtPriceX96 overflow] When computing `uint256(sqrtPriceX96) ** 2` for prices below the boundary, can this squaring operation overflow uint256 for prices near type(uint128).max, causing incorrect conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_017fd2c2-f796-40e9-b201-a3adcbfa9a08",
+    "timestamp": "2025-12-24 17:27:55.335883",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: convert0to1()] [Tick 443636 boundary exploitation] The function changes precision at `sqrtPriceX96 < type(uint128).max` (tick 443636) - can an attacker exploit positions right at this boundary where rounding behavior changes, enabling arbitrage between precision modes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a8b0b555-9b2f-499e-8149-abd4083576dd",
+    "timestamp": "2025-12-24 17:28:19.414801",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeExercisedAmounts()] [Opening/closing inconsistency] The opening parameter affects amount calculations in calculateIOAmounts - can an attacker exploit differences between opening=true and opening=false calculations to extract value during position closure?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1fdbc911-d135-441c-b554-ca9229364902",
+    "timestamp": "2025-12-24 17:28:45.419496",
+    "report_generated": false
   }
 ]
