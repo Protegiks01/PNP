@@ -2098,5 +2098,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f950ec97-5a69-401c-badc-c3164813e348",
     "timestamp": "2025-12-24 18:40:12.843040",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Cross-Function: mint->burn] [Liquidity Tracking Race] Can an attacker mint a position in one transaction, then immediately burn it in another before fees accumulate, repeatedly cycling to manipulate s_accountLiquidity without paying fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0a0c083b-e9c4-4be5-b6ac-929f07fa3a4e",
+    "timestamp": "2025-12-24 18:41:25.451785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Constructor] [TickFill Cost Parameters] Lines 321-322 set MIN_ENFORCED_TICKFILL_COST and SUPPLY_MULTIPLIER_TICKFILL - can these be set to extreme values that brick pool initialization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_51125755-4e25-4bb8-af56-307ce82c298d",
+    "timestamp": "2025-12-24 18:41:38.307671",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Constructor] [Factory Validation] Line 320 sets FACTORY immutable without validation - can zero address or malicious factory be set permanently?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1582bb2a-7b82-4282-988a-05912e206565",
+    "timestamp": "2025-12-24 18:41:51.639898",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Storage: s_accountFeesBase] [Int128 Limitation] Line 305 stores fees as int128 - can accumulated fees exceed int128 range over long time periods?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4901dda3-aeb2-463c-8059-197c08d9dcd2",
+    "timestamp": "2025-12-24 18:42:05.554969",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Storage: s_accountPremiumOwed] [Private Visibility] Lines 296 and 299 declare premium accumulators as private - does this prevent PanopticPool from reading them directly, forcing use of potentially manipulable getter functions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ed6cc51f-dc81-4ef9-afe5-640a8708619f",
+    "timestamp": "2025-12-24 18:42:20.229995",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Storage: s_accountLiquidity] [Position Key Collisions] Line 186 stores removedAndNetLiquidity by positionKey - can deliberately crafted position parameters produce identical keccak256 hashes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_802bc04d-c20f-438e-a840-3f62210bc1ba",
+    "timestamp": "2025-12-24 18:42:36.586211",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Storage: s_addressToPoolData] [Nested Mapping] The mapping at line 155 uses nested mapping with vegoid - can this cause storage slot collisions if vegoid values are manipulated?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fd9a84c5-8b22-42f9-b16c-70bd2a1494cd",
+    "timestamp": "2025-12-24 18:42:54.048337",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: safeBatchTransferFrom()] [Batch Transfer Block] All ERC1155 transfers are blocked - but does this prevent legitimate protocol operations that might need to transfer positions between contracts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e0a7ab83-fc9f-49ab-badf-414e79acb47b",
+    "timestamp": "2025-12-24 18:43:12.949340",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: safeTransferFrom()] [Revert Without Message] Line 666 uses bare revert() - can this make it difficult to diagnose why transfers fail?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_eb4d9544-99ef-4f9e-849d-7db5dd802e87",
+    "timestamp": "2025-12-24 18:43:33.509536",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getEnforcedTickLimits()] [Vegoid Extraction] Line 1508 extracts vegoid from poolId - can bit manipulation in poolId cause wrong vegoid to be extracted?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2e744fd5-c8c3-45f8-a4b5-e114eacd93d7",
+    "timestamp": "2025-12-24 18:43:55.375013",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getPoolId()] [Vegoid Parameter] Line 1516 takes vegoid as parameter but never validates it matches the pool's actual vegoid - can this return incorrect poolIds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f6f1115c-1df5-41cd-adc8-9c3eb254cd84",
+    "timestamp": "2025-12-24 18:44:17.115445",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getCurrentTick()] [Slot0 Manipulation] Line 1526 reads tick from slot0 which can be manipulated within a block - should this function include warnings about potential manipulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_69a910a6-7e88-423c-8f48-aa75dfdc7b52",
+    "timestamp": "2025-12-24 18:44:40.674924",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountFeesBase()] [External Call] This view function reads from s_accountFeesBase mapping - can storage collisions cause it to return fees from different positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_72c0bb7a-2fd3-4c78-bccd-19638a7eb166",
+    "timestamp": "2025-12-24 18:45:05.865099",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountPremium()] [NetLiquidity Zero] Line 1413 proceeds only if netLiquidity != 0 - but if netLiquidity is zero, should the function still return stored premium or return zero?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8d227e74-ff65-4d7c-860e-79823b73b813",
+    "timestamp": "2025-12-24 18:45:31.449700",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountPremium()] [IsLong Flag] Line 1457 returns different accumulator based on isLong - can callers pass isLong values other than 0/1 to access unintended storage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cb275948-59e6-4c13-b003-97f62534a24b",
+    "timestamp": "2025-12-24 18:45:58.354234",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountPremium()] [Fee Calculation Reentrancy] Lines 1426-1432 call FeesCalc.calculateAMMSwapFees which reads external Uniswap state - can this be manipulated through reentrancy?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c39d73f0-638d-43a4-a689-78da8199ce0d",
+    "timestamp": "2025-12-24 18:46:26.403214",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountPremium()] [AtTick Bypass] Line 1413 checks atTick < type(int24).max to decide if premium should be updated - can callers use atTick == type(int24).max - 1 to force premium recalculation with incorrect tick?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e2560808-2579-4750-b113-b6722737eb7e",
+    "timestamp": "2025-12-24 18:46:54.334120",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountLiquidity()] [TokenType Validation] Line 1371 uses tokenType parameter directly in position key - can tokenType values other than 0/1 reference unintended storage slots?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_09592208-7e6f-4b3e-9e11-e3d74cd329a4",
+    "timestamp": "2025-12-24 18:47:23.352505",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: getAccountLiquidity()] [PoolKey Decoding] Line 1367 decodes poolKey as single address - can malicious callers pass poolKey with extra data that causes decode to succeed but reference wrong pool?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9422ab95-ce02-4358-bc1b-ca2e847f42b8",
+    "timestamp": "2025-12-24 18:47:52.470677",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _updateStoredPremia()] [Position Key Reuse] The same positionKey is used for both Owed and Gross accumulators - can key collisions cause one position's premium to be attributed to another?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_00b365bb-07a4-478f-a4b0-09106ccf53af",
+    "timestamp": "2025-12-24 18:48:20.292783",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _updateStoredPremia()] [Owed/Gross Desync] The comment at line 1063 mentions preventing desync between owed and gross - but if they freeze at different values, can this create arbitrage opportunities?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e00d82b6-b987-4597-bd96-9080db9ea7a0",
+    "timestamp": "2025-12-24 18:48:48.673786",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _updateStoredPremia()] [AddCapped Overflow Freeze] Lines 1064-1070 use LeftRightLibrary.addCapped which freezes both token accumulators if one overflows - can an attacker intentionally overflow one token's premium to freeze the other token's premium accumulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5f8a8375-5d1b-4f4a-97f3-d4ff518590b2",
+    "timestamp": "2025-12-24 18:49:15.852829",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Premium Spread Manipulation] The spread calculation using vegoid (ν parameter) affects premium distribution - can attackers manipulate vegoid selection during pool initialization to create favorable premium terms?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b535376e-81c5-4771-890e-7f6477760e90",
+    "timestamp": "2025-12-24 18:49:42.379770",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Zero Net Liquidity] What happens if netLiquidity is zero? Line 1295 divides by netLiquidity^2 which would cause revert, but is this case handled earlier?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b083f1e2-8d7d-4510-ad0e-518f730c91e7",
+    "timestamp": "2025-12-24 18:50:10.390836",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Numerator Overflow] Lines 1329-1332 compute totalLiquidity^2 - totalLiquidity*removedLiquidity + removedLiquidity^2/vegoid - can this complex expression overflow before division?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f64a9e11-f0f4-47c6-ad8d-69987b21a97d",
+    "timestamp": "2025-12-24 18:50:38.007776",
+    "report_generated": false
   }
 ]
