@@ -148,5 +148,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b2a5b6d1-d852-4e43-92b0-8605ea8b0db3",
     "timestamp": "2025-12-24 16:29:18.681178",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [netAmmDelta manipulation] At line 727, netAmmDelta is returned from SFPM. Can an attacker manipulate this value through SFPM interactions to cause incorrect collateral settlement?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0427ecd0-44dd-4d43-aaf0-9efefafd586b",
+    "timestamp": "2025-12-24 16:30:34.152460",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [effectiveLiquidityLimit bypass] At line 741, effectiveLiquidityLimit is passed to _updateSettlementPostMint. Can an attacker provide a limit of 0 or max uint24 to bypass liquidity spread checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ed4d5616-7755-49ce-b0fe-b4cb65ba5245",
+    "timestamp": "2025-12-24 16:30:47.266226",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [PositionBalance storage packing] At lines 758-763, PositionBalance is packed and stored. Can bit manipulation of the packed value cause incorrect position size or utilization reads in future operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c2bb8e1c-9b35-4484-82cb-6d8d170b99e4",
+    "timestamp": "2025-12-24 16:31:00.409187",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [Premium settlement bypass] At lines 902-909, realizedPremia is computed in _updateSettlementPostBurn. Can an attacker burn options without properly settling premium by manipulating the commitLongSettled flag?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_405d2a63-cfda-4eff-9e47-0d36910dc044",
+    "timestamp": "2025-12-24 16:31:14.222666",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [Tick limit bypass in burn] At lines 897-898, tickLimits are passed to SFPM. Can an attacker provide extreme limits (MIN_SWAP_TICK/MAX_SWAP_TICK) during normal burns to bypass slippage protection?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e1d15db2-23a3-4d4a-bd29-2c6a0bcc8f2f",
+    "timestamp": "2025-12-24 16:31:28.887885",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [collectedByLeg manipulation] At line 891, collectedByLeg is returned from SFPM. Can malicious SFPM return values cause incorrect settled token accounting in _updateSettlementPostBurn?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a54ec746-6d54-49d2-838f-8f7e81f8ed3a",
+    "timestamp": "2025-12-24 16:31:45.400806",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [Realized premia calculation error] At lines 911-912, computeExercisedAmounts is called. Can rounding errors in this computation cause users to pay incorrect premium amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8e85dd16-4214-4a71-8648-75953913ef68",
+    "timestamp": "2025-12-24 16:32:03.247246",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [settleBurn ordering exploit] At lines 918-938, settleBurn is called on both collateral trackers. Can the ordering of these calls be exploited through reentrancy or state changes between calls?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_02a7e4de-f53a-40a6-8ff2-cf860afbf368",
+    "timestamp": "2025-12-24 16:32:22.795932",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [commitLongSettled flag manipulation] At line 908, commitLongSettled is encoded in LeftRightSigned. Can an attacker provide malicious flag values to bypass long premium settlement?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_18a7546e-1374-4859-ba34-a602a24a81ad",
+    "timestamp": "2025-12-24 16:32:42.830407",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [netAmmDelta sign manipulation] At line 892, netAmmDelta is returned as signed. Can sign manipulation cause tokens to be transferred in the wrong direction during settlement?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8558ad24-af38-40e2-bc40-03972ca2fb25",
+    "timestamp": "2025-12-24 16:33:04.393656",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _burnOptions()] [premiaByLeg array manipulation] At line 914, premiaByLeg is emitted. Can malicious values in this array be used to deceive external monitors or trigger incorrect downstream logic?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4db9d9d6-7afd-4e48-8fda-bebda965c52f",
+    "timestamp": "2025-12-24 16:33:27.027941",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [Bonus calculation manipulation] At lines 1540-1546, getLiquidationBonus is called with netPaid and shortPremium. Can an attacker manipulate these values through position construction to extract excessive bonuses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_16cadfc8-fc18-4f54-ab0d-928622b34136",
+    "timestamp": "2025-12-24 16:33:51.325235",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [Delegation timing exploit] At lines 1516-1517, delegate() is called before burning. Can an attacker exploit the timing between delegation and burn to double-spend virtual shares?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ddb824bc-a100-401e-9645-1d6a04bbb847",
+    "timestamp": "2025-12-24 16:34:15.475574",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [Premium haircut bypass] At lines 1561-1567, haircutPremia is called. Can an attacker structure positions to avoid haircuts even when protocol loss exists, extracting full premium despite insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_793bd2bf-b51f-4061-91ea-9dae024c93f7",
+    "timestamp": "2025-12-24 16:34:41.802736",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [DONOT_COMMIT_LONG_SETTLED exploitation] At line 1533, DONOT_COMMIT_LONG_SETTLED is used. Can this flag be exploited to prevent long premium from being properly revoked during liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0b9355cf-888a-4f92-b6a5-923cc028cfea",
+    "timestamp": "2025-12-24 16:35:08.831775",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [bonusDeltas addition overflow] At line 1569, bonusAmounts.add(bonusDeltas) is called. Can overflow in this addition cause the liquidator to receive less bonus than intended or the liquidatee to retain more collateral?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_852d26d5-b725-48b3-a7b0-66e4a73ac5ce",
+    "timestamp": "2025-12-24 16:35:37.167963",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [settleLiquidation native currency] At line 1585, msg.value is passed with settleLiquidation. Can incorrect msg.value cause liquidation to fail or allow liquidator to extract more native tokens than intended?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a91eddc1-6ff4-4228-99b2-452ed2c44bc9",
+    "timestamp": "2025-12-24 16:36:06.459101",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [getMargin calculation manipulation] At lines 1503-1512, getMargin is called with positionBalanceArray. Can an attacker manipulate position balance data to cause incorrect margin calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5d076833-99c9-4379-b6e5-2b0fb10f2ffe",
+    "timestamp": "2025-12-24 16:36:35.885104",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [shortPremium calculation] At lines 1496-1502, shortPremium uses ONLY_AVAILABLE_PREMIUM. Can this cause liquidation to proceed with incorrect premium values when settled tokens don't match owed premium?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a7a46f54-0ea3-4699-b493-9782fd1e1eb9",
+    "timestamp": "2025-12-24 16:37:06.518665",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [settleAmounts interaction] At lines 1571-1580, InteractionHelper.settleAmounts is called. Can this external library call be exploited through reentrancy or state manipulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0d98b0fa-d217-492e-bb97-01c8a8f4517d",
+    "timestamp": "2025-12-24 16:37:37.487068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _liquidate()] [collateralRemaining sign flip] At line 1537, collateralRemaining is computed. Can sign flips in this value cause haircutPremia to apply haircuts in the wrong direction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b543d32c-a263-4dcf-b3c7-02c834f7d845",
+    "timestamp": "2025-12-24 16:38:08.380725",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [Exercise fee manipulation] At lines 1619-1624, exerciseCost is calculated. Can an attacker manipulate currentTick or twapTick to minimize exercise fees paid while still forcing the exercise?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f6255ac7-b41f-43c2-82f3-3f4c4572ee07",
+    "timestamp": "2025-12-24 16:38:40.056502",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [Delegation without revoke] At lines 1628-1629, delegate is called before burn. Can the protocol be exploited if revoke() at lines 1660-1661 fails, leaving virtual shares permanently delegated?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d65be256-df65-4304-bb48-fe9e41a9f340",
+    "timestamp": "2025-12-24 16:39:11.285086",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [Refund amount manipulation] At lines 1648-1654, getRefundAmounts redistributes token composition. Can an attacker exploit this to extract more tokens than the exercise fee by manipulating account balances?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_810f5eca-89db-489f-85d6-759de6decb07",
+    "timestamp": "2025-12-24 16:39:42.889590",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [ITM swap disabled] At line 1637, comment mentions ITM swapping is turned off. Can this be exploited by exercising at unfavorable prices to cause the exercisee to suffer disproportionate losses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_68cee74a-6638-477e-8708-518461e9dbd3",
+    "timestamp": "2025-12-24 16:40:15.063113",
+    "report_generated": false
   }
 ]
