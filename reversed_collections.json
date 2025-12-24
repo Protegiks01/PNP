@@ -1048,5 +1048,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1fdbc911-d135-441c-b554-ca9229364902",
     "timestamp": "2025-12-24 17:28:45.419496",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeExercisedAmounts()] [Amount accumulation overflow] The function accumulates amounts with `longAmounts.add(longs)` and `shortAmounts.add(shorts)` - can an attacker create multi-leg positions where these additions overflow LeftRightSigned, corrupting amount calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5ecca099-c33c-4424-a9d2-f979a6534997",
+    "timestamp": "2025-12-24 17:29:58.042084",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeExercisedAmounts()] [Leg iteration overflow] The loop iterates `for (uint256 leg = 0; leg < numLegs; )` with unchecked increment - can an attacker craft a tokenId where countLegs() returns a value that causes the loop to iterate incorrectly or miss legs?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_82a44230-028a-4b34-83d0-8e010ca24600",
+    "timestamp": "2025-12-24 17:30:10.939589",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getChunkKey()] [ABI encoding predictability] Using `abi.encodePacked` with fixed-size types (int24, int24, uint256) - can an attacker predict chunk keys in advance to front-run position creation or manipulate chunk-based accounting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7f305961-f875-48ed-95ca-3cf9fe31f389",
+    "timestamp": "2025-12-24 17:30:24.496444",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getChunkKey()] [Token type manipulation] Since tokenType is only 1 bit, can an attacker exploit cases where strike and width combinations accidentally produce the same chunk key for both tokenType=0 and tokenType=1, causing liquidity accounting conflicts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a7d27006-ded4-468e-9e2a-8594b866767e",
+    "timestamp": "2025-12-24 17:30:38.676182",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getChunkKey()] [Chunk key collision] The chunk key is computed as `keccak256(abi.encodePacked(strike, width, tokenType))` - can an attacker find two different leg configurations that produce the same chunk key, allowing them to manipulate shared liquidity tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1bcaaf2c-1ca0-49c5-bc8f-1fa53126dd09",
+    "timestamp": "2025-12-24 17:30:53.777115",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getRangesFromStrike()] [TickSpacing boundary cases] For extremely small or large tickSpacing values, can the multiplication `uint24(width) * uint24(tickSpacing)` overflow uint24, or can the division produce unexpected ranges that violate Uniswap tick spacing requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b4cb6468-3282-472b-be18-2caf09fce614",
+    "timestamp": "2025-12-24 17:31:09.952598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getRangesFromStrike()] [Negative width values] Can an attacker provide negative width values that cause rangeDown to be negative and rangeUp to be positive (or vice versa), creating inverted tick ranges where tickLower > tickUpper?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9758c7e3-5d5b-4394-adfb-da9aad9fe677",
+    "timestamp": "2025-12-24 17:31:27.295935",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getRangesFromStrike()] [Zero width handling] If width=0, both rangeDown and rangeUp would be 0, making tickLower=tickUpper - can an attacker exploit zero-width positions to bypass validation checks or create economically invalid positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1c626f41-ad39-452c-a329-b41f6aa7051d",
+    "timestamp": "2025-12-24 17:31:46.127445",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getRangesFromStrike()] [Rounding asymmetry exploitation] The function uses floor division for rangeDown and ceiling division (via unsafeDivRoundingUp) for rangeUp - can an attacker exploit this asymmetry to create positions where the actual range width differs from the intended width, affecting liquidity calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_aa090714-6d2c-4990-bccd-ac7723bcf489",
+    "timestamp": "2025-12-24 17:32:06.989609",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getRangesFromStrike()] [Width-tickSpacing multiplication] The calculation `(width * tickSpacing) / 2` could overflow for large width values - can an attacker exploit this to create positions with incorrect tick ranges that bypass position size limits?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_76a040cf-68f7-46e5-a6a5-bce4df5978b3",
+    "timestamp": "2025-12-24 17:32:29.058941",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getTicks()] [Tick calculation overflow] The unchecked arithmetic in `strike - rangeDown` and `strike + rangeUp` can overflow - can an attacker provide strike values near int24 min/max that cause tick values to wrap around, creating positions with invalid or unintended tick ranges?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_69283784-8f1e-4eed-9e82-a47dccdfa5c4",
+    "timestamp": "2025-12-24 17:32:50.912220",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getLiquidityChunk()] [Asset convention bypass] The function's comment explains asset=0 vs asset=1 conventions for amount movements - can an attacker exploit inconsistencies in how other contracts interpret these asset values to create arbitrage opportunities or collateral mismatches?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_307f4809-ea53-421b-8226-3012a0d2e4a4",
+    "timestamp": "2025-12-24 17:33:14.278360",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getLiquidityChunk()] [Zero liquidity positions] Can an attacker create positions where the calculated liquidity is 0 due to extreme tick ranges or very small positionSize * optionRatio values, bypassing position limits while appearing to have valid positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4247bbf0-2fd1-43a9-a08e-8ff0800463b5",
+    "timestamp": "2025-12-24 17:33:38.650759",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getLiquidityChunk()] [Liquidity calculation precision] When computing liquidity using Math.getLiquidityForAmount0/1, can precision loss or rounding errors allow an attacker to create positions with slightly less liquidity than required, accumulating to significant undercollateralization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_12dc0f3c-b9e6-4e87-84b9-94d6decb20fa",
+    "timestamp": "2025-12-24 17:34:04.941192",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getLiquidityChunk()] [Tick range manipulation] Can an attacker craft tokenIds where `tokenId.asTicks(legIndex)` returns invalid tick ranges (e.g., tickLower >= tickUpper) that cause liquidity calculation errors or allow bypassing liquidity constraints?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b654ae0f-9b42-4e9d-838d-4905c7a9fbbd",
+    "timestamp": "2025-12-24 17:34:31.986234",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getLiquidityChunk()] [Option ratio overflow] The amount calculation `positionSize * tokenId.optionRatio(legIndex)` is unchecked - can an attacker provide extreme positionSize or optionRatio values that cause overflow, resulting in incorrect liquidity calculations and undercollateralized positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_410afa8d-4af0-4edc-a3f6-649a41e29aa0",
+    "timestamp": "2025-12-24 17:34:59.823295",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getLiquidityChunk()] [Asset parameter exploitation] The function branches on `tokenId.asset(legIndex)` to call either getLiquidityForAmount0 or getLiquidityForAmount1 - can an attacker manipulate the asset parameter in a tokenId to cause incorrect liquidity calculations that favor them in position sizing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_12e989a0-ad00-4497-ba9a-fc13ddd276be",
+    "timestamp": "2025-12-24 17:35:24.462107",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Observation availability] Does the function handle cases where the Uniswap pool has fewer than 20 observations available, potentially causing reverts or returning stale/incorrect prices that could be exploited during low-activity periods?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4699933a-6248-4da9-80d1-117884885f5c",
+    "timestamp": "2025-12-24 17:35:50.730844",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Hardcoded array sizes] The function hardcodes 20 time slots and 19 measurements - can an attacker exploit this fixed structure by identifying patterns in how specific pools' oracle data aligns with these exact intervals?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0aff9a99-8483-450d-a2a4-382f1c578dc3",
+    "timestamp": "2025-12-24 17:36:16.578155",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Unchecked arithmetic in slots] All arithmetic is in an unchecked block - can an attacker provide twapWindow values near type(uint32).max that cause overflows in the slot calculations, leading to incorrect observation queries?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a0b7bdb5-eec2-4faf-a6b4-4a4aefa46b03",
+    "timestamp": "2025-12-24 17:36:43.339190",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Median selection bias] The function always selects `sortedTicks[9]` as the median (assuming 19 measurements) - can an attacker exploit this fixed index by manipulating specific time slots to bias the median in their favor?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ce5171a5-8f86-4bbc-a4ef-cd69f7fb2efd",
+    "timestamp": "2025-12-24 17:37:10.541352",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Zero division vulnerability] If twapWindow < 20, then `twapWindow / 20` equals 0, causing division by zero in the tick measurement calculation - can an attacker exploit this to DoS oracle operations or does proper input validation prevent this?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b3e9275f-603c-4fa5-a7ae-a192c196876d",
+    "timestamp": "2025-12-24 17:37:39.333305",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Tick cumulative overflow] When computing `(tickCumulatives[i] - tickCumulatives[i + 1]) / int56(uint56(twapWindow / 20))`, can the subtraction overflow int56 for pools with very high tick cumulatives, producing incorrect TWAP measurements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ce4e8bb0-d12d-4bc2-9d8b-79e00778a50a",
+    "timestamp": "2025-12-24 17:38:08.665178",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [Division precision loss] The time slot calculation `uint32(((i + 1) * twapWindow) / 20)` performs integer division - can an attacker choose twapWindow values that cause significant precision loss or rounding errors, leading to incorrect time slots and manipulated TWAP values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_691622c3-5c77-4479-ad7e-cf145714caef",
+    "timestamp": "2025-12-24 17:38:38.653040",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: twapFilter()] [TWAP window manipulation] Can an attacker exploit the twapWindow parameter to choose extremely short time windows (e.g., twapWindow=1 second) that make the TWAP susceptible to single-block manipulation, enabling oracle attacks during liquidations or position operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dcac218b-0441-4c7e-8f59-4bd33bf7530e",
+    "timestamp": "2025-12-24 17:39:06.796223",
+    "report_generated": false
   }
 ]
