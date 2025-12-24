@@ -2998,5 +2998,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d26453c2-c370-46a2-adf3-01ec99db30d4",
     "timestamp": "2025-12-24 19:43:29.709080",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation() + bpDecreaseBuffer()] [Liquidation Race Condition] Can a liquidator exploit the interaction between tickDeltaLiquidation (price bounds) and bpDecreaseBuffer (collateral requirements) to front-run liquidations at prices that maximize the difference between the liquidatee's collateral shortfall and actual loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_70d8717a-b7b0-469c-bff7-42fe2c3a0fe4",
+    "timestamp": "2025-12-24 19:44:40.678891",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [False Liquidation Prevention] If bpDecreaseBuffer is set too high (>>133%), can this prevent liquidation of genuinely insolvent accounts because the buffer multiplier artificially inflates their collateral requirements during solvency checks, accumulating protocol bad debt?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_67c5c9bd-d951-4541-b962-a4b739b9ab0a",
+    "timestamp": "2025-12-24 19:44:53.454252",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Liquidation Threshold Manipulation] Can an attacker exploit the bpDecreaseBuffer multiplier (133% per BP_DECREASE_BUFFER) to identify accounts operating close to the buffer threshold, then trigger market movements that push them into liquidation territory, profiting from liquidation bonuses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6f928e9d-f87d-463f-8898-1ce664358cec",
+    "timestamp": "2025-12-24 19:45:07.188257",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Liquidation Concentration Attack] Can an attacker create positions near maxSpread limits that concentrate liquidity removal in specific chunks, causing liquidations of these positions to create slippage that benefits the liquidator at the expense of other liquidity providers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2d9a11f6-a7a9-455c-82f4-38bfa73855c6",
+    "timestamp": "2025-12-24 19:45:21.211314",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Flash Loan Liquidation] Can a liquidator use flash loans to temporarily manipulate the Uniswap pool price within the tickDeltaLiquidation bounds, pass PanopticPool's TWAP checks, execute liquidations at favorable prices, then restore the original price in the same transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e1ffbd27-fc17-433e-8b60-a6d4745d5b68",
+    "timestamp": "2025-12-24 19:45:36.353812",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Liquidation DoS] Conversely, if tickDeltaLiquidation is encoded too low (e.g., <50 ticks), can this cause PanopticPool.dispatchFrom() to reject all liquidations in volatile markets, preventing timely liquidation of insolvent positions and increasing protocol bad debt risk?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c52e4af5-3f30-459e-bc3b-929afe54f32e",
+    "timestamp": "2025-12-24 19:45:52.549276",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [TWAP Manipulation Threshold] If tickDeltaLiquidation is encoded to its maximum 13-bit value (8191 ticks, ~126% deviation), does this effectively disable TWAP validation in PanopticPool.dispatchFrom(), allowing liquidations at heavily manipulated prices that result in excessive liquidation bonuses and protocol loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2ae17b83-053f-4486-8b43-ea6f02063594",
+    "timestamp": "2025-12-24 19:46:10.473289",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Liquidation Window Manipulation] Can an attacker time liquidations to occur exactly when currentTick is at the boundary of tickDeltaLiquidation from TWAP (within 513 ticks per MAX_TWAP_DELTA_LIQUIDATION), exploiting price volatility to extract maximum liquidation bonuses at the expense of liquidatees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a6e4ee0d-9aca-444e-8d72-b434f9acf962",
+    "timestamp": "2025-12-24 19:46:29.451552",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee() + premiumFee()] [Fee Basis Manipulation] Can an attacker exploit the different bases for notionalFee (applied to notional amounts) versus premiumFee (applied to realized premium) to structure positions that minimize total commission through strategic leg sizing and premium targeting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e08348c1-744a-4ad1-8c41-e57b8f04080c",
+    "timestamp": "2025-12-24 19:46:48.880549",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: feeRecipient()] [Fee Griefing] If feeRecipient is set to a contract with a reverting transfer() function, does CollateralTracker.settleMint fail on line 1571 when attempting to transfer shares, causing a denial-of-service that prevents all position minting with that builder code?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c6575565-f0e9-4217-a64b-33fde131c420",
+    "timestamp": "2025-12-24 19:47:09.518733",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: feeRecipient()] [Fee Redirect Attack] Can an attacker manipulate RiskEngine._computeBuilderWallet() to encode an attacker-controlled address as feeRecipient, causing CollateralTracker to redirect all builder commission shares (line 1650) to the attacker's vault, stealing fees from legitimate builders?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2caf9919-dc78-4f73-bee3-9de5266b1e82",
+    "timestamp": "2025-12-24 19:47:31.496304",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit()] [Fee Recipient Gaming] Can a malicious builder manipulate their builderCode to receive an oversized builderSplit relative to the protocolSplit encoded in RiskParameters, extracting more value than intended from user commission payments?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2d921e3b-465b-46f2-851b-26c602cf0fa0",
+    "timestamp": "2025-12-24 19:47:54.098903",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: builderSplit()] [Builder Fee Theft] Conversely, if builderSplit exceeds protocolSplit significantly, can builders extract excessive fees at the expense of the protocol (line 1571), reducing protocol sustainability and potentially enabling builder fee extraction attacks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0bd6cc85-a8a2-460b-b929-7224366dc416",
+    "timestamp": "2025-12-24 19:48:17.561185",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit()] [Protocol Fee Theft] If protocolSplit exceeds its intended range and approaches DECIMALS (10_000_000), does CollateralTracker.settleMint transfer nearly all commission shares to the protocol (line 1566), effectively stealing builder fees and discouraging builder participation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8a71cf72-531b-4ac7-9049-475bdc84f4be",
+    "timestamp": "2025-12-24 19:48:41.926276",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: premiumFee()] [Asymmetric Fee Attack] Can an attacker exploit the min(premiumFee, 10×notionalFee) logic in CollateralTracker.settleBurn (line 1632) by manipulating the fee ratio to always pay the minimum commission, effectively reducing the protocol's take on profitable trades?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c0113b95-f91e-4f0f-be91-c529595086ab",
+    "timestamp": "2025-12-24 19:49:08.145881",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: premiumFee()] [Premium Fee Bypass] Can an attacker exploit premiumFee=0 encoding to avoid commission on realized premium in CollateralTracker.settleBurn (line 1623), allowing profitable positions to be closed without paying fees while still charging fees on losing positions through the 10×notionalFee fallback?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_753df203-1c9f-4835-99db-338ebb68cf36",
+    "timestamp": "2025-12-24 19:49:34.734421",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee()] [Commission Overflow] If notionalFee is encoded near the 14-bit maximum (16383), can the multiplication in CollateralTracker.settleMint line 1555 (commission * notionalFee) overflow when processing large positions, either reverting transactions or wrapping to undercharge fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_81ce5758-a169-4694-8303-7fc98238ea37",
+    "timestamp": "2025-12-24 19:50:01.874949",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee()] [Commission Evasion] Can an attacker manipulate RiskEngine to encode notionalFee=0 in the RiskParameters, allowing CollateralTracker.settleMint to skip all commission charges (line 1555) and enabling users to mint unlimited positions without paying protocol fees, draining collateral provider returns?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8217ab1d-39e0-475e-8d71-de70e42f9509",
+    "timestamp": "2025-12-24 19:50:30.720743",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: All getters] [State Consistency] Do all getter functions operate on the same immutable uint256 value, or can race conditions during RiskEngine.getRiskParameters() construction cause different getters to read inconsistent intermediate states, leading to mismatched risk parameters within a single transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d323e162-408e-45e4-befd-3a42a054d1e3",
+    "timestamp": "2025-12-24 19:51:00.343718",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer() + maxLegs()] [Collateral-Complexity Attack] Can an attacker exploit the relationship between bpDecreaseBuffer (collateral requirement) and maxLegs (position complexity) to create many small legs that individually pass collateral checks but collectively create undercollateralized positions when the buffer is applied across all legs?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7f09137b-6c87-4012-bd85-f01a17dc1e8e",
+    "timestamp": "2025-12-24 19:51:30.218673",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation() + maxSpread()] [Liquidation-Spread Interaction] Can an attacker exploit the interaction between tickDeltaLiquidation determining liquidation price bounds and maxSpread limiting position sizes to create positions that are simultaneously too large to liquidate efficiently but within acceptable price deviation, causing liquidation failures?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d8a71cf3-bd5a-4526-8bc1-2e331ca9b06f",
+    "timestamp": "2025-12-24 19:51:59.454718",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit() + builderSplit()] [Fee Split Underflow] Conversely, if protocolSplit() + builderSplit() sum to significantly less than DECIMALS, does the difference represent uncollected commission that accumulates in user accounts, effectively allowing fee evasion and reducing protocol revenue?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cf9aef58-101e-46d2-9622-720717b0ec0b",
+    "timestamp": "2025-12-24 19:52:28.198713",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit() + builderSplit()] [Fee Split Overflow] If protocolSplit() + builderSplit() sum to a value exceeding DECIMALS due to incorrect encoding, does CollateralTracker.settleMint transfer more total shares than sharesToBurn (lines 1566-1572), causing an underflow in the option owner's balance and protocol insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_224f43d2-8be6-403e-b9dd-a5dfdea7a641",
+    "timestamp": "2025-12-24 19:52:57.517011",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee() + premiumFee()] [Fee Arbitrage] Can an attacker manipulate the relationship between notionalFee (line 99) and premiumFee (line 108) to exploit CollateralTracker.settleBurn's min() logic (line 1632), paying the lower of 10×notionalFee or premiumFee to minimize commission on profitable burns while maximizing on losses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b72d0c2d-5367-4bd8-a713-8dd1ea4825dc",
+    "timestamp": "2025-12-24 19:53:23.536945",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters() + safeMode()] [Encode-Decode Inconsistency] Can an attacker exploit inconsistencies between the encoding logic in storeRiskParameters() and decoding in safeMode() where the 4-bit field definition allows safeMode values 0-15, but RiskEngine.isSafeMode() only returns 0-7 (lines 934-938), creating undefined safe mode states?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_406ef36b-326c-4b5c-a262-53dffe6293e7",
+    "timestamp": "2025-12-24 19:53:51.578718",
+    "report_generated": false
   }
 ]
