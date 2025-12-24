@@ -1198,5 +1198,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_02f1d767-0c1b-4846-bbad-3d432601553b",
     "timestamp": "2025-12-24 17:43:42.026253",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: updateInterestRate()] [State manipulation] Can the MarketState interestRateAccumulator parameter be manipulated by passing stale or future state values that cause interest rate calculations to diverge from the actual pool state, allowing borrowers to pay less interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1a81bdd4-d026-4e95-abdb-161e0d19b4e8",
+    "timestamp": "2025-12-24 18:01:20.274354",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: interestRate()] [Epoch conversion] Can the epoch-to-time conversion (marketEpoch << 2) overflow or produce incorrect timestamps that cause elapsed time calculations to be wrong, manipulating interest rate updates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_50e3745e-4ba9-4b13-bf20-5f5938fdfbbe",
+    "timestamp": "2025-12-24 18:01:33.599583",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRiskParameters()] [Fee recipient computation] Can the _computeBuilderWallet calculation produce collisions where different builderCodes map to the same wallet address, allowing attackers to redirect protocol/builder fees to their own addresses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3a403488-8d86-4559-a2d8-f2ceb3140aa5",
+    "timestamp": "2025-12-24 18:01:46.870799",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRiskParameters()] [Safe mode packing] Can the RiskParametersLibrary.storeRiskParameters function overflow when packing safeMode, fees, splits, and feeRecipient into a single structure, causing parameters to be corrupted or incorrectly retrieved?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a400a168-d570-43b2-b2f5-6b47e83dc8c8",
+    "timestamp": "2025-12-24 18:02:00.785565",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getFeeRecipient()] [Builder code validation] Can the builderCode whitelist check (feeRecipient.code.length == 0) be bypassed by deploying builder contracts with code that immediately self-destructs, allowing unauthorized builders to receive fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f7919877-47ce-4f7d-a4af-c08e7f1bfab0",
+    "timestamp": "2025-12-24 18:02:15.527177",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeBuilderWallet()] [CREATE2 collision] Can the CREATE2 address calculation (keccak256(abi.encodePacked(0xff, BUILDER_FACTORY, salt, BUILDER_INIT_CODE_HASH))) be manipulated to create address collisions that redirect builder fees to attacker-controlled addresses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_087b4624-fd44-40dd-b010-7bb1ba9429a7",
+    "timestamp": "2025-12-24 18:02:31.862992",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Constants: CROSS_BUFFER_0/1] [Buffer manipulation] Can the immutable CROSS_BUFFER_0 and CROSS_BUFFER_1 values be set to extreme values during construction that break cross-collateralization logic, allowing users to claim infinite cross-buffer ratios or forcing zero cross-collateralization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c2dbbf06-ba2b-4719-a6a5-4524eac99f17",
+    "timestamp": "2025-12-24 18:02:50.643875",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Constants: BP_DECREASE_BUFFER] [Buffer bypass] Can the BP_DECREASE_BUFFER (13_333_333) multiplier be exploited during buying power decrease events to force excessive collateral requirements that prevent users from closing positions or adjusting risk?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a223158c-84eb-4990-a35d-c2c1bb9d7231",
+    "timestamp": "2025-12-24 18:03:10.173245",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Constants: MAX_SPREAD] [Spread bypass] Can positions be structured to exceed the MAX_SPREAD (90_000 = 90%) limit by splitting positions across multiple legs or using risk partners that don't get checked against this limit?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_669c3fad-f90b-426f-840f-14952d74f9d5",
+    "timestamp": "2025-12-24 18:03:30.326060",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Constants: VEGOID] [Utilization multiplier] Can the VEGOID parameter (4) be exploited by understanding its relationship to the long premium spread multiplier, allowing attackers to structure positions that minimize premium payments while maximizing leverage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6b222a82-e60d-4a71-889f-52923ff7d96c",
+    "timestamp": "2025-12-24 18:03:51.309498",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Constants: FORCE_EXERCISE_COST] [Cost bypass] Can the FORCE_EXERCISE_COST (102_400 = 1.024%) be avoided by structuring positions where all legs are exactly at range boundaries, causing hasLegsInRange to be false and reducing exercise cost to ONE_BPS?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_07c77c61-681f-484a-892a-478933c26b13",
+    "timestamp": "2025-12-24 18:04:13.823074",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: lockPool() / unlockPool()] [Privilege escalation] Can the guardian privilege be exploited if the GUARDIAN address is a contract with delegatecall functionality, allowing attackers to execute arbitrary guardian operations through delegate calls?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7ae6d4d8-b9c9-4c55-95eb-f82ac37e24c1",
+    "timestamp": "2025-12-24 18:04:37.847274",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: collect()] [Token extraction] Can the guardian's collect() function be used to drain tokens that are temporarily held by RiskEngine during calculations, stealing user funds that are in-flight during position updates or liquidations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bf0cfe30-5c4f-4529-ab4e-64b59c5f45c4",
+    "timestamp": "2025-12-24 18:05:02.619220",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: collect()] [Zero amount check] Does the amount == 0 check prevent collection of legitimate token balances if rounding errors cause balances to be calculated as exactly zero, allowing tokens to be permanently stuck in the contract?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_54892ad9-5431-4637-9b5a-e2ad2e1cbee1",
+    "timestamp": "2025-12-24 18:05:28.280345",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: collect()] [Balance overwrite] Can the full balance collection in the two-parameter collect() function be exploited if tokens are donated to RiskEngine during the execution, allowing guardians to extract more tokens than intended?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0da867a1-1afa-4c32-9914-f3004b726d3b",
+    "timestamp": "2025-12-24 18:05:54.398364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isAccountSolvent()] [Uint128 casting] Can the tokenData.rightSlot() and tokenData.leftSlot() uint128 values overflow when balances are near type(uint128).max, causing toUint128() calls to wrap and produce incorrect balance/requirement comparisons?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1d3598cb-71fb-45f5-9678-c4faf77451f5",
+    "timestamp": "2025-12-24 18:06:22.033190",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: haircutPremia()] [Int128 casting] Can the int128() casts in haircutBase packing (lines 682-711) overflow when collateralDelta or longPremium values exceed int128 max, causing haircut calculations to produce incorrect or negative values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_12bcd032-c276-4ebb-82f8-dad5243d4c39",
+    "timestamp": "2025-12-24 18:06:49.979608",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Bonus casting] Can the bonus0 and bonus1 calculations overflow int128 when cast on lines 601-602, causing liquidation bonuses to wrap to negative values that benefit liquidatees instead of liquidators?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bdbb7d35-18ba-4f4f-8d3a-d611c48a265a",
+    "timestamp": "2025-12-24 18:07:19.045189",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [Fee casting] Can the exerciseFees packing (int128(longAmounts.rightSlot() * fee / DECIMALS)) overflow int128 for large positions with in-range legs, causing exercise costs to wrap to small or negative values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dabd3d15-e699-4aa6-a3ff-1c68e81dc14a",
+    "timestamp": "2025-12-24 18:07:47.189354",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getTotalRequiredCollateral()] [Token accumulation] Can the tokensRequired accumulation (addToRightSlot/addToLeftSlot) overflow uint128 when summing requirements across many positions, causing total collateral requirements to wrap to small values and allowing undercollateralized accounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_21ab4278-a737-4544-8f12-6bc17d8c5e15",
+    "timestamp": "2025-12-24 18:08:14.573564",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [Required overflow] Can the required variable overflow uint256 in the various calculation branches (loan, base, r0, r1, r2) for extremely large positions, causing collateral requirements to wrap to small values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6b652af5-ddbe-4850-ba8e-a73f1c25e68c",
+    "timestamp": "2025-12-24 18:08:41.206323",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeSpread()] [Spread accumulation] Can the spreadRequirement += calculations for calendar spread adjustment and notional differences overflow uint256 for wide spreads with large position sizes, causing spread requirements to wrap to small values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_be703c3a-8734-4d86-9d2d-551973b02f0c",
+    "timestamp": "2025-12-24 18:09:07.636644",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isAccountSolvent()] [Rounding direction] Do the convert1to0RoundingUp and convert0to1RoundingUp functions consistently round in favor of protocol safety, or can attackers exploit rounding direction mismatches to pass solvency checks with insufficient collateral?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_242763c4-f78a-4a1e-bc09-d13f4927112f",
+    "timestamp": "2025-12-24 18:09:33.945414",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getMargin()] [Interest rounding] Does the interest calculation rounding (balance -= interest) correctly handle cases where multiple small interest amounts accumulate to larger values than expected, potentially causing balance underflows?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b442c806-a6e5-4b27-b8ba-befc758d6b2f",
+    "timestamp": "2025-12-24 18:09:59.316323",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Bonus rounding] Can the mulDiv128 and mulDiv operations in bonus calculation introduce rounding errors that accumulate across liquidations, gradually draining protocol funds or benefiting liquidators beyond intended amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_159ac740-cf6f-4cfd-b843-7b4e9c78e603",
+    "timestamp": "2025-12-24 18:10:25.641532",
+    "report_generated": false
   }
 ]
