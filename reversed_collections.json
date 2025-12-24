@@ -1498,5 +1498,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f52381c0-6623-4dfb-98ff-335ffc5e6950",
     "timestamp": "2025-12-24 17:59:19.367576",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: maxWithdraw()] [Rounding error in available calculation] The available amount uses depositedAssets - 1 to ensure at least 1 asset remains - can this cause issues when depositedAssets == 1, making available 0 and preventing all withdrawals?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ffbe91f6-cbe3-4cf2-9088-bd7763430b42",
+    "timestamp": "2025-12-24 18:00:28.564801",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: maxMint()] [Share calculation overflow] The function uses convertToShares(type(uint104).max) - can this overflow if totalSupply() is very large relative to totalAssets(), causing maxMint() to return an impossibly large value?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_01469524-4395-4e81-a506-87c917b6deb9",
+    "timestamp": "2025-12-24 18:00:41.520324",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: maxDeposit()] [Type casting limit] The function returns type(uint104).max - is this sufficient for all tokens, or can tokens with different decimals cause deposits to fail below this limit due to totalAssets() constraints?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_09a05873-f65e-4673-97dd-d09b90d56909",
+    "timestamp": "2025-12-24 18:00:54.681131",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: unlockCallback()] [Mint/burn manipulation] The callback mints/burns to/from panopticPool() address - can an attacker exploit this to manipulate the PanopticPool's balance in the PoolManager?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7ffc6a76-39e2-4957-913b-fb830b93e35d",
+    "timestamp": "2025-12-24 18:01:09.220262",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: unlockCallback()] [Reentrancy via settle/take] The callback calls poolManager().settle() and poolManager().take() - can these operations trigger reentrancy through Uniswap V4 hooks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cefbf222-e782-4aed-948b-d7868977a62c",
+    "timestamp": "2025-12-24 18:01:24.050488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: unlockCallback()] [ETH surplus refund] When Currency.isAddressZero() and surplus > 0, ETH is refunded to account - can this be exploited to drain ETH if account is a malicious contract that manipulates state during the transfer?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2e5c3a12-bace-40de-94ca-a5277382c7ac",
+    "timestamp": "2025-12-24 18:01:40.152102",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: unlockCallback()] [Delta manipulation] The callback handles positive and negative delta differently - can an attacker manipulate the delta value in the encoded data to cause incorrect asset transfers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_02eda433-a0d2-49c1-a976-781d5bacb495",
+    "timestamp": "2025-12-24 18:01:57.377221",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: unlockCallback()] [Access control bypass] The function checks msg.sender == poolManager() - but can an attacker deploy a malicious poolManager clone and call this function with crafted data?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1e4cd21f-b24e-4999-87f0-754f2d152356",
+    "timestamp": "2025-12-24 18:02:16.862284",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _settleCurrencyDelta()] [msg.value forwarding] The function forwards msg.value in the unlock callback data - can an attacker send excess ETH that gets trapped in the contract or used incorrectly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58a04216-695e-4da1-9a52-f77078f3c300",
+    "timestamp": "2025-12-24 18:02:37.576769",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: transferFrom()] [Position check on wrong account] The function checks numberOfLegs(from) but not numberOfLegs(to) - can an attacker with positions use an approved operator without positions to bypass the restriction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f8d93244-856f-43b7-aa5c-44ffdcfc422c",
+    "timestamp": "2025-12-24 18:02:59.132160",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: transferFrom()] [Allowance check bypass] The function calls _accrueInterest(from, IS_NOT_DEPOSIT) before calling ERC20Minimal.transferFrom() - if interest burning reduces the from balance below the transfer amount, will the transfer fail even with sufficient initial balance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f4d0eb0d-a1bd-4819-aa9b-a38385b8df65",
+    "timestamp": "2025-12-24 18:03:21.796832",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: transfer()] [Interest accrual in transfer] Since transfer() calls _accrueInterest(msg.sender, IS_NOT_DEPOSIT), if the user is insolvent and owes more interest than their balance, will shares be burned before the transfer, potentially causing it to fail?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_66b47989-49dd-4aac-ba58-ce6a926eae7f",
+    "timestamp": "2025-12-24 18:03:45.969286",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: transfer()] [Position count manipulation] The function checks panopticPool().numberOfLegs(msg.sender) != 0 - can an attacker temporarily close positions, transfer shares, then reopen positions to bypass this restriction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ebcb9fca-6e3a-4827-a246-8300df4d2cd3",
+    "timestamp": "2025-12-24 18:04:10.750785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleBurn()] [Commission fee cap bypass] The notional fee is multiplied by 10 before comparison - can an attacker find edge cases where premiumFee is slightly above 10x notionalFee to pay significantly less commission?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a810f582-7cc0-4b6e-ad8d-7d316eabc8b7",
+    "timestamp": "2025-12-24 18:04:36.755898",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleBurn()] [Negative premium handling] When realizedPremium < 0, the function uses uint128(-realizedPremium) - can this be exploited to manipulate commission calculation if realizedPremium is exactly int128.min?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a0cb83ec-c17c-4404-8b76-6763a122e2a5",
+    "timestamp": "2025-12-24 18:05:03.981176",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleBurn()] [Commission on zero premium] If realizedPremium == 0, no commission is charged - can users exploit this by closing positions strategically when premium is exactly zero to avoid commission?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ca67a862-4c1a-49be-8eeb-017d33f683e6",
+    "timestamp": "2025-12-24 18:05:32.797872",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleBurn()] [Premium fee selection] The function calculates min(commissionFeeP, commissionFeeN) where commissionFeeN uses 10 * notionalFee - can an attacker structure positions to always hit the notional fee cap, paying less commission on large premium amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fbced3ed-de50-4c71-a407-3a0a4d2f376e",
+    "timestamp": "2025-12-24 18:06:00.441088",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleMint()] [Event data mismatch] The CommissionPaid event emits the same value for commissionPaidProtocol and commissionPaidBuilder when feeRecipient != 0 - is this a bug that causes incorrect event data?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_03876d1c-5973-4ca2-bc60-61252dd27af3",
+    "timestamp": "2025-12-24 18:06:29.244273",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleMint()] [Insufficient shares for commission] If sharesToBurn > balanceOf[optionOwner] after tokenPaid settlement, will the commission transfer revert, DoSing position minting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_287f5245-7ab9-4396-98e2-7e6d39e2d8e0",
+    "timestamp": "2025-12-24 18:06:57.671983",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleMint()] [Split calculation error] The transfers use (sharesToBurn * protocolSplit) / DECIMALS and (sharesToBurn * builderSplit) / DECIMALS - if protocolSplit + builderSplit != DECIMALS, will some commission shares be lost or double-counted?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_13c682c7-b3c8-4e58-b7dc-cd89b017e048",
+    "timestamp": "2025-12-24 18:07:26.100424",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleMint()] [Fee recipient bypass] When feeRecipient == 0, shares are burned from optionOwner - but when feeRecipient != 0, shares are transferred to riskEngine and feeRecipient - can an attacker manipulate feeRecipient to avoid paying commission?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_707b4fdd-7958-4886-a02c-effd96f1d3e6",
+    "timestamp": "2025-12-24 18:07:51.774093",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleMint()] [Commission fee rounding] The commissionFee uses mulDivRoundingUp(commission, notionalFee, DECIMALS) - can an attacker mint positions with amounts that maximize rounding errors to pay less commission than intended?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f02183a0-65d5-45db-a34c-77c9d7618580",
+    "timestamp": "2025-12-24 18:08:18.291826",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleMint()] [Commission calculation overflow] The commission calculation uses uint256(int256(shortAmount) + int256(longAmount)).toUint128() - if shortAmount and longAmount are both near int128.max with same sign, can their sum overflow int256?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_23b0ad90-106c-4cdf-bdd9-629e9e4e0330",
+    "timestamp": "2025-12-24 18:08:42.834851",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [Rounding error accumulation] The function calculates creditDelta using mulDivRoundingUp for creation and mulDiv for closure - can the difference in rounding cause s_creditedShares to gradually drift from its correct value over many position cycles?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6c569cc1-bc53-4c33-87a6-dc124c3301ee",
+    "timestamp": "2025-12-24 18:09:06.437548",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [Interest state corruption] The function updates s_interestState[optionOwner].addToLeftSlot(netBorrows) - if netBorrows causes the left slot to overflow its int128 bounds, will this corrupt interest tracking for the user?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fa625a2c-d62c-43c4-a5f9-c9ca0ed7b323",
+    "timestamp": "2025-12-24 18:09:31.274453",
+    "report_generated": false
   }
 ]
