@@ -598,5 +598,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8c1b6301-76b6-4b8a-9508-dc7492c8caff",
     "timestamp": "2025-12-24 17:02:04.382564",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Ratio calculation overflow] At lines 2105 and 2114, premiumOwed * settledTokens is computed. Can this multiplication overflow uint256?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fcb612e1-c83e-4aff-93cc-286ec93cfa72",
+    "timestamp": "2025-12-24 17:03:13.722174",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Accumulated premium underflow] At lines 2095-2098, premiumAccumulators - grossPremiumLast is computed. Can grossPremiumLast > premiumAccumulators cause underflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_20db33ca-14bc-4a61-8273-c3624a3659f1",
+    "timestamp": "2025-12-24 17:03:26.573853",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Division by 2^64 precision loss] At lines 2096 and 2098, division by 2^64 occurs. Can precision loss cause available premium to drift from actual premium over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4e775629-e943-4c2c-aff0-3505f967add0",
+    "timestamp": "2025-12-24 17:03:40.450284",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Math.min capping] At lines 2104-2107 and 2113-2117, result is capped at premiumOwed. Can this capping be exploited to extract more premium than settled in edge cases?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_73fe17e4-dd3d-4344-8e34-c1259edbb940",
+    "timestamp": "2025-12-24 17:03:54.162063",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [totalLiquidity multiplication overflow] At lines 2095 and 2097, multiplication by totalLiquidity occurs. Can large totalLiquidity values cause overflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_170ad284-de68-4fd6-ac42-1e68b2e7892d",
+    "timestamp": "2025-12-24 17:04:08.801114",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkLiquiditySpread()] [netLiquidity zero check] At line 1975, netLiquidity == 0 causes revert. Can an attacker exploit the case where netLiquidity == 0 && removedLiquidity == 0 (returns early at line 1973) to bypass spread checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4026ad02-29cd-42ec-82bd-30792fa58901",
+    "timestamp": "2025-12-24 17:04:25.455811",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkLiquiditySpread()] [effectiveLiquidityFactor overflow] At line 1980, removedLiquidity * DECIMALS is computed. Can this multiplication overflow uint256?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4d4db930-6700-4d04-b552-63994e28a41a",
+    "timestamp": "2025-12-24 17:04:42.964915",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkLiquiditySpread()] [Division by netLiquidity] At line 1980, division by netLiquidity occurs. Can netLiquidity near zero cause disproportionately large effectiveLiquidityFactor?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_89033335-67bf-419a-827a-ec60836dd9cf",
+    "timestamp": "2025-12-24 17:05:02.530485",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkLiquiditySpread()] [effectiveLiquidityLimit bypass] At line 1985, comparison with effectiveLiquidityLimit. Can providing effectiveLiquidityLimit = type(uint256).max bypass all spread restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9d4eaa2d-5dc8-4402-9eb0-896736eab7b7",
+    "timestamp": "2025-12-24 17:05:22.942035",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkLiquiditySpread()] [Short closing bypass] At line 1973, return early if both liquidities are zero. Can an attacker exploit this to close short positions without spread checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_71450885-ecb0-4827-8e36-461d0af2c717",
+    "timestamp": "2025-12-24 17:05:44.169972",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getLiquidities()] [accountLiquidities trust] At lines 2141-2147, SFPM.getAccountLiquidity is trusted. Can malicious SFPM return values corrupt liquidity spread calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d5f4df83-5ac9-43a6-ab72-17820e973ae1",
+    "timestamp": "2025-12-24 17:06:07.033056",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getLiquidities()] [totalLiquidity overflow] At line 2153, netLiquidity + removedLiquidity is computed. Can this addition overflow uint256 despite unchecked block?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_22ef5340-0279-40a1-b278-20fa438ca3cf",
+    "timestamp": "2025-12-24 17:06:31.184960",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getLiquidities()] [Tick range validation] At line 2139, asTicks is called. Can malicious tick ranges cause getAccountLiquidity to return incorrect values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_40450a29-ea67-4769-96fb-dbfb7fd3ea33",
+    "timestamp": "2025-12-24 17:06:55.207895",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updatePositionsHash()] [Hash collision attacks] At lines 1880-1883, updatePositionsHash uses XOR. Can an attacker find tokenIds that XOR to zero to manipulate the position hash?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c4963ab2-efa0-408c-a4f1-0e0b38db280a",
+    "timestamp": "2025-12-24 17:07:19.498153",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updatePositionsHash()] [maxLegs overflow] At line 1885, newHash >> 248 is compared to maxLegs. Can the leg count overflow uint8, causing the check to pass incorrectly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_da12bf63-88bb-47c4-95f0-899ac980cf09",
+    "timestamp": "2025-12-24 17:07:44.179495",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updatePositionsHash()] [Add/remove flag manipulation] At line 1883, addFlag determines add vs remove. Can flipping this flag cause incorrect position counts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8937cd39-6e2b-4e05-a139-dcfd90b837b9",
+    "timestamp": "2025-12-24 17:08:10.320155",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updatePositionsHash()] [Position count in hash] The hash stores position count in top 8 bits. Can this count be manipulated to bypass MAX_OPEN_LEGS check?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e9290a28-3795-424d-afd7-3ea3c957200c",
+    "timestamp": "2025-12-24 17:08:37.993108",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validatePositionList()] [Duplicate check bypass] At line 1838, hasNoDuplicateTokenIds is checked. Can the duplicate detection algorithm be bypassed with carefully crafted tokenIds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_450e3281-0932-4ce5-8aa5-d173f3d4ec89",
+    "timestamp": "2025-12-24 17:09:06.842989",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validatePositionList()] [Pool ID mismatch] At line 1846, poolId is checked for each token. Can an attacker provide tokenIds with correct poolId but from different Panoptic pools?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_814b020f-b949-4a87-aacf-d06e168b64b0",
+    "timestamp": "2025-12-24 17:09:34.287053",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validatePositionList()] [Hash computation manipulation] At lines 1848-1852, fingerprintIncomingList is computed. Can the XOR-based fingerprint be manipulated to match stored hash with wrong positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_de19638d-1012-4cef-aa3b-d65d59ae19ff",
+    "timestamp": "2025-12-24 17:10:03.692102",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validatePositionList()] [Empty list validation] At line 1833, pLength can be 0. Can empty position lists be used to bypass certain validations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7a52a34c-4808-4d1c-8a87-0a46fdad6b77",
+    "timestamp": "2025-12-24 17:10:33.772178",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Ratio calculation overflow] At lines 2105 and 2114, premiumOwed * settledTokens is computed. Can this multiplication overflow uint256?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_50b39c82-16d9-4be9-8296-b4ec9e612911",
+    "timestamp": "2025-12-24 17:11:02.157974",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Accumulated premium underflow] At lines 2095-2098, premiumAccumulators - grossPremiumLast is computed. Can grossPremiumLast > premiumAccumulators cause underflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6b0e78f6-0fd8-4969-8dd2-5dcc26da46ed",
+    "timestamp": "2025-12-24 17:11:29.993968",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Division by 2^64 precision loss] At lines 2096 and 2098, division by 2^64 occurs. Can precision loss cause available premium to drift from actual premium over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0cc506c1-6049-4edb-a14e-47a8bb362fb1",
+    "timestamp": "2025-12-24 17:11:58.756502",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Math.min capping] At lines 2104-2107 and 2113-2117, result is capped at premiumOwed. Can this capping be exploited to extract more premium than settled in edge cases?",
+    "url": "https://deepwiki.com/search/not-found",
+    "timestamp": "2025-12-24 17:12:26.430472",
+    "report_generated": false
   }
 ]
