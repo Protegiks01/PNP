@@ -1,1 +1,152 @@
-[]
+[
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: quickSort()] [Adversarial input pattern] Can an attacker provide arrays sorted in reverse order or with specific patterns that force O(n²) time complexity, causing gas exhaustion in oracle updates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_66eb67cd-ad5a-4e2f-8727-2bfb16f35a89",
+    "timestamp": "2025-12-24 16:19:30.575488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWad()] [Composite denominator decomposition] Breaking 10^18 into 2^18 * 5^18 and processing separately - can this introduce rounding errors not present in direct division?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58397d37-72df-4406-95af-f8f199016742",
+    "timestamp": "2025-12-24 16:19:43.734367",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wTaylorCompounded()] [High-order term truncation] By only including three terms, can large n*x values cause the truncated higher-order terms to represent significant value loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_eb59e0a1-c538-4bfd-a60c-47b870e3ac1a",
+    "timestamp": "2025-12-24 16:19:57.843707",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Iterative precision loss] The function iteratively squares argX128 - can accumulated floating-point errors cause log calculations to drift significantly from true values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0d9a33a2-a450-4c96-a0ce-35429030cd44",
+    "timestamp": "2025-12-24 16:20:11.996278",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmountsForLiquidity()] [Conditional precision differences] Different code paths use different precision (updateTickLower vs updateTickUpper) - can attackers manipulate currentTick to choose favorable precision paths?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_452e2022-25ed-4837-a8fa-b83917b89fd1",
+    "timestamp": "2025-12-24 16:20:26.947060",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv96RoundingUp()] [Systematic rounding bias] If this function is called repeatedly in a loop (e.g., processing multiple legs), can the rounding-up bias accumulate to significant amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_47ad47d7-0f20-46eb-b51f-21454a87828b",
+    "timestamp": "2025-12-24 16:20:43.008483",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount0()] [Multiplication overflow before division] The calculation multiplies amount0 by mulDiv96(highPriceX96, lowPriceX96) before dividing - can intermediate results overflow even when final result fits in uint128?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7ac36c36-00b7-400b-8140-3535c78aa212",
+    "timestamp": "2025-12-24 16:21:01.455194",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidity()] [Double division precision loss] The function performs mulDiv() followed by division by lowPriceX96 - can this sequential division cause accumulated precision loss exploitable in high-frequency position operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_356837b0-6bb2-411d-8144-2f6e10eebccd",
+    "timestamp": "2025-12-24 16:21:20.892546",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: abs() + absUint()] [Signed/unsigned confusion] Can developers mistakenly use abs() instead of absUint() for type(int256).min, causing unexpected reverts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f174d97d-57c9-4b55-a3cd-c72142cf8935",
+    "timestamp": "2025-12-24 16:21:41.421895",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWad() + mulDiv96()] [Fixed-point format mixing] Can mixing WAD (10^18) and Q96 (2^96) fixed-point formats in calculations cause conversion errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_abbd2ccb-6625-48a6-8242-23f564a31532",
+    "timestamp": "2025-12-24 16:22:03.376292",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp() + wTaylorCompounded()] [Exponential approximation differences] If different exponential approximations are used in related calculations, can the differences create arbitrage opportunities?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d288689b-4af9-4716-afae-37733f0cf423",
+    "timestamp": "2025-12-24 16:22:25.641827",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toUint128() + toInt128()] [Casting chain vulnerabilities] When chaining conversions uint256->uint128->int128, can intermediate overflows be hidden, bypassing validation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_09633cf7-e1c7-4fe8-a471-e35c568ca1c7",
+    "timestamp": "2025-12-24 16:22:50.584535",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv() + mulDivRoundingUp()] [Rounding direction manipulation] Can attackers selectively call rounding-up or rounding-down versions to consistently extract value in collateral conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ab7a73c7-1bab-4c8c-a8f7-93e3b346298e",
+    "timestamp": "2025-12-24 16:23:15.266911",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount0() + getAmount0ForLiquidity()] [Inverse operation loss] When converting amount0 -> liquidity -> amount0, can precision loss allow arbitrage between minting and burning?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8867698d-5673-47bf-a8da-b7922f7a9ede",
+    "timestamp": "2025-12-24 16:23:40.590906",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getSqrtRatioAtTick() + getAmount0ForLiquidity()] [Round-trip inconsistency] When computing sqrt prices with getSqrtRatioAtTick() and then calculating amounts with getAmount0ForLiquidity(), can rounding inconsistencies allow users to withdraw more than deposited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4d81d661-5635-4eb2-9fba-5185972bc9f1",
+    "timestamp": "2025-12-24 16:24:07.287296",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp()] [Decomposition into q and r] The decomposition x = q*ln(2) + r - can precision loss in this step accumulate to significant errors in final exponential?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_af2ead12-901e-417b-9322-2e924cf061b7",
+    "timestamp": "2025-12-24 16:24:35.263237",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp()] [Bit shift for power of 2] The function uses bit shifts (expR << q or >> -q) - can extreme q values cause overflow or lose precision?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_af1d4215-8d8d-4245-9a33-1299ff25d048",
+    "timestamp": "2025-12-24 16:25:03.614572",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp()] [Taylor polynomial approximation] The function uses 2nd-order Taylor (1 + r + r²/2) - is this accurate enough for all expected x values in protocol operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5bb49fc7-fedc-4357-b586-7e2192b9d1f3",
+    "timestamp": "2025-12-24 16:25:30.761535",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp()] [Rounding adjustment sign dependency] The rounding adjustment changes sign based on x < 0 - can boundary cases near zero cause incorrect rounding?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9da0225d-e95c-410b-af14-8c4553d50f17",
+    "timestamp": "2025-12-24 16:25:56.484586",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp()] [Upper bound capping] For x >= WEXP_UPPER_BOUND, returns WEXP_UPPER_VALUE - can attackers exploit this capping to manipulate interest rates or premium calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ace25637-aa78-4a92-bcc1-6547c41b2d8e",
+    "timestamp": "2025-12-24 16:26:22.766908",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wExp()] [Lower bound clipping] For x < LN_WEI_INT (-41.446...), the function returns 0 - can this cause legitimate small exponentials to be clipped, affecting interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_55b5a15c-4fea-49ba-9b3d-5d0af18dfb04",
+    "timestamp": "2025-12-24 16:26:49.663939",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: bound()] [Integer overflow in comparisons] The assembly uses slt() and sgt() signed comparisons - can overflow in x, low, or high cause incorrect bounding?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_02368a1a-5e0e-459f-b338-2af5da3795ee",
+    "timestamp": "2025-12-24 16:27:18.681180",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: bound()] [Assembly optimization risks] The function uses assembly for optimization - could compiler version changes or optimizer settings cause unexpected behavior?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_197d9aa8-a7df-4a37-ad73-03d612d4a8ba",
+    "timestamp": "2025-12-24 16:27:45.643925",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: bound()] [Low > high edge case] The documentation assumes low <= high, but if violated it returns low - can attackers exploit this by providing reversed bounds to bypass range checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a8abbac3-ac20-45e9-9351-a5246b749fd3",
+    "timestamp": "2025-12-24 16:28:13.927994",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wDivToZero()] [Precision loss in fixed-point division] Can small x values divided by large y values round to zero, causing dust amounts to be lost in premium or fee calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8e2050da-5c0b-4916-9a36-2fd86cd6d542",
+    "timestamp": "2025-12-24 16:28:42.406928",
+    "report_generated": false
+  }
+]
