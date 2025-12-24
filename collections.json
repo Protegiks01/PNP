@@ -1798,5 +1798,305 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c737fb6c-0845-4e09-82d5-ec8cdd1e8833",
     "timestamp": "2025-12-24 19:23:06.852492",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [Unrealized Interest Consistency] When CollateralTracker.totalAssets() includes unrealizedInterest in calculations, if updateUnrealizedInterest() is called between totalAssets() reads within the same transaction, can this cause asset accounting to be inconsistent and allow attackers to exploit the discrepancy?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_16ab0d76-039b-4c8b-874b-db14a1385c5d",
+    "timestamp": "2025-12-24 19:24:12.615499",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: Multiple Trackers] [State Isolation] If two CollateralTracker instances (for token0 and token1) maintain separate MarketState values, can an attacker manipulate one tracker's state to cause cross-collateralization calculations in RiskEngine.isAccountSolvent() to be incorrect?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_25fbccb9-889f-4393-b0c7-d97d00a284f2",
+    "timestamp": "2025-12-24 19:24:25.607161",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [Interest Rate Update] When _updateInterestRate() at line 1052 calls s_marketState.updateRateAtTarget(), if RiskEngine.updateInterestRate() returns endRateAtTarget that exceeds uint40, can the cast to uint40 at line 1052 silently truncate the value and set an incorrect rate?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_46219166-4897-4c56-932c-f5038bd63aa4",
+    "timestamp": "2025-12-24 19:24:38.905591",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [View Function Discrepancy] CollateralTracker._calculateCurrentInterestState() is a view function that simulates state changes. If the actual _accrueInterest() produces different results due to rounding or gas limitations, can users observe one borrowIndex in view calls but be charged based on a different index in transactions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58e41e16-dafb-4ae2-974d-d8c58903bba0",
+    "timestamp": "2025-12-24 19:24:52.845816",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: RiskEngine] [IRM Max Elapsed Time] RiskEngine caps elapsed time at IRM_MAX_ELAPSED_TIME (line 2220). If an attacker can cause the marketEpoch to become very stale, then trigger an update that calculates interest for IRM_MAX_ELAPSED_TIME repeatedly, can they cause runaway interest accumulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_64bc1d1f-3775-40ab-be59-4aed2224369c",
+    "timestamp": "2025-12-24 19:25:07.712437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Initial State] When creating the first MarketState for a new market, if _borrowIndex is not exactly 1e18 (WAD) as expected, can this cause all subsequent interest calculations to be off by a constant factor, systematically overcharging or undercharging users?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6f4c19fb-6513-4110-97d8-2385d033090d",
+    "timestamp": "2025-12-24 19:25:24.111330",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Zero Initialization] If storeMarketState() is called with all zero parameters (borrowIndex=0, epoch=0, rate=0, interest=0), will this create a valid MarketState that passes all checks, or can it cause division by zero errors when CollateralTracker tries to calculate interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c78effac-edbc-4379-8e8d-03160438f407",
+    "timestamp": "2025-12-24 19:25:43.474354",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: rateAtTarget()] [First Interaction Detection] RiskEngine._borrowRate() at line 2208 checks if rateAtTarget is 0 to detect first interaction. If a market legitimately has rateAtTarget=0 after many interactions (due to extreme under-utilization), can this cause the protocol to repeatedly reinitialize and apply INITIAL_RATE_AT_TARGET?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7b16773b-8e16-4acb-826c-f85e6d3c26c3",
+    "timestamp": "2025-12-24 19:26:02.668638",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Epoch Zero] If _marketEpoch is 0 (representing timestamps 0-3 in Unix time), can this cause issues when RiskEngine calculates elapsed time at line 2218-2220, potentially resulting in a huge elapsed time that causes excessive interest accrual?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_efbd5a02-bcf9-4bed-967d-e01f47d85bfc",
+    "timestamp": "2025-12-24 19:26:22.501885",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [WAD Initialization] The protocol expects borrowIndex to start at 1e18 (WAD). If an attacker can deploy a CollateralTracker that initializes with a different value (e.g., 1e17 or 1e19), can this cause all interest calculations to be off by a factor of 10, allowing theft of funds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_589d7200-cce5-4f17-a408-8d8fa25a48b8",
+    "timestamp": "2025-12-24 19:26:44.084281",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Rate Initialization] When first creating a MarketState, should _rateAtTarget be 0 or INITIAL_RATE_AT_TARGET? If the protocol incorrectly initializes with 0, will RiskEngine then set INITIAL_RATE_AT_TARGET on the first interaction, and can attackers exploit the timing between initialization and first rate update?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_791bbdcd-78c3-4a27-b0ef-bd7e2935d06f",
+    "timestamp": "2025-12-24 19:27:07.199078",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [Clock Skew] If the first marketEpoch is set based on a block.timestamp that's far in the past (due to L2 sequencer issues or miner manipulation), can this cause the protocol to think enormous time has elapsed and accrue impossible amounts of interest on the first user interaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b113f4b9-8a9b-424f-a076-e5d4e75380c5",
+    "timestamp": "2025-12-24 19:27:30.957983",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateUnrealizedInterest()] [Initial Interest] Should unrealizedInterest start at 0 or at some initial value representing historical interest? If the protocol migrates from an old system and initializes with non-zero unrealizedInterest, can this cause double-counting of interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_27194a1a-fa80-4c85-b1c5-b54c3d49adf2",
+    "timestamp": "2025-12-24 19:27:55.857381",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Partial Initialization] If a malicious actor can call updateBorrowIndex() before the MarketState is fully initialized through storeMarketState(), can they set the borrowIndex while leaving other fields at zero, creating an invalid state that breaks interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_63153025-2cc1-4518-8df5-525a751d10bd",
+    "timestamp": "2025-12-24 19:28:22.460318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: borrowIndex()] [Uninitialized Read] If borrowIndex() is called on a MarketState that was never properly initialized (e.g., storage slot contains garbage), can it return a random value that causes CollateralTracker to calculate nonsensical interest amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e7457f67-1784-48e7-b972-7cb76d7ff3c6",
+    "timestamp": "2025-12-24 19:28:49.888825",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: borrowIndex()] [Compound Interest Drift] As borrowIndex compounds from 1e18 towards 2**80 maximum over 1.75 years at 800% interest, does the protocol account for precision loss in fixed-point arithmetic, or can rounding errors accumulate such that the last user to close their position finds insufficient funds due to interest calculation drift?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_677f23f9-26af-458e-aa9b-da6abcd015da",
+    "timestamp": "2025-12-24 19:29:17.854821",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [Rapid Updates] If an attacker repeatedly triggers tiny deposits and withdrawals in CollateralTracker to force frequent borrowIndex updates within the same epoch, can rounding errors in the compound interest calculation (rawInterest from Math.wTaylorCompounded at line 1009) accumulate and cause borrowIndex to deviate from the theoretical value?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_26ad6b55-cdf0-438b-b513-747ea1c706ec",
+    "timestamp": "2025-12-24 19:29:46.176841",
+    "report_generated": false
+  },
+  {
+    "question": "[File:\n\n### Citations\n\n**File:** contracts/types/MarketState.sol (L1-186)\n```text\n// SPDX-License-Identifier: GPL-2.0-or-later\npragma solidity ^0.8.24;\n\ntype MarketState is uint256;\nusing MarketStateLibrary for MarketState global;\n\n/// @title A Panoptic Market State. Tracks the data of a given CollateralTracker market.\n/// @author Axicon Labs Limited\n//\n//\n// PACKING RULES FOR A MARKETSTATE:\n// =================================================================================================\n//  From the LSB to the MSB:\n// (0) borrowIndex          80 bits : Global borrow index in WAD (starts at 1e18). 2**80 = 1.75 years at 800% interest\n// (1) marketEpoch          32 bits : Last interaction epoch for that market (1 epoch = block.timestamp/4)\n// (2) rateAtTarget         38 bits : The rateAtTarget value in WAD (2**38 = 800% interest rate)\n// (3) unrealizedInterest   106bits : Accumulated unrealized interest that hasn't been distributed (max deposit is 2**104)\n// Total                    256bits  : Total bits used by a MarketState.\n// ===============================================================================================\n//\n// The bit pattern is therefore:\n//\n//          (3)                 (2)                 (1)                 (0)\n//    <---- 106 bits ----><---- 38 bits ----><---- 32 bits ----><---- 80 bits ---->\n//     unrealizedInterest    rateAtTarget        marketEpoch        borrowIndex\n//\n//    <--- most significant bit                              least significant bit --->\n//\nlibrary MarketStateLibrary {\n    // =============================================================\n    // CONSTANTS (MASKS)\n    // =============================================================\n    // We define",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6a31ad86-0f5d-4517-86b8-ad5aa046935e",
+    "timestamp": "2025-12-24 19:30:16.011009",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [Unrealized Interest Consistency] When CollateralTracker.totalAssets() includes unrealizedInterest in calculations, if updateUnrealizedInterest() is called between totalAssets() reads within the same transaction, can this cause asset accounting to be inconsistent and allow attackers to exploit the discrepancy?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f9af07b7-eb12-414f-a1cd-c5f8384ca167",
+    "timestamp": "2025-12-24 19:30:45.780994",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: Multiple Trackers] [State Isolation] If two CollateralTracker instances (for token0 and token1) maintain separate MarketState values, can an attacker manipulate one tracker's state to cause cross-collateralization calculations in RiskEngine.isAccountSolvent() to be incorrect?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_04203561-b774-4bbe-90f2-81318173d1b0",
+    "timestamp": "2025-12-24 19:31:14.516227",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [Interest Rate Update] When _updateInterestRate() at line 1052 calls s_marketState.updateRateAtTarget(), if RiskEngine.updateInterestRate() returns endRateAtTarget that exceeds uint40, can the cast to uint40 at line 1052 silently truncate the value and set an incorrect rate?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_23c78f08-f2f7-46ed-954e-083de02a06a7",
+    "timestamp": "2025-12-24 19:31:41.276080",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [View Function Discrepancy] CollateralTracker._calculateCurrentInterestState() is a view function that simulates state changes. If the actual _accrueInterest() produces different results due to rounding or gas limitations, can users observe one borrowIndex in view calls but be charged based on a different index in transactions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_898dedde-a3db-4daf-9b20-bee13455febe",
+    "timestamp": "2025-12-24 19:32:08.248021",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: RiskEngine] [IRM Max Elapsed Time] RiskEngine caps elapsed time at IRM_MAX_ELAPSED_TIME (line 2220). If an attacker can cause the marketEpoch to become very stale, then trigger an update that calculates interest for IRM_MAX_ELAPSED_TIME repeatedly, can they cause runaway interest accumulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a0d9ef62-47c4-4ca6-af65-ba7bba46f2f3",
+    "timestamp": "2025-12-24 19:32:35.344027",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Initial State] When creating the first MarketState for a new market, if _borrowIndex is not exactly 1e18 (WAD) as expected, can this cause all subsequent interest calculations to be off by a constant factor, systematically overcharging or undercharging users?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dc463e87-84a2-46df-bcb7-3be1ae4bbfea",
+    "timestamp": "2025-12-24 19:33:02.523050",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Zero Initialization] If storeMarketState() is called with all zero parameters (borrowIndex=0, epoch=0, rate=0, interest=0), will this create a valid MarketState that passes all checks, or can it cause division by zero errors when CollateralTracker tries to calculate interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dfa1add4-20f9-4fda-8e22-f05c035ccf31",
+    "timestamp": "2025-12-24 19:33:30.930668",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Integer Overflow] Can an attacker cause the assembly addition operations (lines 65-77) to overflow when combining shifted parameters, potentially wrapping around to create malicious RiskParameters with attacker-controlled fee splits or position limits that bypass protocol safety checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_750fbe81-dd65-44c4-9a78-bd103282d641",
+    "timestamp": "2025-12-24 19:34:40.763351",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Bit Collision] If _safeMode exceeds 4 bits (>15) or _notionalFee exceeds 14 bits (>16383), can these overflow into adjacent parameter fields (lines 68-69), allowing an attacker to simultaneously manipulate safeMode and notionalFee to create undercollateralized positions while avoiding safe mode restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_014f7269-82ac-4a7b-b98c-0cc7eb1163dd",
+    "timestamp": "2025-12-24 19:34:53.460558",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Parameter Validation] Does storeRiskParameters() validate that _maxLegs stays within the 7-bit constraint (<128) as documented (line 22), or can RiskEngine pass values ≥128 that corrupt the feeRecipient field through bit overflow (line 74), potentially redirecting protocol fees to attacker addresses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_84b72420-e1ec-4e0a-9cc3-6096019ab963",
+    "timestamp": "2025-12-24 19:35:07.303735",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Fee Split Overflow] Can an attacker manipulate RiskEngine to pass _protocolSplit + _builderSplit > DECIMALS (10_000_000), causing CollateralTracker.settleMint to transfer more shares than collected as commission (lines 1566-1572), draining the vault through fee extraction beyond 100%?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ce41879b-7dde-4e6a-9755-e8d9a51a4c4e",
+    "timestamp": "2025-12-24 19:35:21.274929",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Shift Overflow] Do the left shift operations (shl) in lines 68-75 properly handle cases where shift amounts combined with parameter values exceed 256 bits, potentially causing silent truncation that corrupts the encoded RiskParameters?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_93aa2c68-ba40-4677-8a88-655498d1943f",
+    "timestamp": "2025-12-24 19:35:36.361997",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Zero Parameter Attack] If all input parameters are zero, does storeRiskParameters() return a zero-valued RiskParameters that bypasses fee collection in CollateralTracker.settleMint (line 1555), allowing users to mint unlimited positions without paying commission fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f2dd5940-de9d-4c80-a147-0207b1aabbf7",
+    "timestamp": "2025-12-24 19:35:53.247123",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [tickDeltaLiquidation Overflow] Can _tickDeltaLiquidation exceed its 13-bit allocation (>8191) documented in line 19, causing it to overflow into the maxSpread field (line 71), simultaneously manipulating liquidation price bounds and position size limits to enable profitable manipulation attacks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_13b8333b-d1d2-4041-af19-056ca6cf9618",
+    "timestamp": "2025-12-24 19:36:11.077303",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [maxSpread Bit Overflow] Does the 22-bit maxSpread field (line 20) properly constrain _maxSpread to prevent overflow into bpDecreaseBuffer (line 73), which could simultaneously relax position size limits while tightening collateral requirements to trigger mass liquidations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58213c15-84a1-4a4c-8117-6f0e6adece12",
+    "timestamp": "2025-12-24 19:36:30.051357",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [bpDecreaseBuffer Corruption] Can _bpDecreaseBuffer exceed its 26-bit allocation (>67108863) as documented in line 21, corrupting the maxLegs field through bit overflow (line 74) and allowing users to bypass the MAX_OPEN_LEGS limit to open arbitrarily complex positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cf863558-cb5a-4cec-a3d1-ded39cfebe6a",
+    "timestamp": "2025-12-24 19:36:49.662874",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [feeRecipient Truncation] If _feeRecipient is passed as a full uint160 address but stored as uint128 (line 23), does the truncation in line 75 corrupt the upper 32 bits, potentially redirecting protocol fees to unintended addresses when converted back to address(uint160()) in CollateralTracker (line 1570)?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_86a077c8-381b-4e54-b6db-962d6ede8080",
+    "timestamp": "2025-12-24 19:37:10.064288",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode()] [Mask Underflow] Does the 0xF mask in line 90 properly extract only the lowest 4 bits, or can maliciously crafted RiskParameters with bits set beyond position 3 cause safeMode() to return values >15, bypassing RiskEngine.isSafeMode() checks and allowing operations during unsafe market conditions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d72998e4-ac6b-4454-8182-74d94e5893e7",
+    "timestamp": "2025-12-24 19:37:31.844699",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee()] [Shift-Mask Mismatch] Can the combination of shr(4) and mask 0x3FFF in lines 99-100 incorrectly extract notionalFee if the premiumFee field bleeds into the notionalFee bits, causing CollateralTracker.settleMint to charge incorrect commission fees that either drain user funds or allow fee evasion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b3c1266b-16cf-4939-bd0b-bceba90303cf",
+    "timestamp": "2025-12-24 19:37:55.074884",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: premiumFee()] [Precision Loss] Does the right shift by 18 bits in line 108 followed by the 0x3FFF mask properly extract premiumFee without precision loss, or can rounding errors cause CollateralTracker.settleBurn to undercharge commission on realized premium (line 1623), allowing users to avoid fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_702747b4-a956-4ba3-adcb-937e6dc635c5",
+    "timestamp": "2025-12-24 19:38:20.845527",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit()] [Overflow Return] Can protocolSplit() return a value exceeding DECIMALS when the underlying bits are corrupted by adjacent field overflow, causing CollateralTracker to transfer more shares to the protocol than intended (line 1566), draining collateral vaults through excessive fee extraction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_56a5d90e-5445-44de-b593-0fdcd6d2d9a3",
+    "timestamp": "2025-12-24 19:38:45.383787",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: builderSplit()] [Fee Split Bypass] If builderSplit() returns zero due to bit corruption or intentional encoding, does CollateralTracker.settleMint skip the builder fee transfer (line 1571), allowing builders to be cheated out of commissions or enabling users to mint positions with lower effective fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ffff7f8e-ca40-4ce2-ad94-15d600f8ed55",
+    "timestamp": "2025-12-24 19:39:10.957608",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Liquidation Bounds Manipulation] Can tickDeltaLiquidation() return a value close to zero when bits are corrupted, causing PanopticPool.dispatchFrom() to reject all liquidations due to overly strict TWAP deviation checks, temporarily freezing liquidations and allowing insolvent positions to accumulate?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a7611961-448a-4810-858c-7181c621c36d",
+    "timestamp": "2025-12-24 19:39:38.329243",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Price Manipulation Window] Conversely, can tickDeltaLiquidation() return the maximum 13-bit value (8191 ticks, ~126% deviation per line 19), allowing liquidators to execute liquidations at heavily manipulated prices that exceed the intended 5% deviation limit (513 ticks), extracting excessive liquidation bonuses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_426b88d2-fd9b-419f-92a5-29debbbd8462",
+    "timestamp": "2025-12-24 19:40:03.826167",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Position Size Bypass] Can maxSpread() return corrupted values exceeding the intended MAX_SPREAD of 90_000, allowing users to bypass PanopticPool._checkLiquiditySpread() checks (lines 1963-1987) and mint positions with excessive concentration that removes >99.76% of available liquidity from Uniswap chunks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_08fab74b-29b5-4b94-a4cb-b7c76f482aa9",
+    "timestamp": "2025-12-24 19:40:30.589165",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [DoS Through Zero] If maxSpread() returns zero due to bit field corruption, does PanopticPool._checkLiquiditySpread() reject all long position minting by reverting with EffectiveLiquidityAboveThreshold (line 1986), causing a denial-of-service where users cannot close short positions or rebalance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_26dc2a1f-218d-49d4-8516-6e596116420b",
+    "timestamp": "2025-12-24 19:40:55.539250",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Collateral Bypass] Can bpDecreaseBuffer() return values significantly below the intended BP_DECREASE_BUFFER of 13_333_333 (133%), allowing users to mint positions with insufficient collateral buffers and creating systemic undercollateralization risk when pool utilization changes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ea49b762-2b0f-45fe-85d6-b9b8ce4b4645",
+    "timestamp": "2025-12-24 19:41:19.775357",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Over-Collateralization DoS] Conversely, can bpDecreaseBuffer() return the maximum 26-bit value (~67M representing 6700% collateral), causing PanopticPool._validateSolvency() to require impossibly high collateral that prevents all position minting and effectively DoS's the protocol?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ae0044b5-05e6-46dd-9bad-baca04bd7f61",
+    "timestamp": "2025-12-24 19:41:44.616975",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Position Limit Bypass] Can maxLegs() return values exceeding MAX_OPEN_LEGS=25 hardcoded in PanopticPool, allowing users to bypass PanopticPool._updatePositionsHash() checks and open positions with >33 total legs as mentioned in the README invariants, potentially causing gas exhaustion attacks during liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b70a7d71-015a-4573-b9e0-8ed722689f29",
+    "timestamp": "2025-12-24 19:42:07.645338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Position Limit DoS] If maxLegs() returns zero or a very low value due to bit corruption, can this prevent users from opening any positions by causing TooManyLegsOpen reverts in PanopticPool._updatePositionsHash(), effectively freezing the protocol for new position creation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7e93e332-fe29-49f3-b864-ee28c9ed03b5",
+    "timestamp": "2025-12-24 19:42:32.090993",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: feeRecipient()] [Address Corruption] Does the right shift by 128 bits in line 171 properly extract the full feeRecipient without truncation, or can the conversion to address(uint160()) in CollateralTracker (line 1570) result in address collisions where multiple builder codes map to the same fee recipient?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d89b75fe-cbdb-40eb-9ab2-1f64c46a0bb4",
+    "timestamp": "2025-12-24 19:42:57.157711",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: feeRecipient()] [Zero Address Exploit] If feeRecipient() returns zero (either intentionally or through corruption), does CollateralTracker.settleMint burn commission shares from the option owner (line 1559) instead of transferring them, effectively confiscating user funds as a hidden fee beyond the documented commission structure?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cd9a123f-39cf-41d1-9698-ecc9be2dbe6a",
+    "timestamp": "2025-12-24 19:43:22.941986",
+    "report_generated": false
   }
 ]
