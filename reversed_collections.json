@@ -2548,5 +2548,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fe14ce14-6f4c-424a-a1d2-6d6a38cf6591",
     "timestamp": "2025-12-24 19:11:46.547598",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [PoolId Mismatch] The check at line 805 compares tokenId.poolId() with poolData.poolId() - can an attacker craft a tokenId with correct pool address but wrong poolId to bypass this check?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_11cc69e7-149b-448c-bf38-eb8489da13a3",
+    "timestamp": "2025-12-24 19:12:59.111362",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: burnTokenizedPosition()] [Inverted Limits During Burn] Can invertedLimits during burn (line 592) cause the ITM swap to execute in the wrong direction, resulting in incorrect token deltas returned to users?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_46dcb39b-578d-4231-8cb9-440d378ff4f5",
+    "timestamp": "2025-12-24 19:13:12.356542",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: burnTokenizedPosition()] [ERC1155 Burn Before AMM] The _burn occurs at line 587 before AMM interaction - if _createPositionInAMM reverts, are ERC1155 balances permanently reduced without corresponding Uniswap position changes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d5c3e52a-e71a-46f3-bb6c-37ce7703bfaa",
+    "timestamp": "2025-12-24 19:13:27.991424",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: burnTokenizedPosition()] [FlipToBurnToken Attack] Line 591 calls tokenId.flipToBurnToken() which inverts isLong flags - can this flipping logic be exploited to burn long positions as short positions and vice versa?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_78628641-0fae-48bc-9048-159bce78f323",
+    "timestamp": "2025-12-24 19:13:42.189355",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: burnTokenizedPosition()] [Burn Without Validation] Unlike mint, burn doesn't call tokenId.validate() - can an attacker burn malformed tokenIds to corrupt s_accountLiquidity tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_da6f1a98-82cd-426e-bdfe-e857c51e3a2d",
+    "timestamp": "2025-12-24 19:13:57.088295",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: mintTokenizedPosition()] [ERC1155 Balance Manipulation] The _mint at line 627 increases ERC1155 balance before any validation - if _createPositionInAMM reverts, does the ERC1155 balance remain inconsistent with actual Uniswap positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5c37c083-ebe0-4f40-8562-992866777898",
+    "timestamp": "2025-12-24 19:14:13.744249",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: mintTokenizedPosition()] [Position Size Overflow] The positionSize parameter is uint128 - can minting maximum size positions cause overflow in downstream calculations that expect int128 values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_19c0172f-18fb-4bc1-8b3f-86f104fa0d6a",
+    "timestamp": "2025-12-24 19:14:31.562368",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: mintTokenizedPosition()] [Slippage Check Race Condition] The currentTick is checked at lines 646-649 AFTER position creation - can the tick move significantly during execution allowing positions to be created far outside user's intended price range?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2630506c-ac40-4c4f-89bf-4e387927e83b",
+    "timestamp": "2025-12-24 19:14:51.533802",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: mintTokenizedPosition()] [Inverted Limits Swap Attack] When tickLimitLow > tickLimitHigh (invertedLimits=true), the ITM swap occurs at line 902 - can an attacker use this to extract value by manipulating the swap price through sandwich attacks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e51c2e47-58ea-491f-b910-b0d97f6672ac",
+    "timestamp": "2025-12-24 19:15:12.341806",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: mintTokenizedPosition()] [TokenId Validation Bypass] The tokenId.validate() call at line 632 happens after _mint and event emission - can an invalid tokenId be permanently minted into the ERC1155 balance before validation catches it?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bb3068c6-c940-4beb-90af-fe82e2c82cbe",
+    "timestamp": "2025-12-24 19:15:34.073228",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: uniswapV3MintCallback()] [Reentrancy Through Callbacks] Despite TransientReentrancyGuard, callbacks execute external token transfers - can an attacker create a malicious ERC20 token that reenters through transfer hooks to manipulate state before nonReentrant check completes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ecf8824f-48f4-4862-886b-14251d4deece",
+    "timestamp": "2025-12-24 19:15:55.861435",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: uniswapV3SwapCallback()] [Amount Overflow] The uint256 cast at line 560 could overflow if amount deltas are near int256.max - can this cause incorrect payment amounts during ITM swaps?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_95d93556-e472-4103-920d-34e56968e926",
+    "timestamp": "2025-12-24 19:16:18.526484",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: uniswapV3SwapCallback()] [Swap Direction Manipulation] Lines 553-560 determine which token to pay based on amount0Delta/amount1Delta signs - can an attacker manipulate the swap to have both deltas positive or both negative to bypass payment?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9633dbb4-8951-4325-9eac-a305d2ba743a",
+    "timestamp": "2025-12-24 19:16:40.495836",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: uniswapV3MintCallback()] [Payer Manipulation] The decoded.payer is used directly at lines 522 and 527 - can an attacker encode a victim's address as payer and drain their token approvals through malicious callback data?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e720bd3b-8773-4b70-b878-91c7d23907d2",
+    "timestamp": "2025-12-24 19:17:04.974513",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: uniswapV3MintCallback()] [Callback Validation Bypass] Can an attacker create a malicious pool with matching token0/token1/fee that passes CallbackLib.validateCallback but isn't the genuine Uniswap pool, allowing them to steal tokens during mint operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bcf7f11d-e00e-43c0-838e-278cc0ccfd7a",
+    "timestamp": "2025-12-24 19:17:31.123618",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: initializeAMMPool()] [MaxLiquidityPerTick Manipulation] The maxLiquidityPerTick is calculated at line 365 but never validated - can tick spacing of 1 cause this value to be so large it breaks downstream liquidity calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9ae488c9-d4f8-4128-b8eb-373bf57eaa2d",
+    "timestamp": "2025-12-24 19:17:58.494206",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: expandEnforcedTickRange()] [Math.min/max Abuse] Lines 460-486 use Math.min/max to potentially narrow enforced ticks - can this function be exploited to unexpectedly narrow the range instead of expanding it if token supply increases?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4017ecb3-452e-4bbd-b41d-8cb12f72659b",
+    "timestamp": "2025-12-24 19:18:25.822776",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: expandEnforcedTickRange()] [Uninitialized Pool Attack] What happens if expandEnforcedTickRange is called on a poolId that was never properly initialized but has a non-zero address in s_poolIdToAddress due to a collision?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4b453724-8b8b-4796-9d60-328f70627d1e",
+    "timestamp": "2025-12-24 19:18:52.592117",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: expandEnforcedTickRange()] [Tick Range Manipulation] Can an attacker cause the token supply to decrease significantly after initialization, then call expandEnforcedTickRange to widen the tick range and mint positions that violate original liquidity assumptions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b1ab8751-dc29-4c58-9526-671b5a9cd8c0",
+    "timestamp": "2025-12-24 19:19:19.107217",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPoolId()] [Vegoid Collision] The vegoid is only 8 bits (line 431) allowing 256 possible values - can an attacker exhaust all vegoid values for a single pool to prevent new pool variants from being initialized?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5446b36e-30ef-43fc-865e-704adeb1bfd2",
+    "timestamp": "2025-12-24 19:19:45.388711",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: initializeAMMPool()] [Tick Spacing Overflow] The poolId construction at line 432 casts tickSpacing to uint24 then shifts it - can negative or extremely large tickSpacing values cause silent overflow and produce invalid poolIds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_189d801a-aa8a-4462-8564-2902d8708762",
+    "timestamp": "2025-12-24 19:20:12.562261",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: initializeAMMPool()] [PoolId Increment Attack] The while loop at line 361 increments poolId on collision - can an attacker deliberately create many collisions to force a specific poolId pattern that breaks downstream assumptions in PanopticPool?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3ca511aa-70e6-4bde-838f-e72f54edd01b",
+    "timestamp": "2025-12-24 19:20:40.376633",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: initializeAMMPool()] [Double Initialization] The function returns early if pool is already initialized rather than reverting - could this allow an attacker to initialize the same pool with different vegoid values and create inconsistent state across s_addressToPoolData mappings?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5c93dbbe-0a31-4b70-b7c2-c10b32d8f155",
+    "timestamp": "2025-12-24 19:21:07.915867",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: initializeAMMPool()] [Enforced Tick Manipulation] Can an attacker front-run pool initialization with a massive token supply flash mint to set extremely narrow enforced tick ranges (minEnforcedTick/maxEnforcedTick), permanently restricting position creation and causing denial of service?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e087a524-290b-41bd-9805-4b570f56df01",
+    "timestamp": "2025-12-24 19:21:35.012039",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: initializeAMMPool()] [Pool ID Collision] Can an attacker pre-compute pool addresses with identical first 40 bits and different vegoid values to create pool ID collisions that could brick the initialization process or redirect liquidity to wrong pools?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7a93b7e4-b4b1-47ee-9c99-75bbafb5441e",
+    "timestamp": "2025-12-24 19:22:02.352286",
+    "report_generated": false
   }
 ]
