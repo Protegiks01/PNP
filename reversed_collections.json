@@ -598,5 +598,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_60f39b3d-cfba-4352-a049-878f12ab0d7d",
     "timestamp": "2025-12-24 16:58:27.775000",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount1ForLiquidityUp()] [Price range manipulation] Can an attacker create liquidity chunks with tickUpper - tickLower causing highPriceX96 - lowPriceX96 to overflow, leading to incorrect amount1 calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a16ada13-8311-430c-a93a-3381aadd0ff8",
+    "timestamp": "2025-12-24 16:59:38.523546",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidityUp()] [Liquidity overflow] If liquidityChunk.liquidity() is type(uint128).max and tick range is wide, can the left shift by 96 bits cause intermediate overflow before division?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bb19258a-402b-4876-951f-4a83699aec0c",
+    "timestamp": "2025-12-24 16:59:51.333084",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidityUp()] [Division by lowPriceX96] When lowPriceX96 is very small (tick near -887272), can the division by lowPriceX96 cause overflow or return amounts exceeding type(uint256).max?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_473bf5cb-fa5d-4a56-89d1-aafccd86c082",
+    "timestamp": "2025-12-24 17:00:05.230916",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidityUp()] [Rounding direction exploitation] Since this function rounds up, can an attacker exploit the double mulDivRoundingUp() calls to accumulate excessive rounding that overestimates required token0, allowing them to extract value during liquidations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4fbd2b76-5db1-4b8c-8983-b21ff5dc706b",
+    "timestamp": "2025-12-24 17:00:19.198568",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidityUp()] [Price manipulation] Can an attacker manipulate tick values in liquidityChunk to cause highPriceX96 - lowPriceX96 to approach zero, leading to extremely large amount0 calculations that exceed expected collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c5a3284b-c2d0-4d24-814e-70e19f326c4c",
+    "timestamp": "2025-12-24 17:00:33.726940",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Magic constant accuracy] Is the constant 255738959000112593413423 (representing 2^64 / log₂(√1.0001)) accurate enough, and could accumulated rounding errors cause significant deviations in tick calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1e96c405-6aeb-4f45-b946-97459656e733",
+    "timestamp": "2025-12-24 17:00:50.238977",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Final multiplication overflow] The final calculation multiplies by 255738959000112593413423 and divides by 2**128 - can this overflow for large argX128 values, returning incorrect log results?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d564512f-07a9-44a7-b1fb-1fb02e461058",
+    "timestamp": "2025-12-24 17:01:08.869127",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Log2 normalization] The function normalizes argX128 to [1, 2) range - can edge cases in this normalization cause incorrect logarithm calculations affecting tick approximations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1b20fa6b-642c-412d-8f04-6ab901ddad11",
+    "timestamp": "2025-12-24 17:01:27.799017",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Precision parameter = 63] When precision = 63, iterBound = 0, and the loop iterates 63 times - can this cause excessive gas costs that make certain operations economically infeasible?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b84c480a-9a57-4976-bab6-e2b917f0787f",
+    "timestamp": "2025-12-24 17:01:48.183395",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Precision parameter bounds] Can an attacker manipulate the precision parameter to be > 63, causing iterBound to underflow and the for-loop to iterate excessively, leading to DoS via gas exhaustion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bb07d1ec-334c-4287-b758-d442cd147525",
+    "timestamp": "2025-12-24 17:02:09.720693",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: log_Sqrt1p0001MantissaRect()] [Zero input vulnerability] Does log_Sqrt1p0001MantissaRect() handle argX128 = 0 correctly, and would this cause FixedPointMathLib.log2() to revert or return invalid results used in position calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_502f0b16-ddc6-4b11-98b2-613e04afb4db",
+    "timestamp": "2025-12-24 17:02:33.100064",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getSqrtRatioAtTick()] [Constants precision] Are all the hardcoded constants (0xfffcb933bd6fad37aa2d162d1a594001, etc.) mathematically correct, and could any rounding errors in these constants accumulate to cause significant pricing errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ff256f93-1b1f-4f66-8d33-5f9c59bf33ad",
+    "timestamp": "2025-12-24 17:02:56.719222",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getSqrtRatioAtTick()] [Bit manipulation edge cases] Can the sequential bit checks (absTick & 0x1, 0x2, 0x4, etc.) produce incorrect sqrtR values for specific tick patterns, leading to mispriced positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2af028a5-9850-4500-9b32-aa3b1df88806",
+    "timestamp": "2025-12-24 17:03:21.364661",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getSqrtRatioAtTick()] [Rounding consistency] The function rounds up by adding 1 if sqrtR % (1 << 32) != 0 - could inconsistent rounding between this function and Uniswap's implementation cause arbitrage opportunities or pricing discrepancies?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3345caa2-209a-4304-b223-61488b9ddc80",
+    "timestamp": "2025-12-24 17:03:47.357499",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getSqrtRatioAtTick()] [Negative tick overflow] When processing negative ticks, the function performs type(uint256).max / sqrtR - can extreme negative tick values cause this division to overflow or return incorrect sqrt prices?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6013543e-6bcf-4207-9948-b51edb40e7e9",
+    "timestamp": "2025-12-24 17:04:14.502139",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getSqrtRatioAtTick()] [Tick boundary validation] Does getSqrtRatioAtTick() properly validate that |tick| <= Constants.MAX_POOL_TICK (887272), and can passing ticks outside this range cause incorrect sqrt price calculations used in collateral valuations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4847b9e2-59ca-41c3-b946-29e0063d79e8",
+    "timestamp": "2025-12-24 17:04:42.917706",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getMaxLiquidityPerTick()] [Tick spacing validation] If an invalid tickSpacing > Constants.MAX_POOL_TICK is passed, can this cause incorrect maxLiquidity calculations that allow over-leveraged positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9302f35b-fea5-4ab3-bb01-dc80b9e01a2e",
+    "timestamp": "2025-12-24 17:05:09.315461",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getMaxLiquidityPerTick()] [Zero tickSpacing DoS] Does getMaxLiquidityPerTick() revert when tickSpacing = 0 (causing division by zero), and could this be exploited to DoS position minting or liquidation operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_381d336c-b8a6-488b-9a95-9c651147bdff",
+    "timestamp": "2025-12-24 17:05:35.485040",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getMaxLiquidityPerTick()] [Division precision loss] The function performs division before multiplication - can this cause precision loss that allows attackers to mint positions with liquidity exceeding type(uint128).max in certain tick spacing configurations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_67891522-9048-4acd-afe9-2c886f71c977",
+    "timestamp": "2025-12-24 17:06:02.573828",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getApproxTickWithMaxAmount()] [Sqrt ratio subtraction underflow] In the calculation (getSqrtRatioAtTick(tickSpacing) - 2**96), can tickSpacing values cause getSqrtRatioAtTick() to return a value less than 2**96, leading to underflow and incorrect tick approximations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d348f76f-ce7d-4e26-b394-3a829cdac806",
+    "timestamp": "2025-12-24 17:06:29.462105",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getApproxTickWithMaxAmount()] [MaxLiquidity manipulation] If maxLiquidityPerTick is set to an extremely small value close to zero, can this cause division errors or return invalid ticks that bypass position size restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_851db2e9-b746-4646-9561-02e945974799",
+    "timestamp": "2025-12-24 17:06:54.496093",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getApproxTickWithMaxAmount()] [TickSpacing edge cases] Does getApproxTickWithMaxAmount() correctly handle edge case tickSpacing values (e.g., 1, 32767, or invalid values outside [0, 32768]), and could invalid spacing cause incorrect liquidity calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6583d92f-22cf-48a4-ba9f-243b50737c6f",
+    "timestamp": "2025-12-24 17:07:21.628237",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getApproxTickWithMaxAmount()] [Amount manipulation] Can an attacker provide an extreme amount value that causes the mulDivCapped() calculation to return type(uint256).max or overflow, resulting in invalid tick calculations that allow position minting beyond protocol limits?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_20c22d9a-da2c-4dbc-843a-5b7c18c63ad2",
+    "timestamp": "2025-12-24 17:07:49.210128",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getApproxTickWithMaxAmount()] [Two-tick error vulnerability] The function documentation states it can have a maximum of two ticks of error - can an attacker exploit this error margin to mint positions with slightly more liquidity than intended, bypassing MAX_SPREAD limits or causing insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ec24b47a-199a-4a75-8917-715a3338c5fd",
+    "timestamp": "2025-12-24 17:08:16.060133",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mostSignificantNibble()] [Precision loss] Can the bit-shifting operations in mostSignificantNibble() cause precision loss when used in getApproxTickWithMaxAmount(), leading to incorrect tick calculations that allow undercollateralized positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7fa18eb6-de85-4450-bc1e-cb45a7ca673f",
+    "timestamp": "2025-12-24 17:08:43.299384",
+    "report_generated": false
   }
 ]
