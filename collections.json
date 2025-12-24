@@ -1,1 +1,152 @@
-[]
+[
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Solvency bypass] Can an attacker craft a positionIdList where positions become insolvent between individual leg mints, bypassing the final solvency check at line 694-700 by front-running with price manipulation after some legs are minted but before solvency validation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3b5d4456-ecfa-464b-86bd-64d4b0ad2285",
+    "timestamp": "2025-12-24 16:19:38.009153",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Transient storage manipulation] Can an attacker manipulate the cumulative tick deltas stored in transient storage (PRICE_TRANSIENT_SLOT) across multiple calls within the same transaction to bypass the price impact check at lines 679-682, potentially allowing excessive price manipulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bbc0da1b-e474-446f-8f19-9eff103abad4",
+    "timestamp": "2025-12-24 16:19:51.343237",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Safe mode bypass] At lines 623-627, if safeMode > 1, tick limits are swapped when inverted. Can an attacker exploit this by providing specific tickLimits that allow uncovered position minting despite safe mode restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3f8e2e6e-fe51-416a-8e1d-e21c315bc1e7",
+    "timestamp": "2025-12-24 16:20:04.734514",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Position size mismatch] At line 647, when positionSize matches stored size, it's treated as settlePremium. Can an attacker exploit timing by matching the exact positionSize after a partial burn by another user to bypass intended settlement logic?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d39d7c88-a2c6-43a9-bad4-8807cf41b3be",
+    "timestamp": "2025-12-24 16:20:19.021217",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Oracle update timing] At lines 701-702, s_oraclePack is updated after solvency validation. Can an attacker exploit this ordering by manipulating oracle state between validation and update to cause stale oracle usage in subsequent transactions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_db87b06d-0497-4f4e-bbb2-ef8273ad4a4d",
+    "timestamp": "2025-12-24 16:20:34.455323",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Tick delta accumulation overflow] At lines 665-671, cumulativeTickDeltas are accumulated using int128. Can the rightSlot() overflow when processing many positions with large tick deltas, causing the revert at line 679-682 to be bypassed?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d176104a-a2d8-4d98-b449-9c5f9ed9b961",
+    "timestamp": "2025-12-24 16:20:51.224934",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Pool ID validation bypass] At line 614, tokenId.poolId() is checked. Can an attacker craft a tokenId with correct poolId but malicious leg data to bypass subsequent validations while maintaining pool compatibility?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a59e5902-378e-4680-a591-ea3fb87b0796",
+    "timestamp": "2025-12-24 16:21:09.394108",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Safe mode level 3 DoS] At line 631, if safeMode > 2, all minting reverts. Can this be exploited to DoS the protocol by manipulating oracle conditions to trigger persistent safe mode level 3?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_98d9281d-4675-4016-a18b-26275bcf599d",
+    "timestamp": "2025-12-24 16:21:29.238385",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Spread limit manipulation] At line 632, effectiveLiquidityLimit is extracted from tickAndSpreadLimits[i][2]. Can an attacker provide malicious spread limits that bypass liquidity spread checks in _checkLiquiditySpread to deploy excessive liquidity?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a50df424-fa51-4b52-8431-af8130fd2d54",
+    "timestamp": "2025-12-24 16:21:50.223592",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatch()] [Position balance zero check] At line 629, positions with zero balance are treated as new mints. Can an attacker exploit this by burning a position to zero then reminting in the same transaction to bypass mint restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_834c4b90-0e7b-4d66-8231-2de1cd6e7416",
+    "timestamp": "2025-12-24 16:22:13.123614",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Liquidation/exercise discrimination] At lines 1414-1442, the function discriminates between liquidation, force exercise, and settlePremium based on list lengths. Can an attacker provide malicious list combinations to trigger unintended operations or bypass solvency checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c32d38ba-2404-456f-a6da-a2c53bbbd032",
+    "timestamp": "2025-12-24 16:22:36.438262",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [TWAP manipulation in liquidation] At lines 1368-1389, MAX_TWAP_DELTA_LIQUIDATION is checked between currentTick and twapTick. Can an attacker manipulate the TWAP calculation to enable liquidation of solvent accounts when tick deviation is near the threshold?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_88b2101a-be45-476b-bd50-c6cb75e01375",
+    "timestamp": "2025-12-24 16:23:00.592048",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Partial solvency exploitation] At lines 1399-1408, solvent is calculated across 4 ticks. Can an attacker exploit accounts that are solvent at some ticks but not others to extract value through selective liquidation timing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_893c0cf2-2bdf-4e7f-9f33-b5ed4af61b5b",
+    "timestamp": "2025-12-24 16:23:26.160676",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Force exercise validation bypass] At line 1433-1434, validateIsExercisable() is checked. Can an attacker craft a tokenId that passes this check but has no economically exercisable legs, wasting the exercisor's fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_82419bc9-d92c-44c6-8cff-e2f20b82f51f",
+    "timestamp": "2025-12-24 16:23:53.030318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Settle premium hash collision] At lines 1420-1428, toHash and finalHash are compared for settle operations. Can an attacker find hash collisions in the position lists to trigger unauthorized settlements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_acdf2197-2b0c-4529-858f-5fee683d0fc2",
+    "timestamp": "2025-12-24 16:24:20.932387",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Caller solvency check bypass] At lines 1469-1475, caller solvency is checked after the operation. Can an attacker exploit the operation to drain the caller's collateral before this check, causing the caller to become insolvent?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_090847b4-ae19-44a9-9f43-7a05a0903ce1",
+    "timestamp": "2025-12-24 16:24:49.767404",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Input list length manipulation] At lines 1411-1442, different list length combinations trigger different operations. Can an attacker provide edge case lengths (e.g., toLength=1, finalLength=0 vs toLength=2, finalLength=1) to cause unexpected behavior?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a0989fac-c16c-4b46-ad5f-7415cb3a4ef0",
+    "timestamp": "2025-12-24 16:25:18.807918",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [NotMarginCalled revert bypass] At lines 1437-1438 and 1463-1464, NotMarginCalled reverts occur. Can an attacker manipulate account state to avoid these reverts and execute unintended operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0c0e5eca-974f-43ef-a31f-eead1724e23d",
+    "timestamp": "2025-12-24 16:25:48.919401",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [usePremiaAsCollateral packing] At lines 1444 and 1473, leftSlot and rightSlot are used for caller vs target. Can bit manipulation of this packed value cause incorrect premia usage in solvency calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d838d2bc-11eb-42be-99f6-048fd68a40be",
+    "timestamp": "2025-12-24 16:26:20.117852",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: dispatchFrom()] [Solvency tick array manipulation] At lines 1393-1397, atTicks array is manually constructed. Can the ordering or values of these ticks be exploited to cause incorrect solvency determinations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e5db105a-db03-462d-8b96-845072adf32e",
+    "timestamp": "2025-12-24 16:26:50.953302",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [SFPM mint return value trust] At lines 728-734, mintTokenizedPosition returns are trusted. Can malicious return values from a compromised SFPM cause state corruption in PanopticPool?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9ab95569-7b4d-4da2-8854-dde1828e7437",
+    "timestamp": "2025-12-24 16:27:21.058698",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [Position size storage overwrite] At line 758, positionSize is stored directly. Can an attacker mint the same tokenId multiple times in different transactions to overwrite position size and cause accounting errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4c5dd615-e057-41d5-8fca-942bd1d78f26",
+    "timestamp": "2025-12-24 16:27:51.686568",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [Tick limit inversion] At lines 732-733, tickLimits[0] and tickLimits[1] are passed to SFPM. Can providing inverted limits bypass slippage protection or cause unexpected AMM interactions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f1f5993b-1916-4246-a9cc-23c14e72e69f",
+    "timestamp": "2025-12-24 16:28:21.423101",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [Pool utilization manipulation] At lines 745-753, poolUtilizations are computed via settleMint. Can an attacker manipulate pool utilization values to affect collateral requirements in future operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ce32d45b-55a3-4dc1-b4d8-2c3bb44d925b",
+    "timestamp": "2025-12-24 16:28:49.261333",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _mintOptions()] [Commission payment bypass] At lines 747-752, _payCommissionAndWriteData handles commissions. Can an attacker exploit this to avoid paying commissions while minting positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b2a5b6d1-d852-4e43-92b0-8605ea8b0db3",
+    "timestamp": "2025-12-24 16:29:18.681178",
+    "report_generated": false
+  }
+]
