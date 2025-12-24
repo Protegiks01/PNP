@@ -448,5 +448,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0e960789-76c7-47ae-b32f-5dd353b9d273",
     "timestamp": "2025-12-24 16:48:27.879722",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv()] [Overflow in product] When a * b exceeds type(uint256).max (prod1 > 0), can the 512-bit arithmetic be manipulated to return incorrect results due to errors in the Chinese Remainder Theorem reconstruction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e69f79a5-78b9-405b-b79c-8f8052399be2",
+    "timestamp": "2025-12-24 16:49:37.537255",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv()] [Denominator zero] Does mulDiv() handle denominator = 0 by reverting, and can attackers force zero denominators in critical calculations like collateral conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b3a4d60b-e083-4824-80a6-765971981e56",
+    "timestamp": "2025-12-24 16:49:50.387158",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toInt256()] [Overflow in collateral calculations] Can collateral balances near type(uint256).max cause toInt256() to revert, preventing users from closing positions or liquidating?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c9fc0266-cca9-4b39-9429-47b0dacf041a",
+    "timestamp": "2025-12-24 16:50:04.112579",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toInt256()] [Sign misinterpretation] The function casts uint256 to int256 and checks if result > type(int256).max - could this check fail for specific bit patterns near the boundary?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_538f16c6-9990-45b9-9212-601d0744d7a4",
+    "timestamp": "2025-12-24 16:50:19.072084",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toInt128(int256)] [Precision loss in downcasting] Can large positive or negative int256 values be truncated incorrectly during downcasting, affecting interest or premium calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c1eca347-0537-4b32-9dfd-f84f691bf445",
+    "timestamp": "2025-12-24 16:50:33.867338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toInt128(uint128)] [Maximum value boundary] For toCast = type(uint128).max, this exceeds type(int128).max - does the function correctly revert, and could boundary values cause issues in premium or debt calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_051b7318-87b7-4445-b4fa-1ed115aab38b",
+    "timestamp": "2025-12-24 16:50:49.490747",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toInt128(uint128)] [Sign bit exploitation] When casting uint128 to int128, the function checks if result < 0 - can values with the high bit set (≥2**127) be exploited to bypass checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_554a1316-6d9c-4e97-a118-76dc240e3534",
+    "timestamp": "2025-12-24 16:51:08.234399",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toUint128Capped()] [Loss of overflow information] Since this function silently caps instead of reverting, can attackers exploit situations where the calling code expects reverts on invalid values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c8be39b5-cf6e-4f62-b55c-28dd3570bb71",
+    "timestamp": "2025-12-24 16:51:26.614509",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toUint128Capped()] [Capping exploitation] When toUint128Capped() returns type(uint128).max due to overflow, can this capped value be misinterpreted as valid collateral or liquidity, causing insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2e9199d4-80f4-4f84-b050-cf683cfb27e3",
+    "timestamp": "2025-12-24 16:51:46.049632",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toUint128()] [Silent truncation detection] The function checks if downcast equals original - but can bit patterns exist where truncation occurs but the check passes due to modular arithmetic?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fd559d5f-cc35-46d6-874f-b35940745100",
+    "timestamp": "2025-12-24 16:52:06.183329",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: toUint128()] [Overflow in collateral calculations] Can an attacker cause toUint128() to revert during collateral requirement calculations, freezing their positions and preventing liquidations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f670671a-211d-4775-8427-c64901accccb",
+    "timestamp": "2025-12-24 16:52:27.744566",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount1()] [Liquidity precision loss] Can small amount1 values combined with large price deltas cause calculated liquidity to round down to zero, creating invalid positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_747a6985-bc41-4ad7-96c2-013f2050d939",
+    "timestamp": "2025-12-24 16:52:50.180400",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount1()] [Price delta zero] If highPriceX96 equals lowPriceX96 (invalid chunk with same upper/lower ticks), does this cause division by zero, and could this DoS critical operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fb3d76a8-f59e-4292-b946-0666c1c66231",
+    "timestamp": "2025-12-24 16:53:14.198046",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount1()] [Constants.FP96 usage] The function uses Constants.FP96 (2**96) - is this constant consistent with Uniswap V3's implementation, and could any mismatch cause liquidity calculation errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c29ee50d-7209-4311-931f-c9981ff1c500",
+    "timestamp": "2025-12-24 16:53:36.645698",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount0()] [Inverse calculation consistency] When converting amount0 to liquidity and back using getAmount0ForLiquidity(), do rounding errors allow extracting more tokens than deposited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9b3bee1a-1766-4a0e-a193-1314a51d2b98",
+    "timestamp": "2025-12-24 16:54:00.355454",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount0()] [Zero amount handling] Does the function handle amount0 = 0 correctly, and would this create a valid LiquidityChunk with zero liquidity that could be used in exploits?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3a1de0f1-c5d0-472c-b75e-4dad83b7fa01",
+    "timestamp": "2025-12-24 16:54:25.187547",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount0()] [Price range edge cases] When highPriceX96 - lowPriceX96 is very small (narrow tick range), can this cause liquidity to be calculated as extremely large, bypassing the type(uint128).max check due to intermediate overflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_da7c52e2-7dfb-41eb-b77d-5db11020028c",
+    "timestamp": "2025-12-24 16:54:51.302077",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getLiquidityForAmount0()] [Liquidity overflow check] The function reverts if liquidity > type(uint128).max - but can an attacker craft amount0 values that pass this check but still cause overflow in downstream calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d35c1f17-38bf-4a52-8846-b72aaf70ca6a",
+    "timestamp": "2025-12-24 16:55:17.376405",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmountsForLiquidity()] [Mixed token calculation] When currentTick is between tickLower and tickUpper, both amount0 and amount1 are calculated - can rounding inconsistencies between these two calculations be exploited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_36ffac49-85b6-4b3b-9dd1-2a44168fd2df",
+    "timestamp": "2025-12-24 16:55:43.262442",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmountsForLiquidity()] [Tick update manipulation] The function calls liquidityChunk.updateTickLower(currentTick) and updateTickUpper(currentTick) - can these updates cause invalid chunk configurations that bypass validation checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_499e167e-281e-49ba-b6f7-dd79f8a8575d",
+    "timestamp": "2025-12-24 16:56:09.536511",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmountsForLiquidity()] [Tick boundary conditions] When currentTick exactly equals tickLower or tickUpper, which branch is taken, and could this boundary condition be exploited to double-count liquidity amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1b62c26f-999e-4846-bdd9-69a50336bed9",
+    "timestamp": "2025-12-24 16:56:35.325990",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount1ForLiquidity()] [Price delta manipulation] Can an attacker exploit edge cases where highPriceX96 - lowPriceX96 is exactly 2**96, causing specific rounding behaviors that favor the attacker?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3e1accf3-a4f4-43d0-b995-19f50adb493c",
+    "timestamp": "2025-12-24 16:57:02.572692",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidity()] [Precision loss in division chain] The function performs mulDiv() followed by division by lowPriceX96 - can this two-step division cause precision loss that allows users to withdraw more collateral than they deposited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b0e6aade-99d0-4f84-a403-df2e103656d4",
+    "timestamp": "2025-12-24 16:57:29.965432",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount0ForLiquidity()] [Rounding direction inconsistency] The function uses floor division while getAmount0ForLiquidityUp() rounds up - can this inconsistency be exploited to create positions where burned amounts are less than minted amounts, causing protocol loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ef4ae0eb-5193-41f9-9543-e8702eeacdd1",
+    "timestamp": "2025-12-24 16:57:58.952419",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: getAmount1ForLiquidityUp()] [Rounding accumulation] Does the mulDiv96RoundingUp() function's rounding consistently favor the protocol, and could accumulated rounding errors across multiple positions drain collateral?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_60f39b3d-cfba-4352-a049-878f12ab0d7d",
+    "timestamp": "2025-12-24 16:58:27.775000",
+    "report_generated": false
   }
 ]
