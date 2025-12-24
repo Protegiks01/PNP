@@ -898,5 +898,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c53cd900-33c8-4829-a0b4-db4982a8816f",
     "timestamp": "2025-12-24 17:22:41.292007",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getTotalRequiredCollateral()] [Loop manipulation] Can an attacker create a position with duplicate entries in positionBalanceArray/positionIdList that cause tokensRequired to be calculated multiple times for the same position, artificially inflating collateral requirements and preventing liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bc5e5205-331f-41c6-a518-5e926ef50d85",
+    "timestamp": "2025-12-24 17:23:52.066631",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getTotalRequiredCollateral()] [Credit manipulation] Can the creditAmounts accumulation be exploited by creating positions with width=0 and isLong=1 (credits) that add large creditAmounts values, allowing users to artificially inflate their available balance and bypass solvency checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5cf04a3b-eb4e-45e4-9356-a52ac7b2fe8b",
+    "timestamp": "2025-12-24 17:24:04.917294",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralAtTickSinglePosition()] [Token type bypass] Can an attacker bypass collateral calculations by structuring positions where tokenType doesn't match underlyingIsToken0, causing certain legs to be skipped (continue statement) and reducing total collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4107af26-3490-4c0a-816b-2cedff04f76b",
+    "timestamp": "2025-12-24 17:24:18.185024",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralAtTickSinglePosition()] [Credit overflow] In the credit calculation (width==0 && isLong==1), can the amountsMoved values overflow when added to credits, or can negative amountsMoved values cause credits to decrease incorrectly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5a737272-38c2-4f5b-81fa-4f4eabd8f0e8",
+    "timestamp": "2025-12-24 17:24:32.135152",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [Loan requirement] Can the loan collateral requirement (MAINT_MARGIN_RATE + DECIMALS) overflow when multiplied by large amountMoved values using mulDivRoundingUp, or can this calculation be manipulated to reduce loan collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4123ac7f-53e9-4fff-96f1-294ad151c3c4",
+    "timestamp": "2025-12-24 17:24:46.970739",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [Credit bypass] Can positions with width=0 and isLong=1 (credits) that return required=0 be used to create unbacked credit that offsets collateral requirements for other legs without providing actual collateral?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5c117dc3-61fd-4823-9805-e713e4cd0772",
+    "timestamp": "2025-12-24 17:25:03.182417",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [ITM calculation] Can the ratio calculation for ITM positions (getSqrtRatioAtTick(2*(atTick-strike)) or 2*(strike-atTick)) overflow or produce incorrect results when atTick and strike are near MIN_POOL_TICK or MAX_POOL_TICK boundaries?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d5352f39-bceb-44b8-a72c-2971875876cd",
+    "timestamp": "2025-12-24 17:25:20.931540",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [RegT bypass] Can an attacker exploit the max(r2, r1, r0) logic for short positions to minimize collateral requirements by structuring positions where all three values (10% notional, 20% underlying - OTM, in-range interpolation) are minimized simultaneously?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58936e9e-b12c-4c73-887a-4b81c66c78d1",
+    "timestamp": "2025-12-24 17:25:40.021638",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [In-range manipulation] Does the in-range collateral calculation (scaleFactor-ratio)/(scaleFactor+FP96) correctly handle edge cases where atTick equals tickLower or tickUpper, potentially causing division by near-zero values or allowing positions to avoid in-range premiums?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2e3584d1-8660-4791-81cd-a7e04ad2c724",
+    "timestamp": "2025-12-24 17:26:00.620404",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [Exponential decay] Can the exponential decay calculation for long positions (expValue = expFractional << shifts) overflow when shifts >= 128, and does the capping to type(uint128).max create exploitable edge cases where deep OTM longs require more collateral than intended?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8f621ae5-8b6e-433c-81cd-be7aaa5d0037",
+    "timestamp": "2025-12-24 17:26:21.794635",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [Distance calculation] Can the distanceFromStrike calculation (max(positionWidth/2, |atTick-strike|)) be manipulated by choosing specific width values that minimize the exponential decay, allowing long positions to require less collateral than their risk warrants?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e4834bd4-a565-4f7c-bc87-35df3973d54d",
+    "timestamp": "2025-12-24 17:26:44.351585",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegNoPartner()] [Taylor expansion] Does the sTaylorCompounded function for calculating e^(remainder/DECIMALS) have sufficient precision for large remainder values, or can rounding errors accumulate to produce incorrect expValue that reduces collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_91633b58-a82e-40f0-b199-84be8c8557d5",
+    "timestamp": "2025-12-24 17:27:07.866519",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralSingleLegPartner()] [Partner validation] Can an attacker manipulate the riskPartner validation (asset match and optionRatio match) to create invalid partner relationships that bypass spread/strangle collateral reductions, allowing them to claim capital efficiency without actual risk offsetting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8c516665-a6e6-4087-b4fd-ebdd95fa1eb7",
+    "timestamp": "2025-12-24 17:27:32.901450",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeSpread()] [Max loss manipulation] Can the spread max loss calculation be exploited by creating positions where the calendar spread adjustment (deltaWidth * tickSpacing / 80000) dominates the calculation, allowing attackers to claim defined-risk benefits without actually limiting their losses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2b8e03fc-c1a8-48bd-895d-9f3f9358bed6",
+    "timestamp": "2025-12-24 17:27:59.315278",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeSpread()] [Split requirement bypass] Does the min(splitRequirement, spreadRequirement) logic correctly handle cases where splitRequirement overflows or where spreadRequirement calculation errors make spreads appear safer than they are, reducing collateral requirements below safe levels?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3391c9e4-0629-4b3f-8e59-02f5b97d9c98",
+    "timestamp": "2025-12-24 17:28:26.959472",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeSpread()] [Asset mismatch] In the case where tokenId.asset(index) != tokenType, can an attacker exploit the absolute difference calculation (moved0-moved0Partner or moved1-moved1Partner) to create spreads that appear balanced but actually have unbounded risk?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6bb58669-9c12-4d6f-aedb-b6737b570257",
+    "timestamp": "2025-12-24 17:28:54.682079",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeSpread()] [Notional manipulation] In the contracts calculation ((notionalP-notional)*contracts/notionalP or (notional-notionalP)*contracts/notional), can division by zero or very small notional values cause overflow or produce incorrect spread requirements that allow undercollateralization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dce2f41c-7ab5-4cd1-9afe-7a944087dfc2",
+    "timestamp": "2025-12-24 17:29:21.912357",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeStrangle()] [Negative utilization] Can the negative poolUtilization trick (-(poolUtilization==0 ? 1 : poolUtilization)) be exploited to artificially reduce the sell collateral ratio to half its normal value, allowing strangles to require less collateral than their actual risk?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b0063979-74ed-4805-9a82-6e7d595285ad",
+    "timestamp": "2025-12-24 17:29:49.029326",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeStrangle()] [ITM bypass] Does the strangle collateral requirement correctly handle cases where both legs are ITM simultaneously (which should be impossible but might occur during extreme volatility), or can attackers exploit this to avoid the capital efficiency reduction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dfe0b51d-c9ca-4fa6-87b8-bb913db10ada",
+    "timestamp": "2025-12-24 17:30:16.652151",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeLoanOptionComposite()] [Max requirement] Can the max(_required, requiredPartner) logic for option-protected loans be exploited where an attacker structures positions such that both values are minimized due to calculation errors, reducing the actual collateral below the loan amount?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b8836255-b554-4a89-be84-6be8ca7a19f8",
+    "timestamp": "2025-12-24 17:30:45.530269",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeLoanOptionComposite()] [Loan+short addition] For upfront short options (isLong(index)==0), does the _required + requiredPartner addition overflow for large positions, or can this be manipulated to wrap around to small values that bypass collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ddafdc6c-ec2a-425e-a234-4f638a83b9c6",
+    "timestamp": "2025-12-24 17:31:15.254729",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeCreditOptionComposite()] [100% utilization] Can the forced MAX_UTILIZATION (10_000) usage in credit-option composites be exploited to force cash-secured options into over-collateralization, allowing attackers to lock protocol funds or manipulate interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ff1b642a-990b-4d58-9c92-1e85754594ca",
+    "timestamp": "2025-12-24 17:31:44.173783",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeDelayedSwap()] [Conversion manipulation] Can the convertedCredit calculation (convert0to1RoundingUp or convert1to0RoundingUp at atTick) be manipulated by timing the solvency check when atTick is at extremes, allowing delayed swaps to require less collateral than their actual swap risk?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_632e4331-1572-4741-83bb-77a1945a6c66",
+    "timestamp": "2025-12-24 17:32:13.888442",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _computeDelayedSwap()] [Max selection] Does the max(required, convertedCredit) logic correctly handle cases where required = SELLER_COLLATERAL_RATIO + DECIMALS overflows or where convertedCredit is calculated incorrectly, leading to undercollateralized swap positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_11733773-e929-48b4-aea1-9b15aa7967f0",
+    "timestamp": "2025-12-24 17:32:43.003625",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getRequiredCollateralAtUtilization()] [Utilization overflow] Can the baseCollateralRatio calculation overflow when amount * baseCollateralRatio is computed for large positions at high utilization, causing unsafeDivRoundingUp to produce incorrect results or wrap to small values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1a81e607-d044-4211-b45c-ceffe6206a3d",
+    "timestamp": "2025-12-24 17:33:11.454364",
+    "report_generated": false
   }
 ]
