@@ -448,5 +448,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5699e41a-1137-446a-b7d7-33f9c818f93e",
     "timestamp": "2025-12-24 16:51:07.417724",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [s_options overwrite] At lines 1077-1079, s_options[owner][tokenId][leg] is set. Can reminting the same tokenId overwrite premium accumulator snapshots and cause incorrect premium calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c3ff7d99-2794-4441-96f3-ec80ee13c47f",
+    "timestamp": "2025-12-24 16:52:19.261769",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [getAccountPremium with max tick] At line 1071, type(int24).max is used as tick. Can this cause getAccountPremium to return stale or incorrect values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_20abd3cb-bda0-4c4c-a35e-923cba77fbfa",
+    "timestamp": "2025-12-24 16:52:32.186037",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [totalLiquidityBefore underflow] At line 1090, totalLiquidity - positionLiquidity is computed. Can positionLiquidity > totalLiquidity cause underflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_34f5cc8b-c1d0-4875-8df9-bbdf40d866d1",
+    "timestamp": "2025-12-24 16:52:45.573354",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [settledTokens accumulation] At line 1049, settledTokens is increased. Can accumulated settledTokens overflow uint128 over many operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6c62b371-3dc4-4e3f-87c7-4f1c3abb72ee",
+    "timestamp": "2025-12-24 16:52:59.588921",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [vegoid parameter usage] At line 1062, vegoid is extracted from tokenId. Can malicious vegoid values cause incorrect premium calculations in SFPM?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9039c3b2-b34c-47c6-a157-eae4ce05666a",
+    "timestamp": "2025-12-24 16:53:14.538617",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [Short position grossPremium adjustment] At lines 1083-1126, short positions adjust grossPremiumLast. Can this adjustment be exploited to inflate or deflate premium owed to other sellers in the same chunk?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4e7a077c-65d8-4fea-99d0-78f9de974af6",
+    "timestamp": "2025-12-24 16:53:30.658193",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [availablePremium calculation] At lines 1216-1222, _getAvailablePremium is called. Can rounding in this calculation cause sellers to receive more or less premium than they're entitled to?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5b6bc619-64a0-4836-8ec8-e04af779f2ae",
+    "timestamp": "2025-12-24 16:53:48.399366",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [Math.max with negative values] At lines 1267-1297, Math.max is used with potentially negative values. Can negative inputs cause incorrect grossPremiumLast updates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7841905a-1d41-4e43-8972-d7ffc80483c9",
+    "timestamp": "2025-12-24 16:54:08.520324",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [Long premium settlement] At lines 1174-1184, long premium is conditionally settled. Can an attacker bypass long premium payment by manipulating commitLongSettledAndKeepOpen flags?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_efc7b93e-9775-47de-a7c8-4a5f5de58110",
+    "timestamp": "2025-12-24 16:54:29.798896",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [settledTokens subtraction underflow] At line 1225, settledTokens.sub(availablePremium) is called. Can availablePremium > settledTokens cause underflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_396d7493-dcd4-4a1c-9872-8fa8beb7f7fa",
+    "timestamp": "2025-12-24 16:54:52.613341",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [premiaByLeg overwrite] At lines 1233-1235, premiaByLeg[leg] is overwritten. Can this cause emitted events to show incorrect premium amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a18d3b1d-b269-43ac-b8ea-0b050fd229b6",
+    "timestamp": "2025-12-24 16:55:15.751007",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [totalLiquidity zero division] At lines 1280 and 1298, division by totalLiquidity occurs. Can totalLiquidity == 0 cause revert?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d6e09c3c-f59e-4e39-96cc-496511f837d7",
+    "timestamp": "2025-12-24 16:55:40.502914",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [s_options update timing] At lines 1315-1318, s_options is updated for longs or owner. Can non-owner burns skip premium accumulator updates for short positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_aba40347-03fe-4df1-b758-f8a7b6a9770e",
+    "timestamp": "2025-12-24 16:56:04.726596",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [Position balance deletion] At line 1332, s_positionBalance is deleted. Can this cause issues if the position is immediately reminted in a subsequent transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bd66e946-2d14-4165-875f-ba49aee226e3",
+    "timestamp": "2025-12-24 16:56:31.499578",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [commitLongSettledAndKeepOpen bit packing] At lines 1159-1161, leftSlot is used for multiple purposes. Can bit manipulation cause incorrect conditional logic?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2c897f9a-6b0b-4a3e-993a-809ed5193ecb",
+    "timestamp": "2025-12-24 16:56:59.263235",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostBurn()] [Autocollect for non-owner] At lines 1187 and 1314, msg.sender == owner check. Can an attacker force premium settlement for other users through this mechanism?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_04b8930f-66a9-4d05-989d-b866065a7510",
+    "timestamp": "2025-12-24 16:57:27.823467",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [Premium accumulator underflow] At lines 2044-2045, premiumAccumulatorsByLeg - premiumAccumulatorLast is computed. Can premiumAccumulatorLast > current accumulator cause underflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_43eddb3b-7b5c-4a7f-a3ae-29d80cc519f5",
+    "timestamp": "2025-12-24 16:57:57.592393",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [Liquidity multiplication overflow] At lines 2046 and 2055, multiplication by liquidity occurs before division by 2^64. Can this overflow uint256?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f3bec00e-f46e-4ab9-b636-7d7869887152",
+    "timestamp": "2025-12-24 16:58:28.532376",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [Division by 2^64 precision loss] At lines 2046 and 2055, division by 2^64 occurs. Can this cause significant precision loss for small liquidity amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_14760645-a73c-45ee-978e-2b1f3c110f22",
+    "timestamp": "2025-12-24 16:58:59.116465",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [Long premia sign flip] At lines 2061-2062, long premia is negated. Can this cause incorrect premium calculations if the sign flip results in unexpected values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f27c8970-a7ea-4c3c-b5fb-959f38745f5f",
+    "timestamp": "2025-12-24 16:59:30.993853",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [atTick parameter manipulation] At line 2024, _atTick is used. Can providing type(int24).max vs actual tick cause different premium calculations leading to exploits?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b9f4a578-e5e6-48cc-b05f-cb6132d575ac",
+    "timestamp": "2025-12-24 17:00:02.500414",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [getAccountPremium trust] At lines 2025-2035, SFPM.getAccountPremium is called. Can malicious SFPM return values corrupt premium calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_aeeb8208-1411-46c5-b23b-d499bed8c654",
+    "timestamp": "2025-12-24 17:00:34.906592",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [usePremiaAsCollateral conditional] At line 2015, usePremiaAsCollateral affects which legs are processed. Can this flag be manipulated to exclude certain legs from solvency calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fba4ee5d-53de-4e8b-9c5c-a56843832a64",
+    "timestamp": "2025-12-24 17:01:03.869380",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getPremia()] [vegoid in premium calculation] At line 2022, vegoid is extracted. Can malicious vegoid values cause premium calculations to diverge from actual Uniswap fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f88711d2-f304-4a73-a591-1c00853b7cb4",
+    "timestamp": "2025-12-24 17:01:34.854719",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _getAvailablePremium()] [Division by zero protection] At lines 2106 and 2115, accumulated0/1 == 0 uses type(uint256).max. Can this cause availablePremium to always equal premiumOwed when accumulated is zero, leading to incorrect payouts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8c1b6301-76b6-4b8a-9508-dc7492c8caff",
+    "timestamp": "2025-12-24 17:02:04.382564",
+    "report_generated": false
   }
 ]
