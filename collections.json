@@ -1048,5 +1048,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1a81e607-d044-4211-b45c-ceffe6206a3d",
     "timestamp": "2025-12-24 17:33:11.454364",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _sellCollateralRatio()] [Strangle double-efficiency] Can the strangle capital efficiency (min_sell_ratio /= 2) be exploited by repeatedly creating and closing strangle positions to accumulate collateral credits that exceed the actual risk reduction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9604b0ef-b90a-4f4d-bc78-bd50298dfaa0",
+    "timestamp": "2025-12-24 17:34:20.264270",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _sellCollateralRatio()] [Utilization scaling] Does the utilization *= 1_000 scaling correctly handle negative utilizations from strangles, or can this cause the utilization comparison (< TARGET_POOL_UTIL) to produce incorrect results when utilization is negative?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a1e236dd-83ae-4140-aedd-72e8214d3ef0",
+    "timestamp": "2025-12-24 17:34:33.082882",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _sellCollateralRatio()] [Linear interpolation] Can the linear interpolation ((DECIMALS-min_sell_ratio)*(utilization-TARGET_POOL_UTIL)/(SATURATED_POOL_UTIL-TARGET_POOL_UTIL)) be exploited by pushing utilization to exactly SATURATED_POOL_UTIL to force 100% collateralization, manipulating interest rates and liquidation thresholds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_656d119c-512d-4e41-a20c-be2305c80f8e",
+    "timestamp": "2025-12-24 17:34:46.386610",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _crossBufferRatio()] [Zero buffer] Can the cross buffer ratio be forced to zero when utilizationScaled > SATURATED_POOL_UTIL, and does this completely eliminate cross-collateralization benefits during high utilization, making positions that were solvent become instantly liquidatable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0f146ac5-649c-4ff0-8d61-a8ae0b10b4a7",
+    "timestamp": "2025-12-24 17:35:01.814713",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _crossBufferRatio()] [Utilization manipulation] Can an attacker manipulate the utilizationScaled calculation (utilization * 1_000) to artificially lower utilization and maintain high cross buffer ratios, allowing them to use cross-collateralization to avoid liquidation when they should be insolvent?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cb15319a-9910-4ec0-94e6-4b8a670ab25b",
+    "timestamp": "2025-12-24 17:35:16.709414",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [In-range detection] Can the hasLegsInRange flag be manipulated by structuring positions where currentTick is exactly at strike +/- range boundaries, causing the exercise cost to incorrectly use FORCE_EXERCISE_COST (102400 = 1.024%) instead of ONE_BPS?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8889933b-6d55-4d62-b476-4d2fc41eb821",
+    "timestamp": "2025-12-24 17:35:33.162621",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [Short leg bypass] Can short legs be included in the exercise cost calculation by manipulating the tokenId.isLong(leg) check, allowing attackers to inflate exercise costs and prevent force exercises on positions that should be exercisable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fd8b6adc-b26b-4ee9-8c57-095c82d358f5",
+    "timestamp": "2025-12-24 17:35:51.304052",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [Width zero bypass] Can positions with width=0 (credits/loans) that are excluded from exercise cost (continue statement) be used to create exercisable positions that have zero or minimal exercise costs, allowing force exercises to be profit-free for exercisers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3de14ecd-fdd3-410f-aa20-05c6b8fb85dd",
+    "timestamp": "2025-12-24 17:36:10.726975",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [Value reversal] Does the exerciseFees.sub() operation that reverses token deltas (currentValue - oracleValue) correctly handle cases where currentValue < oracleValue for both tokens, potentially causing exercise fees to be double-counted or incorrectly signed?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c66e471e-3855-4b06-bf92-a2f6f40bfa56",
+    "timestamp": "2025-12-24 17:36:30.879777",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [Fee calculation] Can the fee calculation (longAmounts * fee / DECIMALS) overflow for large position sizes, or can negative fee values (when hasLegsInRange=false) cause exerciseFees to wrap to positive values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d30d94dd-8379-4267-bc40-149899cd00ac",
+    "timestamp": "2025-12-24 17:36:52.460283",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: exerciseCost()] [Tick spacing] Does the tickSpacing parameter from tokenId correctly validate that strike and width produce valid tick ranges, or can invalid combinations produce incorrect currentValue/oracleValue amounts that reduce exercise costs below their intended values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0bcbde43-2c88-4685-b157-33f495f6ec32",
+    "timestamp": "2025-12-24 17:37:15.329736",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRefundAmounts()] [Balance shortage] Can the balanceShortage calculation (type(uint248).max - balanceOf(payor) + feeShares) overflow to negative values or wrap around to small positive values, causing incorrect refund amounts that benefit the payor at the caller's expense?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1364d073-a40a-41c1-a7cb-91c5181a7155",
+    "timestamp": "2025-12-24 17:37:39.451792",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRefundAmounts()] [Fee sign handling] Does the fee sign handling (fees0 > 0 ? feeShares0 : -feeShares0) correctly account for all cases where fees are liabilities vs assets, or can attackers exploit sign mismatches to manipulate shortage calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d2149e25-f141-4a3e-b34d-d36ced1ca40e",
+    "timestamp": "2025-12-24 17:38:04.437191",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRefundAmounts()] [Cross-token conversion] Can the convert0to1RoundingUp and convert1to0RoundingUp conversions be exploited during refunds to extract value from the caller by manipulating sqrtPriceX96 between the time of solvency check and refund execution?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a90c0310-64a8-4d80-b68b-7535a455b039",
+    "timestamp": "2025-12-24 17:38:31.024859",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRefundAmounts()] [Shortage priority] Does the priority of checking currency0 shortage before currency1 shortage create an arbitrage opportunity where payors intentionally create shortages in the first-checked currency to maximize extraction from callers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_24654662-ec89-44fb-b62f-6c71a0ebe71d",
+    "timestamp": "2025-12-24 17:38:58.280996",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getRefundAmounts()] [MulDivRoundingUp manipulation] Can the totalAssets/totalSupply ratio used in mulDivRoundingUp be manipulated by the payor through share donations or withdrawals to minimize the assets required from the caller while maximizing the surplus tokens they receive?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_24e0beba-3569-4aea-9fc8-199c45a538cb",
+    "timestamp": "2025-12-24 17:39:26.403969",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _borrowRate()] [Utilization casting] Can the int256(_utilization) cast overflow or produce incorrect signs when utilization approaches 2^255, causing err calculation errors that produce negative or extremely high interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_505a146a-12ce-49fc-bbf4-399a2abb25a2",
+    "timestamp": "2025-12-24 17:39:55.116418",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _borrowRate()] [ErrNormFactor selection] Does the errNormFactor selection (_utilization > TARGET_UTILIZATION ? WAD-TARGET_UTILIZATION : TARGET_UTILIZATION) correctly handle utilization exactly at TARGET_UTILIZATION, or can this cause division by zero in wDivToZero?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5a0687ed-84ce-4657-9e70-9fe0b9c4362b",
+    "timestamp": "2025-12-24 17:40:22.762804",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _borrowRate()] [Time capping] Can the IRM_MAX_ELAPSED_TIME (4096 seconds) cap be exploited by attackers who wait for exactly this duration between updates to minimize interest rate changes, allowing them to maintain favorable rates despite changing utilization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5fdb70eb-838b-46ab-a1f9-a56dc336d9d6",
+    "timestamp": "2025-12-24 17:40:50.944861",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _borrowRate()] [Linear adaptation overflow] Can the linearAdaptation calculation (speed * elapsed) overflow when ADJUSTMENT_SPEED * err * IRM_MAX_ELAPSED_TIME exceeds int256 max, causing interest rates to wrap to negative values or produce incorrect avgRateAtTarget?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_eea6e9ae-4f38-4115-a648-de59299e99e1",
+    "timestamp": "2025-12-24 17:41:19.013018",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _borrowRate()] [Trapezoidal approximation] Does the trapezoidal rule approximation (startRateAtTarget + endRateAtTarget + 2*midRateAtTarget)/4 accumulate sufficient error over long time periods that attackers can exploit the divergence between actual and approximated rates to arbitrage interest payments?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9b896d20-10d9-4f3a-9795-9473d90f3188",
+    "timestamp": "2025-12-24 17:41:48.535884",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _curve()] [Coefficient calculation] Can the coefficient calculation (WAD - wDivToZero(WAD, CURVE_STEEPNESS) or CURVE_STEEPNESS - WAD) produce incorrect results when CURVE_STEEPNESS is very close to WAD, causing interest rates to become negative or extremely high?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58f0525a-81aa-4a75-bf02-31cb4aab54c1",
+    "timestamp": "2025-12-24 17:42:17.787605",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _curve()] [Multiplication overflow] Can the wMulToZero(wMulToZero(coeff, err) + WAD, _rateAtTarget) calculation overflow for extreme err values or very high _rateAtTarget, causing interest rates to wrap to small values and allowing borrowers to avoid interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5e222c20-00d3-4f0a-8459-f154a0eaf359",
+    "timestamp": "2025-12-24 17:42:46.181743",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _newRateAtTarget()] [Exponential overflow] Can the wExp(linearAdaptation) calculation overflow when linearAdaptation is large and positive, causing the multiplication with startRateAtTarget to produce incorrect endRateAtTarget values that break interest rate monotonicity?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d2797d9b-1f42-4d20-affc-6e0a3be8d44f",
+    "timestamp": "2025-12-24 17:43:15.615990",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _newRateAtTarget()] [Bound enforcement] Does the Math.bound() enforcement correctly prevent rateAtTarget from exceeding MAX_RATE_AT_TARGET or falling below MIN_RATE_AT_TARGET in all cases, or can calculation errors cause rates to bypass these bounds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_02f1d767-0c1b-4846-bbad-3d432601553b",
+    "timestamp": "2025-12-24 17:43:42.026253",
+    "report_generated": false
   }
 ]
