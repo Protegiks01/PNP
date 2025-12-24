@@ -2248,5 +2248,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f64a9e11-f0f4-47c6-ad8d-69987b21a97d",
     "timestamp": "2025-12-24 18:50:38.007776",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [MulDiv Precision Loss] Lines 1312 and 1335 use Math.mulDiv for premium calculations - can precision loss in intermediate calculations cause premium to be systematically underestimated?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_89a47ace-40c8-4258-a2b4-17195b092b42",
+    "timestamp": "2025-12-24 18:51:49.675748",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [ToUint128Capped] Lines 1313 and 1336 use toUint128Capped - can capping cause premium accumulators to freeze at max value and never increase further?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a1ba59ff-bb30-4340-bf90-7b345c21533a",
+    "timestamp": "2025-12-24 18:52:03.311684",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Equation 4 Gross Premium] Lines 1329-1332 implement equation 4 with removedLiquidity^2 term - can this squared term overflow when removedLiquidity is large?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_33d6f928-04af-4c70-9512-652942f277b6",
+    "timestamp": "2025-12-24 18:52:16.769184",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Vegoid Division] Lines 1309 and 1332 divide by vegoid - can vegoid=0 cause division by zero, and is vegoid validated to be non-zero elsewhere?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6329c3e9-7306-435b-b9d0-8bf51b28e451",
+    "timestamp": "2025-12-24 18:52:31.004017",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Equation 3 Owed Premium] Line 1309 implements equation 3: numerator = netLiquidity + removedLiquidity/vegoid - can this division by vegoid cause precision loss that accumulates over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_17e2690e-629c-4611-9ab0-46a0f0e1bde0",
+    "timestamp": "2025-12-24 18:52:46.450688",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Base Premium Calculation] Lines 1292-1301 compute premium base as collected * totalLiquidity * 2^64 / netLiquidity^2 - can netLiquidity being very small cause precision loss or division overflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_24976845-09f7-43be-a512-6b09621e1d7d",
+    "timestamp": "2025-12-24 18:53:03.120020",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [TotalLiquidity Overflow] Line 1282 computes totalLiquidity = netLiquidity + removedLiquidity - can this overflow uint256 when both values are near maximum?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7830412e-c0c9-4095-81d3-62e6f82c5daa",
+    "timestamp": "2025-12-24 18:53:21.033922",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getPremiaDeltas()] [Removed/Net Liquidity Extraction] Lines 1272-1273 extract removedLiquidity and netLiquidity - can overflow in LeftRightUnsigned cause these to wrap and produce incorrect premium calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9f7ab5f0-5e8c-4869-81be-84ff51642dda",
+    "timestamp": "2025-12-24 18:53:40.470502",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getFeesBase()] [Position Key Mismatch] Line 1088 computes position key using address(this) but _createLegInAMM uses msg.sender - can this mismatch cause feesBase to read wrong position data?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_322f359a-bb48-4dfd-b18e-670dd42b6ddc",
+    "timestamp": "2025-12-24 18:54:01.113790",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getFeesBase()] [Liquidity Zero] What happens if liquidity parameter is zero? The mulDiv operations could return zero or revert depending on implementation.",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_608a2b1e-e7e5-4a46-a032-e95e79adc136",
+    "timestamp": "2025-12-24 18:54:23.254258",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getFeesBase()] [Rounding Direction] The roundUp parameter affects whether mulDiv128RoundingUp or mulDiv128 is used - can attackers exploit rounding differences to extract value by repeatedly opening/closing positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d601ceba-ded2-48d4-a3d7-2e9ab4d833b8",
+    "timestamp": "2025-12-24 18:54:46.630858",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getFeesBase()] [Int128 Cast] Lines 1107-1115 cast feeGrowth * liquidity to int128 - can extremely high feeGrowth values cause this cast to overflow and wrap around to negative?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e9f8c6b0-c3b7-415e-8196-fe29807b2e63",
+    "timestamp": "2025-12-24 18:55:11.034210",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _getFeesBase()] [FeeGrowth Underflow] Lines 1086-1095 read feeGrowthInside from Uniswap - the comment mentions these can underflow when stored first time - can this underflow corrupt feesBase calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a3419900-f633-44d4-9a0d-3af55d02fc23",
+    "timestamp": "2025-12-24 18:55:36.014455",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _collectAndWritePositionData()] [Zero Collect Skip] Line 1225 skips collection if amountToCollect is zero - can this allow fees to accumulate forever in Uniswap without being properly accounted?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2e97bdb7-207e-416e-bda5-d4d33ef1b2e5",
+    "timestamp": "2025-12-24 18:56:01.947236",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _collectAndWritePositionData()] [Uniswap Collect Return] Line 1227 calls univ3pool.collect with calculated amounts - can Uniswap return amounts different from requested amounts, breaking accounting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c69db813-eab8-4fde-be56-1ac53cc28408",
+    "timestamp": "2025-12-24 18:56:29.004391",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _collectAndWritePositionData()] [Collected Amount Calculation] Lines 1239-1244 compute collected0/collected1 by subtracting movedInLeg when negative - can this subtraction underflow if receivedAmount < abs(movedInLeg)?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5465c0fe-482f-49eb-a1ac-53f4cf052faa",
+    "timestamp": "2025-12-24 18:56:56.391614",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _collectAndWritePositionData()] [Long Position Fee Deduction] Lines 1212-1222 subtract movedInLeg from amountToCollect for long positions - can negative movedInLeg values cause amountToCollect to overflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d9b8df07-71bc-485b-a3d5-40d47c4c561f",
+    "timestamp": "2025-12-24 18:57:25.041805",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _collectAndWritePositionData()] [FeesBase SubRect] Line 1210 uses subRect which rectifies negative values to zero - can this hide fee accounting errors where collected fees are less than expected?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c7780fd0-05de-435f-b037-8c795f424ed5",
+    "timestamp": "2025-12-24 18:57:53.942271",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [Swap Callback Reentrancy] The swap at line 765 triggers uniswapV3SwapCallback - can reentrancy through this callback corrupt state before totalSwapped is set?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8990d7cf-18c6-459c-9d8a-a3e82a30ea99",
+    "timestamp": "2025-12-24 18:58:24.235984",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [Swap Return Cast] Line 774 casts swap0/swap1 (int256) to int128 - can swaps of large positions cause this cast to overflow silently?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c5cfb8c5-ea22-4ae4-ae73-473ca3b7c684",
+    "timestamp": "2025-12-24 18:58:53.263224",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [SqrtPriceLimit Manipulation] Lines 769 uses MIN_POOL_SQRT_RATIO + 1 or MAX_POOL_SQRT_RATIO - 1 as limits - can these limits be hit during the swap causing incomplete swaps?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_806834d9-daf8-416c-97ac-cd0e63b2d3b9",
+    "timestamp": "2025-12-24 18:59:22.103828",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [Zero Swap Early Return] Line 761 returns if swapAmount == 0 - can this occur when itm0 == itm1 in magnitude, and does early return skip necessary state updates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8d5b37e3-dd3c-4e1d-9e3a-b4aa769125d8",
+    "timestamp": "2025-12-24 18:59:51.940365",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [Swap Amount Sign] Lines 746 and 749 negate itm amounts to get swapAmount - can sign errors cause swaps to pull tokens instead of pushing them?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7906c798-45db-47eb-a8c7-ca3c787e90e2",
+    "timestamp": "2025-12-24 19:00:18.553068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [Both ITM Condition] Lines 742-750 handle case where both itm0 and itm1 are non-zero - can this logic be exploited to perform favorable swaps when both tokens are ITM?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_27707ba7-27a0-4aa8-b276-44aa2632f1d9",
+    "timestamp": "2025-12-24 19:00:45.865847",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [Asset-Based Swap Direction] Lines 744-750 determine swap direction based on asset parameter - can asset values other than 0/1 cause undefined behavior?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_913089eb-c18f-44c0-b08c-aa94887f8c3b",
+    "timestamp": "2025-12-24 19:01:13.957097",
+    "report_generated": false
   }
 ]
