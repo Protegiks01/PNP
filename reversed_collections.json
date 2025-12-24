@@ -1648,5 +1648,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fa625a2c-d62c-43c4-a5f9-c9ca0ed7b323",
     "timestamp": "2025-12-24 18:09:31.274453",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [s_assetsInAMM underflow] For position closure (!isCreation), newAssetsInAmm -= shortAmount - if s_assetsInAMM < shortAmount due to rounding or manipulation, can this cause checked underflow and DoS position closures?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9fd6c495-b030-40a1-b770-7f10e13439a2",
+    "timestamp": "2025-12-24 18:10:38.628438",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [s_depositedAssets manipulation] The update s_depositedAssets = uint256(int256(s_depositedAssets) - ammDeltaAmount + realizedPremium).toUint128() uses checked casting - can attacker craft values causing this to revert or overflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_951f6fd4-449e-4d1f-a9c4-3f041f45589b",
+    "timestamp": "2025-12-24 18:10:51.624731",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [Share burning insufficient balance] When tokenToPay > 0 and sharesToBurn exceeds balanceOf[optionOwner], the function reverts - but can an attacker front-run their own position closure by transferring shares away to DoS the closure?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d604ecbb-64fc-4b0a-83d3-7590c26d98f8",
+    "timestamp": "2025-12-24 18:11:05.036230",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [tokenToPay overflow] The expression tokenToPay = ammDeltaAmount - netBorrows - realizedPremium uses unchecked arithmetic - can attacker-controlled values cause this to overflow or underflow unexpectedly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e81d936e-6e4d-4db3-90d7-3a0bc9b64288",
+    "timestamp": "2025-12-24 18:11:18.940860",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [Net borrows manipulation] The calculation netBorrows = shortAmount - longAmount (or vice versa) - can an attacker craft positions where shortAmount and longAmount are near int128.max to cause overflow in this subtraction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e5deca9b-76b2-43af-8836-df512f0b3916",
+    "timestamp": "2025-12-24 18:11:33.805392",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateBalancesAndSettle()] [Credit delta underflow] When !isCreation and creditDelta > s_creditedShares, the function calculates extra tokenToPay - if s_creditedShares was manipulated to be less than expected, can this cause users to pay more than they should when closing positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d5ab36ad-bbc5-45b6-b0d3-971f03502f96",
+    "timestamp": "2025-12-24 18:11:50.414255",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: refund()] [Zero transfer bypass] If assets is very small and convertToShares(assets) rounds to 0, will _transferFrom() still execute with 0 amount, wasting gas or potentially triggering hooks in malicious tokens?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d6e5bb7e-b327-46a6-b93e-2e59d1d3a38c",
+    "timestamp": "2025-12-24 18:12:08.212737",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: refund()] [Conversion manipulation] The function uses convertToShares() for both positive and negative refunds - can rounding differences between positive and negative paths cause value leakage or allow an attacker to extract assets through repeated refund cycles?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_baa9598e-1e09-4a91-be4f-c56cab391c67",
+    "timestamp": "2025-12-24 18:12:27.765797",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: refund()] [Balance check bypass] For negative assets, the function checks balanceOf[refundee] < sharesToTransfer - but can an attacker transfer shares away from refundee immediately before refund() is called to cause this check to fail and DoS the refund?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e828c2da-5af8-408c-b676-a15324680ce2",
+    "timestamp": "2025-12-24 18:12:48.549478",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [s_depositedAssets overflow] For negative bonus, s_depositedAssets += uint128(bonusAbs) - if s_depositedAssets is near uint128.max, can this overflow and wrap, causing asset accounting corruption?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2cc1152c-e457-4a18-b039-b4982c8dc528",
+    "timestamp": "2025-12-24 18:13:10.429033",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [ETH refund exploit] When msg.value > 0 for positive bonus, the function refunds the liquidator - can an attacker send excess ETH, then manipulate the liquidation to fail, keeping the ETH while receiving refund?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a2fcef51-5f89-4ed4-a9ef-c0423fae3a6e",
+    "timestamp": "2025-12-24 18:13:33.487386",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [Share cap bypass] The minted shares are capped at _totalSupply * DECIMALS - can an attacker trigger liquidation at a moment when _totalSupply is very small to maximize minted shares and extract value?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_61850971-d929-4a0b-ab52-7e9cbfbc075f",
+    "timestamp": "2025-12-24 18:13:57.474728",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [Math.mulDivCapped overflow] The mint calculation uses Math.mulDivCapped with denominator Math.max(1, int256(totalAssets()) - bonus) - if totalAssets() <= bonus, can this denominator become 1 or cause division errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5aa924be-1d58-4258-b679-cef92ff8b508",
+    "timestamp": "2025-12-24 18:14:22.536785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [Protocol loss exploitation] For positive bonus, when bonusShares > liquidateeBalance, the function mints additional shares with a complex formula - can an attacker manipulate totalSupply() or totalAssets() to cause this mint to be excessive, creating protocol loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6d56e0fb-b313-46ba-b083-8e8435db63ba",
+    "timestamp": "2025-12-24 18:14:48.927210",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [Phantom share accounting error] The function handles phantom share unwinding by comparing type(uint248).max with liquidatee balance - if multiple liquidations occur in the same transaction, can the phantom share accounting become corrupted?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9fd5b1ac-ad97-4e4b-8075-e58b7f329789",
+    "timestamp": "2025-12-24 18:15:15.611455",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [Insufficient balance check bypass] For negative bonus in V3 pools, the function checks underlyingTokenBalance < bonusAbs - but can an attacker approval-spend their tokens between the balance check and safeTransferFrom, causing the transfer to fail and DoS the liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0102548e-eab5-4c69-828f-700afcfcedb1",
+    "timestamp": "2025-12-24 18:15:43.149578",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: settleLiquidation()] [Negative bonus underflow] When bonus < 0, the function calculates bonusAbs as uint256(-bonus) - if bonus is int256.min, can this cause underflow due to two's complement representation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_328f96c4-0f62-437e-ae6a-8904206b5a34",
+    "timestamp": "2025-12-24 18:16:09.928743",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: revoke()] [Underflow manipulation] If balance > type(uint248).max in the else branch, the function performs balanceOf[delegatee] = balance - type(uint248).max - can this be exploited if balance was increased through minting during delegation to extract real shares?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8e338b4b-41bf-4320-9fe2-58faf756203f",
+    "timestamp": "2025-12-24 18:16:37.453030",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: revoke()] [Supply desync] The logic _internalSupply += type(uint248).max - balance assumes phantom shares were burned during delegation - but if no burns occurred, does this incorrectly inflate _internalSupply and break totalSupply() invariants?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7ba91091-5598-4f2f-b950-9e3136527b67",
+    "timestamp": "2025-12-24 18:17:05.171015",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: revoke()] [Phantom share leak] When type(uint248).max > balance, the function zeros balance and increases _internalSupply - but if balance is already 0, does this cause _internalSupply to increase by type(uint248).max, creating shares from nothing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b4d39f12-d578-489a-8bd2-74d19ca37a1e",
+    "timestamp": "2025-12-24 18:17:31.828435",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: delegate()] [Balance consumed manipulation] If a user can somehow reduce their owedInterest between when delegate() is called and when _accrueInterest() actually burns shares, can this cause balanceConsumedByInterest to be underestimated, allowing exploitation of phantom shares?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b49f591f-c86e-491e-bd42-d92a71b8f147",
+    "timestamp": "2025-12-24 18:17:59.928800",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: delegate()] [Double delegation] If delegate() is called twice for the same user without an intervening revoke(), will balanceOf[delegatee] += type(uint248).max twice, causing severe balance corruption?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fdea43c0-60bd-45af-a4d2-3e653a71628e",
+    "timestamp": "2025-12-24 18:18:27.621283",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: delegate()] [Interest share calculation error] The function calculates interestShares using previewWithdraw(_owedInterest(delegatee)) which rounds up - can an attacker manipulate interest owed to cause balanceConsumedByInterest to be incorrectly calculated, receiving more or fewer phantom shares than intended?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_42ce1b6c-cbed-4e51-91da-a2880aa6fc54",
+    "timestamp": "2025-12-24 18:18:54.468403",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: delegate()] [Phantom share overflow] The function adds type(uint248).max - balanceConsumedByInterest to balanceOf[delegatee] - can this addition overflow uint256 if balanceOf[delegatee] is already very large, causing arithmetic overflow and corrupting user balances?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_10ced676-2e6f-4a8e-89a0-f1e55d527616",
+    "timestamp": "2025-12-24 18:19:21.226864",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _poolUtilizationWad()] [Unit conversion error] This function converts between DECIMALS and WAD - can precision loss in the conversion cause utilization to be misreported, affecting interest rate calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_17e2c304-640b-4b49-b249-8e1718670c97",
+    "timestamp": "2025-12-24 18:19:47.300206",
+    "report_generated": false
   }
 ]
