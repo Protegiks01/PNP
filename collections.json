@@ -1648,5 +1648,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2387225f-4c12-4030-9644-d60fa6544dc7",
     "timestamp": "2025-12-24 18:31:42.679355",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Assembly Safety] The entire function at lines 65-70 is in assembly. Can an attacker exploit the lack of Solidity's built-in overflow checking in assembly to pass values that cause silent wraparound in the nested add() operations, creating an invalid MarketState?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_45926c63-f7d1-4a2f-98b7-a00b9cd10355",
+    "timestamp": "2025-12-24 19:14:10.584179",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [Memory Safety] The assembly block at lines 81-86 uses stack variables (cleared, result). If the Solidity compiler allocates these in unexpected memory locations, can there be collision with other local variables, causing state corruption?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f663f7bc-b367-45af-a4be-39fd60c87164",
+    "timestamp": "2025-12-24 19:14:23.626462",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: borrowIndex()] [Return Value Manipulation] The assembly at line 157 directly assigns to 'result'. If an attacker can manipulate the stack or memory before this assembly block executes (e.g., through reentrancy in a view function), can they cause the function to return a different value than what's in storage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_08e29d3a-6813-4871-a564-447168430f5e",
+    "timestamp": "2025-12-24 19:14:37.874964",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: marketEpoch()] [Shift Overflow] At line 166, the assembly performs shr(80, self). If 'self' contains specially crafted values where the shift operation has undefined behavior, can this return garbage values that cause CollateralTracker to calculate wrong time deltas?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_765b6f2a-330c-4fa4-bcbb-05cbe6aea6cc",
+    "timestamp": "2025-12-24 19:14:52.114537",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: rateAtTarget()] [Assembly Optimization] At line 175, the assembly uses shr(112, self) followed by and(). Can the compiler optimize this in unexpected ways that cause the function to return incorrect values on certain EVM implementations or future hard forks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_24d6d2e6-c32f-44d4-9b6e-a4589a838899",
+    "timestamp": "2025-12-24 19:15:07.066950",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: unrealizedInterest()] [Unchecked Shift] The assembly at line 184 performs shr(150, self) without any bounds checking. If MarketState was corrupted such that shifting doesn't produce the expected value, can this cause totalAssets() calculations in CollateralTracker to be wildly incorrect?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_57b70aa2-5097-4df9-9b95-6b98018da3a8",
+    "timestamp": "2025-12-24 19:15:23.423264",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: storeMarketState()] [Nested Add Operations] Lines 66-69 perform nested add() operations: add(add(add(...), ...), ...). Can the nested structure cause unexpected operator precedence or evaluation order issues that result in incorrect bit packing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7be5feab-e1e5-43d0-b62a-f9a0f5f12050",
+    "timestamp": "2025-12-24 19:15:41.593783",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateRateAtTarget()] [Assembly Local Variables] The assembly at lines 113-123 defines local variables 'cleared' and 'safeRate'. Can these shadow Solidity variables or cause stack depth issues in complex calling contexts, leading to wrong values being stored?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e154233e-a3c6-4488-891a-1e7f0f0bf4e3",
+    "timestamp": "2025-12-24 19:16:00.925965",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateUnrealizedInterest()] [Shift Left in Assembly] The assembly at line 144 uses shl(150, safeInterest). If safeInterest has been improperly masked and contains non-zero bits above position 105, can the left shift cause those bits to wrap around and corrupt the result?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_69f6a0c4-2b8a-45e6-abdd-3b44e1671338",
+    "timestamp": "2025-12-24 19:16:20.854639",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [All Assembly Functions] [Gas Griefing] Since all update functions use assembly for gas optimization, can an attacker intentionally trigger these functions in ways that maximize gas consumption (e.g., through cold storage access patterns) to DoS the protocol or make liquidations unprofitable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_07a78dce-baca-4d34-b61a-395896957d3b",
+    "timestamp": "2025-12-24 19:16:44.024120",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Type: MarketState] [Type Safety] MarketState is defined as a custom type wrapping uint256 at line 4. Can an attacker cast arbitrary uint256 values to MarketState and pass them to update functions, bypassing the intended creation through storeMarketState() and injecting corrupted state?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_06ec0f5f-14aa-417e-a0ea-41e0040c8d0b",
+    "timestamp": "2025-12-24 19:17:06.234690",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateBorrowIndex()] [uint80 Cast] The function accepts uint80 newIndex. If a calling contract mistakenly passes uint256 that gets implicitly truncated to uint80, can the high bits be silently lost, causing a borrower who owes massive interest to suddenly owe nothing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a4928e23-29b6-4cda-8494-69e822c0fc3e",
+    "timestamp": "2025-12-24 19:17:30.270758",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateMarketEpoch()] [uint32 Truncation] Since marketEpoch is uint32 but block.timestamp is uint256, when CollateralTracker computes currentEpoch = block.timestamp >> 2 at line 999 and casts to uint32, can future timestamps beyond year 2106 cause truncation that resets the epoch to zero and breaks all interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1345d33e-865b-4c11-b341-be891c53d30e",
+    "timestamp": "2025-12-24 19:17:54.685116",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateRateAtTarget()] [uint40 vs uint38] The function parameter is uint40 but only 38 bits are stored. Can this cause RiskEngine.updateInterestRate() to return values that appear valid (fit in uint40) but get truncated when stored, systematically underreporting interest rates by 2 bits of precision?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9240fbfe-e4d0-4467-8f83-d37bb7aa2f17",
+    "timestamp": "2025-12-24 19:18:20.128224",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: updateUnrealizedInterest()] [uint128 vs uint106] The function accepts uint128 but stores only 106 bits. If CollateralTracker._calculateCurrentInterestState() adds interest that pushes the value above 2**106, can the truncation cause the protocol to lose track of up to 2**128 - 2**106 wei of interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_aca87cfc-dc8b-42c5-8096-b05f928a926b",
+    "timestamp": "2025-12-24 19:18:45.344763",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: borrowIndex()] [Return Type] The function returns uint80. If a calling contract expects uint256 and performs arithmetic on the result without proper casting, can the computation overflow uint80 bounds and wrap around, causing incorrect interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f16110d7-7973-4b6c-87bb-a6380ea2c3fd",
+    "timestamp": "2025-12-24 19:19:11.058794",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: marketEpoch()] [uint32 Return] Returning uint32 for epoch means the calling contract must be careful with arithmetic. If CollateralTracker computes currentEpoch - previousEpoch at line 1003 without proper checks, can negative results wrap around uint32 and cause deltaTime to be negative (appearing as 4 billion seconds)?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bff369da-ef3f-4b59-8861-935678d3fe70",
+    "timestamp": "2025-12-24 19:19:38.142342",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: rateAtTarget()] [uint40 Return] The function returns uint40 but only 38 bits are meaningful. Can calling contracts that expect the full uint40 range be confused by values that exceed 2**38 after the protocol has been running for extended periods with extreme interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c63a6844-4418-4c89-87ce-4969dee004f1",
+    "timestamp": "2025-12-24 19:20:00.761047",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Function: unrealizedInterest()] [uint128 Return] The function returns uint128 but only 106 bits are stored. If a calling contract performs operations expecting full uint128 range and then tries to write back via updateUnrealizedInterest(), can the excess bits cause unexpected truncation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_568797c1-8c38-40b2-baca-a183de3393e9",
+    "timestamp": "2025-12-24 19:20:26.187895",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Type: MarketState] [Implicit Conversion] Can an attacker exploit Solidity's type system to implicitly convert MarketState back to uint256, modify it directly with bitwise operations, then convert back to MarketState to inject corrupted state that bypasses all the update function validations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_26c960ab-5a12-4e7c-81f5-dd61ffa2316e",
+    "timestamp": "2025-12-24 19:20:53.354862",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [State Sync] When CollateralTracker._accrueInterest() calls storeMarketState() at line 970, if there's a reentrancy between reading the old state and writing the new state, can an attacker manipulate the intermediate values to cause stale data to overwrite fresh data, rolling back interest accrual?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_408d570b-de5e-4f37-b493-617ff9e09a54",
+    "timestamp": "2025-12-24 19:21:20.688924",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [Epoch Race Condition] If CollateralTracker._calculateCurrentInterestState() reads marketEpoch at line 1000, then block.timestamp advances before _accrueInterest() writes the new epoch, can this cause the protocol to skip time periods and fail to accrue interest for certain intervals, benefiting borrowers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6eaaec32-eb8e-40f0-bf3c-e7d429c11dbc",
+    "timestamp": "2025-12-24 19:21:47.977689",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: RiskEngine] [Rate Calculation] When RiskEngine._borrowRate() reads rateAtTarget at line 2200, if the value is exactly 0, it treats this as first interaction. Can an attacker reset rateAtTarget to 0 through some exploit in CollateralTracker to repeatedly trigger initialization logic and manipulate interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_83409e7a-09be-4313-9b95-fadf81869e84",
+    "timestamp": "2025-12-24 19:22:14.147652",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: CollateralTracker] [Borrow Index Monotonicity] CollateralTracker expects borrowIndex to be monotonically increasing from 1e18 (WAD). If an attacker can call updateBorrowIndex() with a value less than the current index, can they reduce their interest obligations and cause the protocol to lose funds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4dd252c4-62ee-4de0-bddd-caceffabb86a",
+    "timestamp": "2025-12-24 19:22:40.080795",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/MarketState.sol] [Integration: RiskEngine] [Epoch Conversion] RiskEngine converts epoch to timestamp by left-shifting at line 2203 (previousTime = interestRateAccumulator.marketEpoch() << 2). If marketEpoch has been corrupted to a value near uint32 max, can this overflow and produce a negative-looking timestamp that breaks elapsed time calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c737fb6c-0845-4e09-82d5-ec8cdd1e8833",
+    "timestamp": "2025-12-24 19:23:06.852492",
+    "report_generated": false
   }
 ]
