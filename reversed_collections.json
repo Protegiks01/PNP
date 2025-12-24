@@ -298,5 +298,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_426ecc40-65f2-4ce1-a23e-db966bfe8c2b",
     "timestamp": "2025-12-24 16:38:34.039874",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWad()] [WAD constant consistency] The function hardcodes 1000000000000000000 instead of using WAD constant - could this inconsistency cause errors if WAD is changed?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5e42575c-b3b6-4543-8be4-644cd726cf16",
+    "timestamp": "2025-12-24 16:39:42.961783",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv192RoundingUp()] [Premium calculation rounding] If used in premium calculations, can accumulated rounding allow option sellers to extract excess premium from buyers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4371838c-7a15-4162-98f2-1e3244785fb6",
+    "timestamp": "2025-12-24 16:39:56.013231",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv192()] [Overflow check boundary] The require statement checks 2**192 > prod1 - can values exactly at the boundary cause issues?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_91b51510-2993-4fc4-a269-b0f248c9d711",
+    "timestamp": "2025-12-24 16:40:10.052380",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv192()] [Large bit shift] The function performs shr(192, prod0) and prod1 * 2**64 - can this lose significant precision affecting premium calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e216884e-f735-4a2b-9684-778497357143",
+    "timestamp": "2025-12-24 16:40:23.857057",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv128RoundingUp()] [Share price manipulation] Since share prices use this function, can attackers exploit rounding to consistently extract value when minting/burning shares?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_430a649e-97fa-4203-9931-c17bb0e5bb10",
+    "timestamp": "2025-12-24 16:40:38.545482",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv128()] [Remainder hardcoded constant] The function uses 0x100000000000000000000000000000000 for remainder - is this exactly 2**128, and are there any typos?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_11aa2ebf-b7bc-4388-b12b-7355bd2912c4",
+    "timestamp": "2025-12-24 16:40:54.389628",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv128()] [128-bit shift operations] The function uses shr(128, prod0) and prod1 * 2**128 - can these operations lose precision for specific inputs used in share price calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_070df4cd-a6ba-4701-9187-c61e14e5fc1b",
+    "timestamp": "2025-12-24 16:41:12.046068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv96RoundingUp()] [Multiple rounding] If this function is called multiple times in a calculation chain, can accumulated rounding errors become significant?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3aefc60c-b169-420b-987f-63b0796c7ade",
+    "timestamp": "2025-12-24 16:41:31.849146",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv96RoundingUp()] [Rounding consistency] Does mulDiv96RoundingUp() maintain consistency with Uniswap V3's rounding, and could mismatches cause position valuation errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5adf084b-bf86-4e60-a1e3-5804746fda98",
+    "timestamp": "2025-12-24 16:41:52.269677",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv96()] [Prod0/prod1 reconstruction] The final calculation 'prod0 |= prod1 * 2**160' - can overflow in prod1 * 2**160 cause incorrect final results?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_51dc6dda-41c7-47e2-b201-6d6ab2aae09e",
+    "timestamp": "2025-12-24 16:42:13.377403",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv96()] [Uniswap compatibility] Since this function mirrors Uniswap V3's fixed-point math, can any implementation differences cause arbitrage between Panoptic positions and underlying Uniswap liquidity?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_da45fc63-0b9c-404d-a79d-0d98879fea5e",
+    "timestamp": "2025-12-24 16:42:34.833914",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv96()] [Prod1 boundary] When prod1 = 2**96 - 1, does the require statement correctly catch overflow, and can boundary values bypass the check?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3b7acb01-fbf6-45d5-bb76-23b11171dbca",
+    "timestamp": "2025-12-24 16:42:56.445071",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv64()] [Remainder calculation] The assembly uses hardcoded 0x10000000000000000 for remainder - is this exactly 2**64, and could typos in this constant cause calculation errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7c3dfbbf-21f0-43a3-bd12-90988c46e363",
+    "timestamp": "2025-12-24 16:43:19.251166",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv64()] [Bit shifting precision] The right shift by 64 bits (shr(64, prod0)) - can this lose significant bits for specific input patterns, affecting interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_db8da771-b6d1-44d3-b11e-a6203e17cd50",
+    "timestamp": "2025-12-24 16:43:43.493287",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv64()] [Prod1 overflow] The function requires 2**64 > prod1 - can values where prod1 = 2**64 exactly cause the check to pass incorrectly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dbb23dcf-9b7c-49ee-b0d3-1b3936f777f8",
+    "timestamp": "2025-12-24 16:44:08.147955",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivRoundingUp()] [Mulmod precision] The function uses mulmod(a, b, denominator) to check for remainders - can this be gamed to artificially inflate amounts during withdrawals?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_34ee5c8b-213b-462c-b266-eb9fa3146bb7",
+    "timestamp": "2025-12-24 16:44:33.310418",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivRoundingUp()] [Rounding direction manipulation] Can attackers exploit the rounding-up behavior to consistently extract value when converting between collateral and shares?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2d242950-d4c6-4b79-b5e8-0664a29aa00d",
+    "timestamp": "2025-12-24 16:44:59.052332",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivRoundingUp()] [Increment overflow] After incrementing result++, the function requires result < type(uint256).max - can this requirement be bypassed if result is exactly type(uint256).max - 1?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1153cd07-036d-4836-9c19-042263255f55",
+    "timestamp": "2025-12-24 16:45:25.807260",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivCapped(uint256,uint256,uint256,uint256)] [Power boundary check] The check 'denominator >> (256 - power) <= prod1' - can power values near 0 or 256 cause shift operations to behave unexpectedly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_66a18720-b5a4-4e1a-8718-198c96524442",
+    "timestamp": "2025-12-24 16:45:50.275313",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivCapped(uint256,uint256,uint256,uint256)] [Power parameter manipulation] Can an attacker provide power > 256 to cause '2 ** power' to overflow or return unexpected values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a7265ef1-f96c-49e8-9f40-32066a2361ae",
+    "timestamp": "2025-12-24 16:46:16.312855",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivCapped()] [Denominator comparison] The check 'if (denominator <= prod1)' returns max value - can edge cases where denominator exactly equals prod1 cause incorrect capping?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_85df8274-42b8-4834-b012-ce8797fffac7",
+    "timestamp": "2025-12-24 16:46:41.658811",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivCapped()] [Type(uint256).max return] When the function returns type(uint256).max due to overflow, can downstream code misinterpret this as a valid calculation, causing protocol insolvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7cadfeb1-40ea-4796-9f2c-0fc917651ae0",
+    "timestamp": "2025-12-24 16:47:07.864096",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv()] [Two's complement manipulation] The function uses '(0 - denominator) & denominator' to find the largest power of two divisor - can this be exploited with specific denominator values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_466adaa2-e875-4696-b532-a73cb22b571e",
+    "timestamp": "2025-12-24 16:47:33.677281",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv()] [Remainder subtraction underflow] In the assembly block 'prod1 := sub(prod1, gt(remainder, prod0))', can specific values cause incorrect borrow bit calculation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8b8f888d-ddc5-4743-acf1-009d885aa611",
+    "timestamp": "2025-12-24 16:48:00.338840",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDiv()] [Modular inverse calculation] The function computes modular inverse using Newton-Raphson iteration - are there edge cases where the inverse calculation is incorrect, causing wrong division results?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0e960789-76c7-47ae-b32f-5dd353b9d273",
+    "timestamp": "2025-12-24 16:48:27.879722",
+    "report_generated": false
   }
 ]
