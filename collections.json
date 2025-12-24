@@ -298,5 +298,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_68cee74a-6638-477e-8708-518461e9dbd3",
     "timestamp": "2025-12-24 16:40:15.063113",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [COMMIT_LONG_SETTLED in exercise] At line 1643, COMMIT_LONG_SETTLED is used. Can this cause long premium to be settled incorrectly during force exercise compared to voluntary burns?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_009f44ee-1821-424f-916c-737587231a5d",
+    "timestamp": "2025-12-24 16:41:29.681005",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [Position size zero check] At line 1615, positionSize == 0 reverts. Can an attacker force exercise a position that was partially burned to cause incorrect fee calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_db5f4e76-373f-4e63-809a-da5a229f27a3",
+    "timestamp": "2025-12-24 16:41:43.059980",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [Refund timing attack] At lines 1657-1658, refund() is called before revoke(). Can an attacker exploit this ordering through reentrancy to extract multiple refunds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6057eda6-0511-4c27-80f0-98ea11e505c1",
+    "timestamp": "2025-12-24 16:41:56.401692",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _forceExercise()] [Exercise fee negative values] Can exerciseFees be negative in edge cases, causing the exercisor to receive payment instead of paying for the force exercise?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2d725d34-1e2e-4186-a676-3cca3998ceed",
+    "timestamp": "2025-12-24 16:42:10.542487",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _settlePremium()] [Premium settlement without burn] At line 1688, _settleOptions is called without burning the position. Can this be exploited to settle premium multiple times for the same position?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ed1300b9-98c4-4683-85ce-660ffcf570c1",
+    "timestamp": "2025-12-24 16:42:25.707251",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _settlePremium()] [Delegation without validation] At lines 1681-1682, delegate is called before settlement. Can an attacker exploit delegated shares to settle premium for positions they don't fully collateralize?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b9ce2515-4257-4423-a4e5-7f8e4e3e8108",
+    "timestamp": "2025-12-24 16:42:41.913385",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _settlePremium()] [Zero exercise fee refund] At line 1692, getRefundAmounts is called with zero exerciseFees. Can this be exploited to extract tokens through the refund mechanism without paying fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_267541f0-4944-4fce-88e7-07928767cc12",
+    "timestamp": "2025-12-24 16:42:59.673889",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _settlePremium()] [Caller benefit extraction] At lines 1698-1699, refund is paid to msg.sender. Can a malicious caller profit by settling premium for solvent users who have temporarily low balances in one token?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_60535ec4-1c35-4e1a-a204-769a21d54187",
+    "timestamp": "2025-12-24 16:43:19.091805",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _settlePremium()] [Position size mismatch] At line 1685, positionSize is read from storage. Can an attacker partially burn a position then try to settle premium with the old positionSize to cause accounting errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d228c16d-c0fa-4595-b22f-c2252cafd8d2",
+    "timestamp": "2025-12-24 16:43:40.134667",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validateSolvency()] [Position list validation bypass] At line 958, _validatePositionList is called. Can an attacker provide a valid hash but manipulated positionIdList to bypass solvency checks for certain positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3e118a4a-493b-4112-9d0a-13c18ffab0c7",
+    "timestamp": "2025-12-24 16:44:02.266578",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validateSolvency()] [Oracle pack timing] At lines 962-965, getSolvencyTicks returns oraclePack. Can an attacker manipulate the timing of this call to use stale oracle data for solvency validation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_97331198-87e3-4355-87c4-708e0060ddb0",
+    "timestamp": "2025-12-24 16:44:24.958852",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validateSolvency()] [Solvent count manipulation] At lines 968-979, solvent count must equal numberOfTicks. Can an attacker exploit positions that are solvent at exactly numberOfTicks-1 ticks to pass validation incorrectly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_61a4fa0d-a8e5-431a-b5af-3e7c26722f3e",
+    "timestamp": "2025-12-24 16:44:48.956244",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validateSolvency()] [Empty position list bypass] At line 967, if positionIdList.length == 0, solvency check is skipped. Can an attacker exploit this to perform operations without solvency validation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c792e094-4e2a-4a38-baca-1c8a3c328571",
+    "timestamp": "2025-12-24 16:45:13.658591",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validateSolvency()] [Safe mode utilization override] In _checkSolvencyAtTicks, safeMode overrides utilizations. Can an attacker trigger safe mode at specific times to avoid liquidation when they should be insolvent?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_73d4d8b9-7fc7-48bb-9151-3f58e044b7ab",
+    "timestamp": "2025-12-24 16:45:40.025369",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _validateSolvency()] [Buffer manipulation] At line 975, buffer is passed to _checkSolvencyAtTicks. Can buffer values near uint256.max cause overflow in collateral requirement calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e8d714ea-6000-43e3-be2f-289f7d7aa69e",
+    "timestamp": "2025-12-24 16:46:07.481272",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkSolvencyAtTicks()] [Safe mode utilization override] At lines 1741-1750, if safeMode > 0, utilizations are set to max (100%). Can this cause false insolvency determinations for accounts that rely on cross-collateralization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f6d2d3cc-51eb-4489-a545-3ed266470aee",
+    "timestamp": "2025-12-24 16:46:35.920638",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkSolvencyAtTicks()] [Solvent counter overflow] At line 1765, solvent is incremented. Can processing many ticks cause solvent to overflow, bypassing solvency checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8240a48f-96c1-471f-ae12-bb02ddcca792",
+    "timestamp": "2025-12-24 16:47:03.902894",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkSolvencyAtTicks()] [Premium calculation at multiple ticks] At lines 1728-1738, premium is calculated at currentTick regardless of atTicks array. Can this cause incorrect solvency determinations when price moves significantly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2011e2d4-97f0-48e3-b8f4-e20fd60b0b7a",
+    "timestamp": "2025-12-24 16:47:32.948548",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkSolvencyAtTicks()] [ONLY_AVAILABLE_PREMIUM usage] At line 1736, ONLY_AVAILABLE_PREMIUM is used. Can this cause solvency checks to pass incorrectly when long premium is owed but not yet settled?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7de8beb1-64b9-4f62-9440-25ac5dcfc90a",
+    "timestamp": "2025-12-24 16:48:03.243789",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkSolvencyAtTicks()] [positionBalanceArray manipulation] At lines 1745-1749, first element is overwritten. Can this cause incorrect solvency checks if positionIdList has only one position?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_37ba1f33-96de-4bef-a753-4a9f61005484",
+    "timestamp": "2025-12-24 16:48:33.044574",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _checkSolvencyAtTicks()] [Unchecked loop counter] At line 1767, loop counter is incremented in unchecked block. Can this cause infinite loops or skip ticks if counter overflows?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7595e8f1-c192-426e-9092-a51a054d05e4",
+    "timestamp": "2025-12-24 16:49:04.372582",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [grossPremiumLast calculation] At lines 1109-1125, grossPremiumLast is updated using complex formula. Can rounding errors in this calculation cause premium accounting to drift over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_86de8d2e-5284-4f35-a694-8cc6ac29f9b0",
+    "timestamp": "2025-12-24 16:49:36.021431",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [Division by zero in premium calculation] At line 1115, division by totalLiquidity occurs. Can totalLiquidity be zero in edge cases, causing revert and DoS?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3df9da72-cceb-44a4-bc3b-11d157b24d95",
+    "timestamp": "2025-12-24 16:50:07.631607",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [Position hash update timing] At line 1031, _updatePositionsHash is called before leg processing. Can an attacker exploit this ordering to manipulate position counts during mint?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_aeb696b8-d3f0-4117-a3a9-05f799b30e98",
+    "timestamp": "2025-12-24 16:50:37.509056",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/PanopticPool.sol] [Function: _updateSettlementPostMint()] [Liquidity spread check bypass] At lines 1038-1044, _checkLiquiditySpread is called with different limits for long vs short. Can an attacker provide effectiveLiquidityLimit = 0 for long positions to bypass spread checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5699e41a-1137-446a-b7d7-33f9c818f93e",
+    "timestamp": "2025-12-24 16:51:07.417724",
+    "report_generated": false
   }
 ]
