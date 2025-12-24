@@ -748,5 +748,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7fa18eb6-de85-4450-bc1e-cb45a7ca673f",
     "timestamp": "2025-12-24 17:08:43.299384",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mostSignificantNibble()] [Zero input handling] Does mostSignificantNibble() correctly handle x = 0, and could passing zero cause incorrect logarithmic calculations in downstream functions like log_Sqrt1p0001MantissaRect(), potentially affecting position sizing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8c3c9f55-c9c0-4033-8114-e189445cc1a9",
+    "timestamp": "2025-12-24 17:09:55.615028",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: max24()] [Tick manipulation] Could an attacker manipulate tick calculations by exploiting edge cases in max24() where comparing extreme tick values (±887272) might lead to incorrect position sizing or collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c95d088a-a4d7-450a-80fe-992d888fc46e",
+    "timestamp": "2025-12-24 17:10:09.249711",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: min24()] [Type boundary exploitation] Can an attacker exploit the min24() function by providing tick values near type(int24).min or type(int24).max boundaries to cause unexpected behavior in tick range calculations for liquidity positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2a9540c5-e274-448d-8e08-96479c102a64",
+    "timestamp": "2025-12-24 17:10:22.488786",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: abs()] [Documentation inconsistency] The function documentation states it does not support type(int256).min and will revert, but could this cause DoS attacks when used in critical protocol paths like liquidations or risk calculations where unexpected reverts could freeze funds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7f9a293f-f384-4d2b-a03b-390b2fece7a4",
+    "timestamp": "2025-12-24 17:10:36.372146",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: absUint()] [Type casting vulnerability] Does absUint() correctly handle the edge case where x = type(int256).min without overflow, and could an attacker manipulate this to cause incorrect unsigned conversions in liquidity or collateral calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0b14bbce-df0b-4ed2-97a8-8922c9e98b62",
+    "timestamp": "2025-12-24 17:10:51.186496",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: abs()] [Integer overflow] Can an attacker exploit the abs() function by passing type(int256).min, which would cause an overflow when negated since abs(type(int256).min) = type(int256).max + 1, potentially causing reverts in critical collateral or liquidation calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ee67892f-59fb-4461-b695-c3d10b82bc86",
+    "timestamp": "2025-12-24 17:11:07.701775",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mostSignificantNibble()] [Zero input handling] Does mostSignificantNibble() correctly handle x = 0, and could passing zero cause incorrect logarithmic calculations in downstream functions like log_Sqrt1p0001MantissaRect(), potentially affecting position sizing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b585dbb7-8018-4552-bae1-cac766cfdcca",
+    "timestamp": "2025-12-24 17:11:25.630142",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: max24()] [Tick manipulation] Could an attacker manipulate tick calculations by exploiting edge cases in max24() where comparing extreme tick values (±887272) might lead to incorrect position sizing or collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0f1cee5f-3c23-4ddd-80d8-9d863233ffc9",
+    "timestamp": "2025-12-24 17:11:45.667445",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: min24()] [Type boundary exploitation] Can an attacker exploit the min24() function by providing tick values near type(int24).min or type(int24).max boundaries to cause unexpected behavior in tick range calculations for liquidity positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d23d6215-0bc5-46db-b62c-5f1714517ce5",
+    "timestamp": "2025-12-24 17:12:07.460513",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: abs()] [Documentation inconsistency] The function documentation states it does not support type(int256).min and will revert, but could this cause DoS attacks when used in critical protocol paths like liquidations or risk calculations where unexpected reverts could freeze funds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_43cd7eb2-058e-4742-8d9a-4a89a010b6df",
+    "timestamp": "2025-12-24 17:12:29.609468",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: absUint()] [Type casting vulnerability] Does absUint() correctly handle the edge case where x = type(int256).min without overflow, and could an attacker manipulate this to cause incorrect unsigned conversions in liquidity or collateral calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_24cbc5da-5401-4ad6-99a2-b464027b0f5a",
+    "timestamp": "2025-12-24 17:12:52.528485",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: abs()] [Integer overflow] Can an attacker exploit the abs() function by passing type(int256).min, which would cause an overflow when negated since abs(type(int256).min) = type(int256).max + 1, potentially causing reverts in critical collateral or liquidation calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5ee19e6b-7b4e-4d50-80b0-4b1282f1aea7",
+    "timestamp": "2025-12-24 17:13:16.916257",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: calculateIOAmounts()] [Slot selection consistency] Can an attacker exploit inconsistencies between tokenType and isLong flags to create positions that add amounts\n\n### Citations\n\n**File:** contracts/libraries/PanopticMath.sol (L1-773)\n```text\n// SPDX-License-Identifier: BUSL-1.1\npragma solidity ^0.8.24;\n// Interfaces\nimport {IERC20Metadata} from",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_70c62ca5-b2fc-4dd6-a3d5-47b400b12ec0",
+    "timestamp": "2025-12-24 17:13:43.270779",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: calculateIOAmounts()] [LeftRightSigned construction overflow] When constructing LeftRightSigned with `LeftRightSigned.wrap(0).addToRightSlot(...)`, can the Math.toInt128 conversion overflow for amounts exceeding int128 range?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2c9af2c4-51c7-4ccb-b0b7-9b4a4348befc",
+    "timestamp": "2025-12-24 17:14:08.567457",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: calculateIOAmounts()] [isLong flag exploitation] The function uses `tokenId.isLong(legIndex) == 0` to determine if a leg is short - can an attacker craft positions where this flag is set incorrectly, causing longs to be counted as shorts or vice versa?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e3efafc0-533f-459c-828d-e7f0d2f1a7d3",
+    "timestamp": "2025-12-24 17:14:34.389541",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: calculateIOAmounts()] [TokenType conditional logic] The function branches on `tokenId.tokenType(legIndex) == 0` to determine which slot to use - can an attacker manipulate tokenType to cause amounts to be added to wrong slots, corrupting long/short accounting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a2145838-7bc3-425c-a6ea-5b1a3c423afc",
+    "timestamp": "2025-12-24 17:14:59.191708",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [uint128 cast truncation] The amounts are cast to uint128 from Math.getAmount0ForLiquidity results - can this truncation lose significant digits for very large liquidity amounts, causing undercollateralization?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_00d1c3c9-ce1d-4984-896c-67e9b3f56e3d",
+    "timestamp": "2025-12-24 17:15:24.282840",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [LeftRightUnsigned packing overflow] The final return `LeftRightUnsigned.wrap(amount0).addToLeftSlot(amount1)` could overflow if amount0 or amount1 exceed their respective slot sizes - can this be exploited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b54f3fbe-740f-47b7-b3c2-67b18e1b1836",
+    "timestamp": "2025-12-24 17:15:48.940062",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [LiquidityChunk calculation dependency] The function relies on getLiquidityChunk which can overflow - can this upstream overflow propagate to cause getAmountsMoved to return incorrect amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cd39c9c9-0be9-4525-b7b7-ee69976e37f1",
+    "timestamp": "2025-12-24 17:16:16.149379",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [Opening parameter inconsistency] Can an attacker exploit inconsistencies in how the opening parameter is interpreted across different contract calls to get favorable rounding in both opening and closing operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_134484e5-b687-4432-88d0-d463b801eccd",
+    "timestamp": "2025-12-24 17:16:43.907968",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [isLong boolean comparison] The conditions use `tokenId.isLong(legIndex) == 0` and `tokenId.isLong(legIndex) != 0` - can an attacker craft tokenIds where isLong returns unexpected values that cause wrong rounding direction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c8b2962b-906f-4b41-8a7a-e78328133d42",
+    "timestamp": "2025-12-24 17:17:09.022469",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [Rounding direction exploitation] The function rounds up for shorts when opening and longs when closing - can an attacker strategically open and close positions to consistently benefit from favorable rounding, accumulating value over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a63746ce-cf78-4b0a-9977-31c864ff8db0",
+    "timestamp": "2025-12-24 17:17:35.191471",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [Width modification side effects] The line `tokenId = tokenId.addWidth(2, legIndex)` modifies tokenId when width is zero - does this modification persist beyond the function or affect other calculations that use the original tokenId?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_25c6cf1b-fe60-48ac-81a6-f53e2811d36c",
+    "timestamp": "2025-12-24 17:18:01.726875",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getAmountsMoved()] [Zero width special handling] When `width == 0`, the function adds width=2 temporarily for accounting - can an attacker exploit this special case to create positions that appear valid for accounting but have different actual tick ranges?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_30470011-0cbe-4afc-9b16-44ffeb6dfaea",
+    "timestamp": "2025-12-24 17:18:26.967356",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: getCrossBalances()] [Highest precision token selection] The comment says to convert to highest precision (lowest price) token - can an attacker exploit scenarios where the token with lowest price has insufficient liquidity, making cross-collateral calculations unreliable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c9a4dee6-d66e-4c0e-b8a2-c2779a82e3f9",
+    "timestamp": "2025-12-24 17:18:52.629336",
+    "report_generated": false
   }
 ]
