@@ -2848,5 +2848,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3fb61d39-8abd-4abb-a0dc-b79cdd0d535b",
     "timestamp": "2025-12-24 19:32:37.151416",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Solvency Check Inconsistency] Can different components (PanopticPool._validateSolvency vs RiskEngine.isAccountSolvent) interpret bpDecreaseBuffer differently, causing accounts to pass solvency checks in one context but fail in another, leading to stuck positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_524c39aa-dcbc-4195-bee6-9f348b62e0dc",
+    "timestamp": "2025-12-24 19:33:56.773548",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Position-Spread Race Condition] Can an attacker front-run RiskEngine parameter updates to mint positions using old, more permissive maxSpread values, then close them under new, stricter limits, exploiting the parameter transition window?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1b12a743-8eed-4e25-be13-b3c6b2a6a04d",
+    "timestamp": "2025-12-24 19:34:09.617770",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Oracle-RiskParameters Desync] Can an attacker exploit desynchronization between RiskParameters.tickDeltaLiquidation() and the actual oracle state in PanopticPool.dispatchFrom() liquidations, causing liquidation validations to use stale or incorrect price bounds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_59ede196-55e9-43c6-919f-7e6fd5a0a471",
+    "timestamp": "2025-12-24 19:34:22.935217",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee() + premiumFee()] [CollateralTracker Fee Inconsistency] Can an attacker exploit timing between when RiskParameters are fetched in PanopticPool._payCommissionAndWriteData and when they're used in CollateralTracker.settleMint/settleBurn, using parameter changes to pay lower fees than intended?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d7f21516-62da-419f-826c-9faa113069ea",
+    "timestamp": "2025-12-24 19:34:37.566814",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: All functions] [RiskEngine Manipulation] Can an attacker exploit the fact that RiskEngine.getRiskParameters() constructs RiskParameters dynamically (line 874) to cause different values to be used across multiple calls in the same transaction, breaking assumptions about parameter consistency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1a9c243f-4ebf-4825-81a6-dafb689a44b8",
+    "timestamp": "2025-12-24 19:34:52.545141",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Spread Calculation Precision] In PanopticPool._checkLiquiditySpread line 1980, does the multiplication (removedLiquidity * DECIMALS) lose precision for very small or very large liquidity values when compared against maxSpread, allowing spread limit bypasses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_22f600cc-dcfe-42f9-9c63-6df8b912abfe",
+    "timestamp": "2025-12-24 19:35:08.751532",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Tick Arithmetic Overflow] Can operations using tickDeltaLiquidation in PanopticPool (such as comparing tick deltas) overflow when currentTick and TWAP tick are at opposite extremes of int24 range (-887272 to 887272), causing liquidation validation to fail?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1f4818e5-03fd-4eeb-8aba-468a1445ea5b",
+    "timestamp": "2025-12-24 19:35:27.022690",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Buffer Multiplication Overflow] When bpDecreaseBuffer multiplies tokenData.leftSlot() in RiskEngine.isAccountSolvent() calculations, can this overflow for accounts with large maintenance requirements, causing solvency checks to incorrectly pass or fail?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0b597a54-0d97-4454-8018-2106a35c6dd9",
+    "timestamp": "2025-12-24 19:35:46.271351",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit() + builderSplit()] [Split Rounding] When protocolSplit and builderSplit are applied to sharesToBurn in CollateralTracker lines 1566 and 1571, can rounding errors cause the sum of transferred shares to exceed sharesToBurn, causing an underflow in the option owner's balance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_40b289fd-285f-4ce5-be8c-4c693dcffee3",
+    "timestamp": "2025-12-24 19:36:07.035448",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: premiumFee()] [Rounding Manipulation] In CollateralTracker.settleBurn line 1623, does the mulDivRoundingUp with premiumFee always round in the protocol's favor, or can attackers structure premium amounts to exploit rounding that minimizes their commission payments?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dfceb4be-7d64-4290-9c9c-313091ff4c8c",
+    "timestamp": "2025-12-24 19:36:28.919211",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee()] [Division Precision] When notionalFee is used in CollateralTracker.settleMint line 1555 with mulDivRoundingUp(commission, notionalFee, DECIMALS), can the division by DECIMALS=10_000_000 cause precision loss for small commissions that allows fee evasion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_67ce2155-6793-4244-bc36-be0a1c9b3e4e",
+    "timestamp": "2025-12-24 19:36:52.245959",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Shift Precision Loss] Do the left shift operations (shl) in the assembly block properly handle precision when shifting large parameter values, or can intermediate calculations lose significant bits that corrupt the final encoded RiskParameters?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_09024034-8789-4f8d-aa66-8186b060e171",
+    "timestamp": "2025-12-24 19:37:15.944819",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Addition Overflow] Can the unchecked assembly additions in lines 65-77 overflow when combining multiple large parameter values, causing the resulting RiskParameters to wrap around and encode completely different values that bypass all safety checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_817d151b-6038-4aa1-83b4-209bc9f6e15e",
+    "timestamp": "2025-12-24 19:37:40.502761",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode()] [Permanent Safe Mode] If safeMode bits become stuck at maximum value (15) due to encoding errors or oracle manipulation, can this permanently enable restrictive safe mode that prevents all or most protocol operations, effectively bricking the pool?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_478960a3-103b-4819-a754-8b181d8d7b06",
+    "timestamp": "2025-12-24 19:38:07.109759",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode() + notionalFee()] [Fee Reduction Attack] Do higher safeMode values trigger reduced notionalFee charges in CollateralTracker, and if so, can attackers manipulate oracle conditions to activate safe mode and mint positions with lower commission fees during volatility?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d4d79286-4bb7-42f2-b3c8-78c320bbbe1b",
+    "timestamp": "2025-12-24 19:38:34.600654",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode()] [Lock Mode Override] Can an attacker manipulate the lockMode component (adds 3 to safeMode per line 932-933) to push safeMode above thresholds used by PanopticPool for operation restrictions, causing unintended DoS even when market conditions are stable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e6f87403-e2e9-49b3-88f9-3424c0739a7b",
+    "timestamp": "2025-12-24 19:39:03.478753",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode()] [Safe Mode State Confusion] Since RiskEngine.isSafeMode() can return values 0-7 (sum of 3 boolean conditions + lockMode per lines 934-938), but safeMode field allows 0-15, can the extra 8 undefined states cause protocol behavior inconsistencies?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2053d550-ce3e-4329-bb7a-002072ca75da",
+    "timestamp": "2025-12-24 19:39:33.843018",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode()] [Safe Mode Bypass] Can an attacker exploit the 4-bit safeMode encoding to inject values outside the expected 0-7 range returned by RiskEngine.isSafeMode(), causing PanopticPool to misinterpret safe mode states and allow risky operations during market instability?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_34021f9b-5310-4f8a-9fe2-d257741b0987",
+    "timestamp": "2025-12-24 19:40:03.506549",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Spread Calculation Overflow] Can the multiplication (removedLiquidity * DECIMALS) in PanopticPool._checkLiquiditySpread line 1980 overflow when positions approach maxSpread limits with large liquidity amounts, causing the spread check to incorrectly pass and allow oversized positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_22dff88b-e66c-4708-b81d-cbc7a6668010",
+    "timestamp": "2025-12-24 19:40:33.108819",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Liquidity Concentration Attack] If maxSpread is encoded at its maximum 22-bit value (~4.2M representing 420x), does PanopticPool._checkLiquiditySpread() effectively become disabled, allowing attackers to remove 99.76% of liquidity and corner specific price ranges?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6b143945-5558-4fbc-9171-c30f260c0fd2",
+    "timestamp": "2025-12-24 19:41:04.641164",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Spread Limit Gaming] Can an attacker repeatedly mint and burn positions to probe the exact maxSpread threshold, then create positions that maximize liquidity removal up to but not exceeding this limit, effectively monopolizing liquidity chunks without triggering spread checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b5a89220-e519-4bf4-a954-680f3780e198",
+    "timestamp": "2025-12-24 19:41:36.049875",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Inconsistent Limits] Can an attacker exploit inconsistency between the maxLegs value in RiskParameters (up to 127) and the hardcoded MAX_OPEN_LEGS=25 in PanopticPool to open positions that violate the contract's assumptions about maximum complexity?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_532d91d7-4f50-4638-b160-1dc0671c3d29",
+    "timestamp": "2025-12-24 19:42:05.386719",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Position Hash Corruption] Can maxLegs values exceeding the 7-bit constraint (>127) corrupt the s_positionsHash storage in PanopticPool._updatePositionsHash() by overflowing into adjacent storage slots, potentially allowing bypasses of the position limit check?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1cd063f7-2691-42b5-a754-30f220b8ec3f",
+    "timestamp": "2025-12-24 19:42:33.798304",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Liquidation Gas Griefing] If maxLegs is set to a high value (e.g., 100+), can an attacker create maximally complex positions that cost more gas to liquidate than the liquidation bonus provides, discouraging liquidations and allowing insolvent positions to persist?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1b18af0b-5d4a-48a2-a532-0c84fc9a82ca",
+    "timestamp": "2025-12-24 19:43:01.733272",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Position Complexity DoS] Can an attacker create positions approaching maxLegs limit (up to 127 per 7-bit encoding) to cause gas exhaustion in PanopticPool operations that iterate over legs, such as liquidation, settlement, or premium calculations, effectively DoS'ing position management?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d26453c2-c370-46a2-adf3-01ec99db30d4",
+    "timestamp": "2025-12-24 19:43:29.709080",
+    "report_generated": false
   }
 ]
