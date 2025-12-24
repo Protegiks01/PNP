@@ -1198,5 +1198,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dcac218b-0441-4c7e-8f59-4bd33bf7530e",
     "timestamp": "2025-12-24 17:39:06.796223",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Latest tick vs median divergence] The function returns both the median and latest tick - can an attacker exploit large divergences between these values by timing operations to occur when this spread is maximal, enabling favorable oracle prices for position operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0ca98d7d-adcd-428e-b7b6-f0f42c6205b7",
+    "timestamp": "2025-12-24 17:40:26.372294",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Sort manipulation impact] The function relies on `Math.sort(ticks)[cardinality / 2]` - if the Math.sort implementation has vulnerabilities or if an attacker can influence the tick values through pool manipulation, can they bias the median towards favorable liquidation or solvency outcomes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_26ad9bdb-025f-4bf6-a6dd-6109254d68a2",
+    "timestamp": "2025-12-24 17:40:39.464307",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Array out of bounds] When creating arrays `new int256[](cardinality)` and accessing them with loops to cardinality+1, can an attacker provide parameters that cause out-of-bounds access, potentially reading uninitialized memory?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e5d0082b-c263-4336-9662-3d3daddb41b9",
+    "timestamp": "2025-12-24 17:40:52.794184",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Observation staleness] Can an attacker exploit stale observations in the Uniswap pool where old observations are not updated frequently, allowing them to craft scenarios where the median price significantly deviates from current market prices?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f962cdb8-32d7-4216-a02a-2b71b5595bea",
+    "timestamp": "2025-12-24 17:41:06.595409",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Unchecked tick arithmetic] The tick calculation is performed in an unchecked block - can the subtraction `tickCumulatives[i] - tickCumulatives[i + 1]` overflow for positions with extremely large tick cumulatives, producing incorrect average ticks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ad287382-18d3-4fa8-8bb1-89b5a623f9a0",
+    "timestamp": "2025-12-24 17:41:21.362171",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Median calculation with even cardinality] The function assumes cardinality is odd for median calculation `cardinality / 2` - if an attacker can influence cardinality to be even, does this produce incorrect median values that could be exploited for liquidation or solvency manipulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_16c1c0bc-711d-4e50-8645-1ce401101ad8",
+    "timestamp": "2025-12-24 17:41:37.518570",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Integer overflow in index calculation] The observation index is calculated with `(int256(observationIndex) - int256(i * period)) + int256(observationCardinality)) % observationCardinality` - can overflow in `i * period` cause the function to read incorrect observations, corrupting the median price?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ed101990-c850-4557-aaf4-c8a22b434311",
+    "timestamp": "2025-12-24 17:41:57.121362",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Division by zero in TWAP] When computing `(tickCumulatives[i] - tickCumulatives[i + 1]) / int256(timestamps[i] - timestamps[i + 1])`, can an attacker exploit scenarios where timestamps[i] == timestamps[i+1] (same block observations), causing division by zero and reverting critical oracle operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1f27c43e-007f-4e25-bdd8-c3088d700062",
+    "timestamp": "2025-12-24 17:42:16.478250",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Period parameter exploitation] By setting a large period value relative to observationCardinality, can an attacker force the observation index calculation `(int256(observationIndex) - int256(i * period)) + int256(observationCardinality)) % observationCardinality` to access the same observation multiple times, producing a manipulated median?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b7158268-e91f-4572-89d7-6013e37e7517",
+    "timestamp": "2025-12-24 17:42:37.692800",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: computeMedianObservedPrice()] [Oracle manipulation via cardinality] Can an attacker manipulate the median calculation by choosing a small cardinality value (e.g., cardinality=1) to reduce the window of observations, making the oracle more susceptible to short-term price manipulation in the Uniswap pool?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1fa39b4e-e61e-4623-80bc-a4bad04a964e",
+    "timestamp": "2025-12-24 17:42:59.909794",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: hasNoDuplicateTokenIds()] [Loop boundary exploitation] Can an attacker provide an array length that when multiplied by 0x20 in `mul(i, 0x20)` causes integer overflow in the offset calculation, potentially reading wrong memory locations and missing duplicates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9f262f7e-b356-4bf1-be91-9962a9b78967",
+    "timestamp": "2025-12-24 17:43:23.414543",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: hasNoDuplicateTokenIds()] [Memory corruption via assembly] Does the assembly code's use of `mstore(0x00, ...)` and `return(0x00, 0x20)` correctly clean up memory and prevent any state corruption that could affect subsequent operations in the same transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d241a9d4-1504-4700-b5bb-eeba0af86ef2",
+    "timestamp": "2025-12-24 17:43:47.823361",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: hasNoDuplicateTokenIds()] [Early return bypass] The function returns true immediately for arrays with length < 2 - can an attacker exploit this by splitting positions across multiple transactions with single-element arrays to bypass duplicate checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7217e8d4-38e9-4324-8d9d-0c8df684f5a5",
+    "timestamp": "2025-12-24 17:44:12.541989",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: hasNoDuplicateTokenIds()] [Calldata offset manipulation] The assembly code uses `arr.offset` to read tokenIds - could an attacker manipulate calldata structure to cause the function to read beyond array boundaries or compare incorrect values, bypassing duplicate detection?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_bd2c92de-6490-4336-b836-5d40a45fd2d6",
+    "timestamp": "2025-12-24 17:44:38.672443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: hasNoDuplicateTokenIds()] [Assembly gas griefing] The function uses assembly for O(n²) comparison - can an attacker pass an extremely large array of tokenIds (approaching calldata size limits) to cause excessive gas consumption, leading to DoS of position operations that call this function?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f5acc397-fa21-4788-93ea-da3f8e241004",
+    "timestamp": "2025-12-24 17:45:05.275428",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Prime modulus selection vulnerability] Are PRIME_MODULUS_124_0 (2^124 - 59) and PRIME_MODULUS_124_1 (2^124 - 615) properly chosen to prevent algebraic attacks, or could their specific structure be exploited to find hash collisions more efficiently?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_40a22d17-1ad4-4a9e-8492-c14d92a59c2c",
+    "timestamp": "2025-12-24 17:45:27.657149",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Hash space exhaustion] With 248-bit hash space split into two 124-bit lanes with specific primes, can an attacker analyze the hash distribution to find clusters of collisions, enabling targeted attacks on position tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3e65b443-1c9b-4885-94da-1cf16a8b82d2",
+    "timestamp": "2025-12-24 17:45:50.424873",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Zero item handling] What happens if item=0 is passed to homomorphicHash()? Does this produce a valid hash update or could it be exploited to create neutral elements in the hash set that don't change the hash value?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b276f85a-3236-4f30-be10-6501eb640e20",
+    "timestamp": "2025-12-24 17:46:12.360737",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Unchecked lane reconstruction] The final hash is reconstructed as `hash0 + (hash1 << 124)` in unchecked block - could this overflow or produce values exceeding 248 bits, corrupting the upper 8 bits used for leg counting in updatePositionsHash()?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_59cdaaff-e24f-4095-90f8-ae7e8141b36d",
+    "timestamp": "2025-12-24 17:46:34.652904",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Keccak256 preimage attack] The function hashes items using `EfficientHash.efficientKeccak256(abi.encode(item))` - can an attacker find two different tokenIds that produce the same keccak256 hash, leading to position hash collisions and enabling duplicate position attacks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_90383de6-83ef-469b-b24e-a0aa1ef07430",
+    "timestamp": "2025-12-24 17:46:57.413837",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Lane mask boundary] The LANE_MASK_124 (0xfffffffffffffffffffffffffffffff) is used to isolate 124-bit lanes - can an attacker provide hash or item values where bits beyond 124 bits in each lane cause incorrect masking and hash corruption?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fd81a3e5-8983-408f-b39e-6456bc9b4afa",
+    "timestamp": "2025-12-24 17:47:20.274127",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Subtraction mode vulnerability] When addFlag=false, the function computes `PRIME_MODULUS_124_X - (item_hX % PRIME_MODULUS_124_X)` - can an attacker craft item values where this subtraction creates specific hash patterns that collide with legitimate positions, enabling position spoofing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6687c1bb-8a31-4813-8a22-ea5d45de2724",
+    "timestamp": "2025-12-24 17:47:43.957873",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [Modular arithmetic exploitation] In the LtHash implementation, does the modular arithmetic with `addmod(lane, newItem, PRIME_MODULUS_124_X)` handle edge cases correctly when lane or newItem equals the prime modulus, potentially causing unexpected hash values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_406c7e28-1306-4fdf-a807-91596c64e97f",
+    "timestamp": "2025-12-24 17:48:08.151006",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: homomorphicHash()] [LtHash lane collision] The current implementation uses LtHash with k=2 lanes and different primes (PRIME_MODULUS_124_0 and PRIME_MODULUS_124_1) - can an attacker find item values where both lanes produce collisions simultaneously, allowing duplicate position hashes and enabling position tracking manipulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4166e3a6-bd1a-4f1e-9950-b57e4f1a13c9",
+    "timestamp": "2025-12-24 17:48:32.690428",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Hash reversibility exploitation] Given that homomorphic hashing is reversible (XOR is self-inverse), can an attacker exploit this property to remove positions from the hash that they don't actually own, manipulating another user's position tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5db46759-315e-4d81-afbe-3e5b307b32d5",
+    "timestamp": "2025-12-24 17:48:56.867944",
+    "report_generated": false
   }
 ]
