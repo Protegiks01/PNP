@@ -1948,5 +1948,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dfa1add4-20f9-4fda-8e22-f05c035ccf31",
     "timestamp": "2025-12-24 19:33:30.930668",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Integer Overflow] Can an attacker cause the assembly addition operations (lines 65-77) to overflow when combining shifted parameters, potentially wrapping around to create malicious RiskParameters with attacker-controlled fee splits or position limits that bypass protocol safety checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_750fbe81-dd65-44c4-9a78-bd103282d641",
+    "timestamp": "2025-12-24 19:34:40.763351",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Bit Collision] If _safeMode exceeds 4 bits (>15) or _notionalFee exceeds 14 bits (>16383), can these overflow into adjacent parameter fields (lines 68-69), allowing an attacker to simultaneously manipulate safeMode and notionalFee to create undercollateralized positions while avoiding safe mode restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_014f7269-82ac-4a7b-b98c-0cc7eb1163dd",
+    "timestamp": "2025-12-24 19:34:53.460558",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Parameter Validation] Does storeRiskParameters() validate that _maxLegs stays within the 7-bit constraint (<128) as documented (line 22), or can RiskEngine pass values ≥128 that corrupt the feeRecipient field through bit overflow (line 74), potentially redirecting protocol fees to attacker addresses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_84b72420-e1ec-4e0a-9cc3-6096019ab963",
+    "timestamp": "2025-12-24 19:35:07.303735",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Fee Split Overflow] Can an attacker manipulate RiskEngine to pass _protocolSplit + _builderSplit > DECIMALS (10_000_000), causing CollateralTracker.settleMint to transfer more shares than collected as commission (lines 1566-1572), draining the vault through fee extraction beyond 100%?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ce41879b-7dde-4e6a-9755-e8d9a51a4c4e",
+    "timestamp": "2025-12-24 19:35:21.274929",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Shift Overflow] Do the left shift operations (shl) in lines 68-75 properly handle cases where shift amounts combined with parameter values exceed 256 bits, potentially causing silent truncation that corrupts the encoded RiskParameters?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_93aa2c68-ba40-4677-8a88-655498d1943f",
+    "timestamp": "2025-12-24 19:35:36.361997",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [Zero Parameter Attack] If all input parameters are zero, does storeRiskParameters() return a zero-valued RiskParameters that bypasses fee collection in CollateralTracker.settleMint (line 1555), allowing users to mint unlimited positions without paying commission fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f2dd5940-de9d-4c80-a147-0207b1aabbf7",
+    "timestamp": "2025-12-24 19:35:53.247123",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [tickDeltaLiquidation Overflow] Can _tickDeltaLiquidation exceed its 13-bit allocation (>8191) documented in line 19, causing it to overflow into the maxSpread field (line 71), simultaneously manipulating liquidation price bounds and position size limits to enable profitable manipulation attacks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_13b8333b-d1d2-4041-af19-056ca6cf9618",
+    "timestamp": "2025-12-24 19:36:11.077303",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [maxSpread Bit Overflow] Does the 22-bit maxSpread field (line 20) properly constrain _maxSpread to prevent overflow into bpDecreaseBuffer (line 73), which could simultaneously relax position size limits while tightening collateral requirements to trigger mass liquidations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58213c15-84a1-4a4c-8117-6f0e6adece12",
+    "timestamp": "2025-12-24 19:36:30.051357",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [bpDecreaseBuffer Corruption] Can _bpDecreaseBuffer exceed its 26-bit allocation (>67108863) as documented in line 21, corrupting the maxLegs field through bit overflow (line 74) and allowing users to bypass the MAX_OPEN_LEGS limit to open arbitrarily complex positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cf863558-cb5a-4cec-a3d1-ded39cfebe6a",
+    "timestamp": "2025-12-24 19:36:49.662874",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: storeRiskParameters()] [feeRecipient Truncation] If _feeRecipient is passed as a full uint160 address but stored as uint128 (line 23), does the truncation in line 75 corrupt the upper 32 bits, potentially redirecting protocol fees to unintended addresses when converted back to address(uint160()) in CollateralTracker (line 1570)?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_86a077c8-381b-4e54-b6db-962d6ede8080",
+    "timestamp": "2025-12-24 19:37:10.064288",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: safeMode()] [Mask Underflow] Does the 0xF mask in line 90 properly extract only the lowest 4 bits, or can maliciously crafted RiskParameters with bits set beyond position 3 cause safeMode() to return values >15, bypassing RiskEngine.isSafeMode() checks and allowing operations during unsafe market conditions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d72998e4-ac6b-4454-8182-74d94e5893e7",
+    "timestamp": "2025-12-24 19:37:31.844699",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: notionalFee()] [Shift-Mask Mismatch] Can the combination of shr(4) and mask 0x3FFF in lines 99-100 incorrectly extract notionalFee if the premiumFee field bleeds into the notionalFee bits, causing CollateralTracker.settleMint to charge incorrect commission fees that either drain user funds or allow fee evasion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b3c1266b-16cf-4939-bd0b-bceba90303cf",
+    "timestamp": "2025-12-24 19:37:55.074884",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: premiumFee()] [Precision Loss] Does the right shift by 18 bits in line 108 followed by the 0x3FFF mask properly extract premiumFee without precision loss, or can rounding errors cause CollateralTracker.settleBurn to undercharge commission on realized premium (line 1623), allowing users to avoid fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_702747b4-a956-4ba3-adcb-937e6dc635c5",
+    "timestamp": "2025-12-24 19:38:20.845527",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: protocolSplit()] [Overflow Return] Can protocolSplit() return a value exceeding DECIMALS when the underlying bits are corrupted by adjacent field overflow, causing CollateralTracker to transfer more shares to the protocol than intended (line 1566), draining collateral vaults through excessive fee extraction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_56a5d90e-5445-44de-b593-0fdcd6d2d9a3",
+    "timestamp": "2025-12-24 19:38:45.383787",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: builderSplit()] [Fee Split Bypass] If builderSplit() returns zero due to bit corruption or intentional encoding, does CollateralTracker.settleMint skip the builder fee transfer (line 1571), allowing builders to be cheated out of commissions or enabling users to mint positions with lower effective fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ffff7f8e-ca40-4ce2-ad94-15d600f8ed55",
+    "timestamp": "2025-12-24 19:39:10.957608",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Liquidation Bounds Manipulation] Can tickDeltaLiquidation() return a value close to zero when bits are corrupted, causing PanopticPool.dispatchFrom() to reject all liquidations due to overly strict TWAP deviation checks, temporarily freezing liquidations and allowing insolvent positions to accumulate?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a7611961-448a-4810-858c-7181c621c36d",
+    "timestamp": "2025-12-24 19:39:38.329243",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: tickDeltaLiquidation()] [Price Manipulation Window] Conversely, can tickDeltaLiquidation() return the maximum 13-bit value (8191 ticks, ~126% deviation per line 19), allowing liquidators to execute liquidations at heavily manipulated prices that exceed the intended 5% deviation limit (513 ticks), extracting excessive liquidation bonuses?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_426b88d2-fd9b-419f-92a5-29debbbd8462",
+    "timestamp": "2025-12-24 19:40:03.826167",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [Position Size Bypass] Can maxSpread() return corrupted values exceeding the intended MAX_SPREAD of 90_000, allowing users to bypass PanopticPool._checkLiquiditySpread() checks (lines 1963-1987) and mint positions with excessive concentration that removes >99.76% of available liquidity from Uniswap chunks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_08fab74b-29b5-4b94-a4cb-b7c76f482aa9",
+    "timestamp": "2025-12-24 19:40:30.589165",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxSpread()] [DoS Through Zero] If maxSpread() returns zero due to bit field corruption, does PanopticPool._checkLiquiditySpread() reject all long position minting by reverting with EffectiveLiquidityAboveThreshold (line 1986), causing a denial-of-service where users cannot close short positions or rebalance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_26dc2a1f-218d-49d4-8516-6e596116420b",
+    "timestamp": "2025-12-24 19:40:55.539250",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Collateral Bypass] Can bpDecreaseBuffer() return values significantly below the intended BP_DECREASE_BUFFER of 13_333_333 (133%), allowing users to mint positions with insufficient collateral buffers and creating systemic undercollateralization risk when pool utilization changes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ea49b762-2b0f-45fe-85d6-b9b8ce4b4645",
+    "timestamp": "2025-12-24 19:41:19.775357",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: bpDecreaseBuffer()] [Over-Collateralization DoS] Conversely, can bpDecreaseBuffer() return the maximum 26-bit value (~67M representing 6700% collateral), causing PanopticPool._validateSolvency() to require impossibly high collateral that prevents all position minting and effectively DoS's the protocol?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ae0044b5-05e6-46dd-9bad-baca04bd7f61",
+    "timestamp": "2025-12-24 19:41:44.616975",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Position Limit Bypass] Can maxLegs() return values exceeding MAX_OPEN_LEGS=25 hardcoded in PanopticPool, allowing users to bypass PanopticPool._updatePositionsHash() checks and open positions with >33 total legs as mentioned in the README invariants, potentially causing gas exhaustion attacks during liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b70a7d71-015a-4573-b9e0-8ed722689f29",
+    "timestamp": "2025-12-24 19:42:07.645338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: maxLegs()] [Position Limit DoS] If maxLegs() returns zero or a very low value due to bit corruption, can this prevent users from opening any positions by causing TooManyLegsOpen reverts in PanopticPool._updatePositionsHash(), effectively freezing the protocol for new position creation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7e93e332-fe29-49f3-b864-ee28c9ed03b5",
+    "timestamp": "2025-12-24 19:42:32.090993",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: feeRecipient()] [Address Corruption] Does the right shift by 128 bits in line 171 properly extract the full feeRecipient without truncation, or can the conversion to address(uint160()) in CollateralTracker (line 1570) result in address collisions where multiple builder codes map to the same fee recipient?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d89b75fe-cbdb-40eb-9ab2-1f64c46a0bb4",
+    "timestamp": "2025-12-24 19:42:57.157711",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/types/RiskParameters.sol] [Function: feeRecipient()] [Zero Address Exploit] If feeRecipient() returns zero (either intentionally or through corruption), does CollateralTracker.settleMint burn commission shares from the option owner (line 1559) instead of transferring them, effectively confiscating user funds as a hidden fee beyond the documented commission structure?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cd9a123f-39cf-41d1-9698-ecc9be2dbe6a",
+    "timestamp": "2025-12-24 19:43:22.941986",
+    "report_generated": false
   }
 ]
