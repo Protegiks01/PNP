@@ -148,5 +148,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8e2050da-5c0b-4916-9a36-2fd86cd6d542",
     "timestamp": "2025-12-24 16:28:42.406928",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wDivToZero()] [Zero divisor] If y = 0, this causes division by zero - does calling code validate inputs, or can attackers trigger reverts in critical paths?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_12bc0579-231a-4ec8-8807-f3a6a96e054d",
+    "timestamp": "2025-12-24 16:29:50.421000",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wMulToZero()] [Negative number handling] For negative x or y values, does division correctly maintain sign, and can mixed signs cause unexpected truncation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cc0a35e4-8c48-4372-84a0-c79365a6d046",
+    "timestamp": "2025-12-24 16:30:03.519602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wMulToZero()] [Truncation toward zero] The function rounds toward zero instead of using banker's rounding - can this bias be exploited in repeated calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d8528405-3294-4202-91cc-4ee255177a31",
+    "timestamp": "2025-12-24 16:30:16.711992",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sTaylorCompounded()] [Accumulated term calculation] Each term depends on the previous - can precision loss accumulate from secondTerm through fourthTerm, causing significant errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_62001e98-1deb-4b29-9a10-174502e01465",
+    "timestamp": "2025-12-24 16:30:30.676532",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sTaylorCompounded()] [Zero scale DoS] If s = 0 is passed, this would cause division by zero in term calculations - does calling code validate scale values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a084ecf9-bcdf-4ac8-a644-c670c13e9a3a",
+    "timestamp": "2025-12-24 16:30:46.153551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sTaylorCompounded()] [Custom scale parameter] The function accepts custom scale s instead of using WAD - can malicious scale values cause overflow or underflow in term calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_df6b8cd5-69e4-47e9-b20b-5d1f8b3d9586",
+    "timestamp": "2025-12-24 16:31:01.954455",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sTaylorCompounded()] [Four-term vs three-term] This function uses four terms while wTaylorCompounded() uses three - can inconsistent Taylor approximations between different protocol components cause arbitrage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_712707c9-6b6f-4f8b-b250-e0cb691fbab8",
+    "timestamp": "2025-12-24 16:31:19.812813",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wTaylorCompounded()] [Sum overflow] Can the sum of firstTerm + secondTerm + thirdTerm overflow, and would this cause interest calculations to wrap around, crediting incorrect amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8d7aa6bc-2189-49da-bfce-c002f5bd7bce",
+    "timestamp": "2025-12-24 16:31:38.364826",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wTaylorCompounded()] [Denominator in mulDiv] The secondTerm divides by 2*WAD and thirdTerm by 3*WAD - can these denominators cause precision loss that accumulates over multiple interest accrual periods?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9581ce52-9b60-481a-947a-0a4ad36617fe",
+    "timestamp": "2025-12-24 16:31:59.242505",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wTaylorCompounded()] [Precision loss in Taylor series] The function only uses three terms - can this cause significant approximation errors for large x*n values, leading to incorrect compound interest calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7b56c6bb-92d1-49d4-9ff0-5606e3562e57",
+    "timestamp": "2025-12-24 16:32:20.611598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: wTaylorCompounded()] [Term overflow] Can large values of x and n cause firstTerm = x * n to overflow, affecting interest rate calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2fd29bcf-e038-4c2d-9f29-ba3bf6e99e96",
+    "timestamp": "2025-12-24 16:32:43.329083",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sort()] [Array mutation] Since sort() modifies the input array in-place, can this cause issues if the original array is needed elsewhere in the transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_046e7480-9f04-4eaa-b160-8cd1898cf943",
+    "timestamp": "2025-12-24 16:33:07.231848",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sort()] [Single element array] For arrays with length 1, does the function unnecessarily perform operations, and could this waste gas in oracle median calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_577636e2-489a-46af-ba07-f457125a5ea0",
+    "timestamp": "2025-12-24 16:33:31.450464",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: sort()] [Empty array handling] Does sort() handle empty arrays (data.length = 0) correctly, and would this cause underflow in 'data.length - 1' calculation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_db8190e7-e89f-4cec-a253-963670f5bf4e",
+    "timestamp": "2025-12-24 16:33:55.442322",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: quickSort()] [Partition edge cases] When all array elements are equal, does the partitioning logic handle this correctly without infinite recursion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1ebd1f2a-6e19-4e94-841b-3024ca5bd257",
+    "timestamp": "2025-12-24 16:34:20.371348",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: quickSort()] [Infinite loop condition] The while loop condition 'i < j' combined with increment/decrement - can specific pivot values cause i and j to never converge, creating infinite loops?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ca07145b-674b-4855-8211-305b05494b9a",
+    "timestamp": "2025-12-24 16:34:44.155015",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: quickSort()] [Integer overflow in pivot calculation] Can left + (right - left) / 2 overflow for extreme left/right values, causing out-of-bounds array access?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c383443c-b99e-43aa-a9ab-50c69a2a63cc",
+    "timestamp": "2025-12-24 16:35:07.302953",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: quickSort()] [Worst-case pivot selection] The pivot is chosen as arr[uint256(left + (right - left) / 2)] - can an attacker provide pre-sorted or specially crafted arrays that force O(n²) behavior, causing gas exhaustion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c147eff3-9fe6-452a-acd5-a2562ce69969",
+    "timestamp": "2025-12-24 16:35:30.808121",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: quickSort()] [Stack depth DoS] For very large arrays or adversarial inputs, can the recursive quickSort() exceed stack depth limits, causing DoS in operations requiring sorted oracle observations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_1d93c20d-edc0-46e8-af4c-2c8e9d07e9fa",
+    "timestamp": "2025-12-24 16:35:56.294649",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: unsafeDivRoundingUp()] [Unsafe naming implications] The function is named 'unsafe' but used in production - can developers misuse this expecting it to revert on zero division?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8cacc3fd-5024-42ed-b191-5932567f90de",
+    "timestamp": "2025-12-24 16:36:22.157901",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: unsafeDivRoundingUp()] [Zero denominator handling] The function returns 0 when b = 0 instead of reverting - can this silent failure cause incorrect calculations in critical paths?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_60c653c9-6bdb-445c-a7a1-e51cc11f4b17",
+    "timestamp": "2025-12-24 16:36:48.564989",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWadRoundingUp()] [Interest accrual rounding] If used in compound interest calculations, can rounding consistently favor borrowers or lenders, causing imbalance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9602b11f-7ca0-4bd9-b881-78569b5922bc",
+    "timestamp": "2025-12-24 16:37:15.467857",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWad()] [Bit shift and OR operation] The operation 'prod0 |= prod1 << 238' - can overflow in prod1 << 238 corrupt the final result?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_be4200bf-b550-4323-bcf1-0aa46b7bce8e",
+    "timestamp": "2025-12-24 16:37:42.777962",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWad()] [Modular inverse magic constant] The hardcoded inverse 0xaccb18165bd6fe31ae1cf318dc5b51eee0e1ba569b88cd74c1773b91fac10669 - is this mathematically correct for 5^18 mod 2^256?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0831ff68-e27e-4762-9912-0617422daac6",
+    "timestamp": "2025-12-24 16:38:08.143498",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/libraries/Math.sol] [Function: mulDivWad()] [Two-factor decomposition] The function decomposes 10^18 = 2^18 * 5^18 and processes separately - can errors in this decomposition cause incorrect results?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_426ecc40-65f2-4ce1-a23e-db966bfe8c2b",
+    "timestamp": "2025-12-24 16:38:34.039874",
+    "report_generated": false
   }
 ]
