@@ -2398,5 +2398,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_913089eb-c18f-44c0-b08c-aa94887f8c3b",
     "timestamp": "2025-12-24 19:01:13.957097",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: swapInAMM()] [ITM Amount Extraction] Lines 724-725 extract itm0/itm1 from itmAmounts - can overflow in LeftRightSigned cause incorrect signs leading to swaps in wrong direction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3cb55d9c-7f22-43b7-8310-fa06107b37dd",
+    "timestamp": "2025-12-24 19:02:24.220828",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _burnLiquidity()] [Burn Return Values] Uniswap.burn returns amounts but doesn't verify liquidity was actually burned - can zero-liquidity burns return non-zero amounts and corrupt accounting?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_83607c96-5b4a-4660-8538-e759b45ace63",
+    "timestamp": "2025-12-24 19:02:37.490287",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _burnLiquidity()] [Negative Amount Handling] Lines 1178-1182 create negative int128 values in unchecked block - can extremely large amounts cause the negation to overflow and produce positive values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a5248246-ff42-44e9-96d1-210959beb576",
+    "timestamp": "2025-12-24 19:02:51.592221",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _mintLiquidity()] [Mint Return Values] Uniswap.mint returns (amount0, amount1) but never validates these match expected values - can malicious pools return incorrect amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_17f84963-4697-4973-bc44-086a1ac6dee5",
+    "timestamp": "2025-12-24 19:03:05.612092",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _mintLiquidity()] [Amount Cast Safety] Lines 1151-1154 cast uint256 amounts to int256 then int128 - can amount0 or amount1 from Uniswap.mint exceed int128.max and cause overflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c2a6c21b-8510-41a0-9eb7-e0af05f05cc5",
+    "timestamp": "2025-12-24 19:03:20.728428",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _mintLiquidity()] [Callback Data Encoding] Lines 1127-1136 encode callback data with msg.sender as payer - can this be exploited if msg.sender is a contract that hasn't approved tokens?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3b697506-6d55-4ad6-a3b2-6c5d020d02f7",
+    "timestamp": "2025-12-24 19:03:37.079313",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [Collect Skip Condition] Line 1023 only collects if currentLiquidity.rightSlot() > 0 - can new positions skip fee collection and allow fees to accumulate incorrectly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6c8c9825-bb43-4109-b97f-6749254b5e04",
+    "timestamp": "2025-12-24 19:03:54.640051",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [FeesBase Rounding] Line 1038 updates s_accountFeesBase with roundUp=true - can this intentional rounding be exploited to accumulate rounding errors that favor attackers over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_623d3341-6d3b-4e66-a460-6095bd9e410a",
+    "timestamp": "2025-12-24 19:04:13.374112",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [CurrentLiquidity Stale Read] Line 943 reads currentLiquidity before any state updates - can reentrancy or concurrent transactions cause this value to be stale when used later?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e33f670c-80b9-4746-bd8c-07846c1739b7",
+    "timestamp": "2025-12-24 19:04:33.731910",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [IsBurn Flag Confusion] Lines 962 and 985 check isBurn flag - can the combination of isLong=0 and isBurn=true (closing long position as short) corrupt removedLiquidity tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_82c401df-c6a0-437a-80cb-d18616c08b1b",
+    "timestamp": "2025-12-24 19:04:56.360402",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [IsLong Flag Manipulation] The isLong parameter comes from tokenId.isLong(leg) - can bit manipulation in TokenId encoding cause isLong to be neither 0 nor 1, breaking logic at lines 955 and 965?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_256e7549-9586-49e3-b809-17f5735da74f",
+    "timestamp": "2025-12-24 19:05:19.766498",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [UpdatedLiquidity Overflow] Lines 958 and 979 compute updatedLiquidity - can adding/subtracting chunkLiquidity cause uint128 overflow in extreme cases?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c36c085f-8d7b-4f51-93a8-a6d26d9762b9",
+    "timestamp": "2025-12-24 19:05:43.874543",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [Removed Liquidity Manipulation] Lines 963 and 986 modify removedLiquidity - can an attacker alternate mint/burn operations to cause removedLiquidity to overflow or become negative?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4421a062-65ab-42ce-b019-eb2d65245762",
+    "timestamp": "2025-12-24 19:06:08.986426",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [Starting Liquidity Underflow] Line 969 checks startingLiquidity < chunkLiquidity for long positions - but can concurrent burns cause startingLiquidity to decrease between check and line 979, causing underflow?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_18526b77-3f78-406f-8daa-59e3faf985ce",
+    "timestamp": "2025-12-24 19:06:35.176587",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [Zero Liquidity Revert] Line 953 reverts if chunkLiquidity == 0 - but Uniswap allows burning 0 liquidity as a poke - can this asymmetry brick positions that were partially closed?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c99a822e-167b-4ed9-96d3-a075a179e7e4",
+    "timestamp": "2025-12-24 19:07:02.144099",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createLegInAMM()] [Position Key Collision] The positionKey at line 929 uses keccak256 of pool, sender, tokenType, ticks - can different leg combinations produce identical keys and corrupt liquidity tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2ce9bc5a-b0d2-44a2-b0f8-679f554b47a4",
+    "timestamp": "2025-12-24 19:07:30.944146",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Leg Loop Counter] The unchecked ++leg at line 889 could theoretically overflow after 2^256 iterations - can malformed tokenId with countLegs() returning max uint256 cause infinite loop?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_84b814c5-4f1f-49d0-8ef8-32ea7dd1b6df",
+    "timestamp": "2025-12-24 19:08:01.315089",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [TokenType ITM Calculation] Lines 828-836 compute ITM amounts based on tokenType - can mismatched tokenType between legs cause incorrect ITM swap amounts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e0237465-e64c-4f8d-ab0b-025a1b81f042",
+    "timestamp": "2025-12-24 19:08:31.689267",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Enforced Tick Bypass] Lines 857-859 check ticks are within enforced range only during mint (!isBurn) - can burning positions outside enforced ticks corrupt state if they were minted before tick range was narrowed?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b10f7fed-5bcd-4a35-8595-db87d10eddf7",
+    "timestamp": "2025-12-24 19:09:03.294961",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Tick Spacing Validation] Line 847 validates tickLower/tickUpper are multiples of tickSpacing - can an attacker manipulate tokenId encoding to pass this check but create invalid tick ranges?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_17d4478e-02f0-4792-86bf-ad9eea999c24",
+    "timestamp": "2025-12-24 19:09:33.238348",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [ITM Swap Condition] Line 901 only swaps if LeftRightSigned.unwrap(itmAmounts) != 0 - can both slots be zero while individual slots are non-zero due to offset cancellation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b7a5ad43-a1a7-49a4-b2b5-cca09bfb1675",
+    "timestamp": "2025-12-24 19:10:00.994893",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Int128 Max Check] Line 896 checks amount0/amount1 <= type(int128).max - 4, but why subtract 4? Can edge cases where amounts are exactly int128.max-3 to int128.max-1 cause issues?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_b9916fe3-c6fb-45b3-84f8-4c7c616fe95a",
+    "timestamp": "2025-12-24 19:10:28.887350",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Amount0/Amount1 Overflow] Lines 864-866 accumulate amount0/amount1 in unchecked block - can large multi-leg positions cause these to overflow uint256 before the int128 check at line 896?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ba0fdc67-3f0a-437f-98c4-f8997a7e9c5c",
+    "timestamp": "2025-12-24 19:10:56.059814",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Width Zero Leg Handling] Lines 816-837 handle width=0 legs differently, computing ITM amounts without calling _createLegInAMM - can this create inconsistencies in s_accountLiquidity tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ef56e4d7-ad0e-4831-ac1b-1dd909ddea2f",
+    "timestamp": "2025-12-24 19:11:22.199528",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Function: _createPositionInAMM()] [Vegoid Extraction] Line 800 extracts vegoid from tokenId but never validates it matches the pool's vegoid - can mismatched vegoid values cause premium calculations to use wrong spread parameters?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fe14ce14-6f4c-424a-a1d2-6d6a38cf6591",
+    "timestamp": "2025-12-24 19:11:46.547598",
+    "report_generated": false
   }
 ]
