@@ -748,5 +748,155 @@
     "url": "https://deepwiki.com/search/not-found",
     "timestamp": "2025-12-24 17:12:26.430472",
     "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isSafeMode()] [Oracle manipulation] Can an attacker manipulate the spot EMA by executing transactions at precise block timestamps to bypass the externalShock condition (Math.abs(currentTick - spotEMA) > MAX_TICKS_DELTA), allowing them to open undercollateralized positions during volatile market conditions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f67ceb07-3ce3-4ede-a616-aae3c8b2fcfc",
+    "timestamp": "2025-12-24 17:13:29.936032",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isSafeMode()] [Safe mode bypass] Does the internalDisagreement check (Math.abs(spotEMA - fastEMA) > MAX_TICKS_DELTA/2) correctly handle negative tick scenarios where spotEMA and fastEMA have opposite signs, potentially allowing safe mode bypass and enabling liquidations at manipulated prices?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e8f4e17f-7090-44e8-932e-cd4f612f1605",
+    "timestamp": "2025-12-24 17:13:42.796723",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isSafeMode()] [Oracle deviation] Can the highDivergence condition (Math.abs(medianTick - slowEMA) > MAX_TICKS_DELTA*2) be exploited by creating artificial divergence through repeated small trades that shift the median while keeping the slow EMA stable, allowing attackers to trigger or prevent safe mode activation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ebf6b812-a22a-474e-bdd2-e956412014a1",
+    "timestamp": "2025-12-24 17:13:56.007655",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getSolvencyTicks()] [Tick selection] Can an attacker exploit the Euclidean norm calculation (spotTick-medianTick)²+(latestTick-medianTick)²+(currentTick-medianTick)² > MAX_TICKS_DELTA² to force solvency checks at 4 ticks instead of 1, causing gas griefing or allowing positions to pass solvency at one tick but fail at another?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cdfb465b-ac0c-4971-a0bd-eb3a10becbb9",
+    "timestamp": "2025-12-24 17:14:09.824767",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getOracleTicks()] [EMA manipulation] Can the EMA_PERIODS packed structure (120 + 240<<24 + 600<<48 + 1800<<72) be exploited if any of the period values overflow or are miscalculated in OraclePack.getOracleTicks(), allowing oracle price manipulation during solvency checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_06ea3298-e46a-48e3-b1d6-d595b101042e",
+    "timestamp": "2025-12-24 17:14:24.628851",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: twapEMA()] [Price weighting] Does the weighted average calculation (6*fastEMA + 3*slowEMA + eonsEMA)/10 correctly handle extreme tick values near MIN_POOL_TICK or MAX_POOL_TICK that could cause integer overflow or produce manipulated TWAP prices used in collateral calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_cebc6568-4630-446f-bc2a-88d38c36adc4",
+    "timestamp": "2025-12-24 17:14:40.508934",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: computeInternalMedian()] [Median manipulation] Can an attacker exploit the MAX_CLAMP_DELTA (149 ticks) clamping mechanism to artificially limit median tick updates, preventing accurate price discovery and allowing positions to remain solvent when they should be liquidatable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9cb101d3-6ee8-46ee-841b-14ae28e56bf5",
+    "timestamp": "2025-12-24 17:14:58.657763",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: lockPool() / unlockPool()] [Guardian bypass] Can the guardian's lockMode (stored in OraclePack) be bypassed if the safeMode calculation in isSafeMode() overflows when adding lockMode to the sum of externalShock + internalDisagreement + highDivergence, potentially allowing operations in unsafe conditions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_121c55c1-def8-43f0-a727-3d94492c57b1",
+    "timestamp": "2025-12-24 17:15:17.215917",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Bonus extraction] Can a liquidator manipulate the bonusCross calculation (min(balanceCross/2, thresholdCross-balanceCross)) by sandwiching the liquidation with price manipulation to maximize balanceCross, extracting excessive liquidation bonuses beyond the intended 50% of collateral balance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c0bc8281-19af-4427-addb-d1c0b363fc12",
+    "timestamp": "2025-12-24 17:15:37.440038",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Protocol loss] Does the protocol loss calculation (balance0-paid0, balance1-paid1) correctly handle cases where netPaid includes large negative premium values that could underflow when subtracted from shortPremium, causing the protocol to lose funds during liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e947e534-e69d-45d1-bb8f-7e87dd4f4052",
+    "timestamp": "2025-12-24 17:15:59.595554",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Cross-token conversion] Can an attacker exploit the token substitution logic (lines 559-594) where insufficient token0 is converted to token1 using convert0to1 and convert1to0RoundingUp, by manipulating atSqrtPriceX96 to maximize the bonus amounts at the expense of protocol solvency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dd040b3b-f677-467b-970e-a4d03ff783a1",
+    "timestamp": "2025-12-24 17:16:22.051868",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Rounding exploitation] In the requiredRatioX128 calculation (tokenData0.leftSlot() * 2^128 / thresholdCross), can an attacker craft positions where thresholdCross is minimally above zero, causing requiredRatioX128 to overflow or produce incorrect bonus0/bonus1 ratios?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4935687d-17cc-4f6e-b9fd-f20e2d34016d",
+    "timestamp": "2025-12-24 17:16:46.386826",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: getLiquidationBonus()] [Balance manipulation] Can the balance0/balance1 values (tokenData.rightSlot() - shortPremium) become negative if shortPremium exceeds the collateral balance, and does this allow liquidators to extract bonuses from positions that should have zero or negative liquidation value?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f4860f80-374a-4aa7-b6ce-fa8b9b32ffb1",
+    "timestamp": "2025-12-24 17:17:11.265784",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: haircutPremia()] [Premium clawback bypass] Can an attacker structure their position's premiasByLeg array such that the longPremium calculation (sum of -premiasByLeg[i][leg]) underflows or is manipulated to minimize the haircutBase, allowing them to retain premium that should be clawed back during liquidation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a7c472ee-101a-4fed-8a47-c26b9c096b00",
+    "timestamp": "2025-12-24 17:17:37.226199",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: haircutPremia()] [Token conversion exploit] In the cross-token premium conversion logic (lines 658-721), can an attacker exploit the asymmetric handling of collateralDelta0 and collateralDelta1 to maximize longPremium in one token while minimizing protocol loss in the other token?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f003c4a4-5aab-4406-a49b-76ecdacb4f5d",
+    "timestamp": "2025-12-24 17:18:04.134536",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: haircutPremia()] [Rounding accumulation] Does the unsafeDivRoundingUp calculation for prorated haircut amounts (lines 761-766, 778-783) accumulate rounding errors across multiple legs that exceed haircutBase, causing haircutTotal to exceed the intended protocol loss mitigation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0729157e-3af4-4ea6-abbd-25af27c2f90b",
+    "timestamp": "2025-12-24 17:18:31.154827",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: haircutPremia()] [Division by zero] Can longPremium.rightSlot() or longPremium.leftSlot() be zero when calculating prorated haircuts, and does this cause division by zero in the unsafeDivRoundingUp calculation or allow legs to avoid haircuts entirely?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4bda6e63-aafe-4913-8e12-47426b792369",
+    "timestamp": "2025-12-24 17:18:58.362032",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isAccountSolvent()] [Cross-collateral bypass] Can an attacker manipulate the scaledSurplusToken0/Token1 calculations using _crossBufferRatio to artificially inflate their cross-collateral credit, bypassing the solvency requirements (bal0 + convert1to0(scaledSurplusToken1) >= maintReq0)?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9840a5e2-e7b7-47ae-86c5-eceb7fb1f41d",
+    "timestamp": "2025-12-24 17:19:25.387920",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isAccountSolvent()] [Tick manipulation] Does the sqrtPriceX96 < Constants.FP96 condition create different solvency results for the same position when atTick crosses the FP96 boundary, and can attackers exploit this to pass solvency checks by manipulating the price to cross this threshold?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_58707fc7-da80-4467-9871-9439613c782e",
+    "timestamp": "2025-12-24 17:19:52.790310",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isAccountSolvent()] [Buffer exploitation] Can the buffer parameter (multiplied by tokenData.leftSlot() to get maintReq) be manipulated or set to zero by callers to bypass collateral requirements, allowing undercollateralized positions to pass solvency checks?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8c4a1f3b-613a-4b6b-89ec-172252d4fffd",
+    "timestamp": "2025-12-24 17:20:20.321452",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: isAccountSolvent()] [Rounding direction] Do the convert1to0 and convert1to0RoundingUp functions have opposite rounding directions that create an arbitrage opportunity where isSolvent0 && isSolvent1 can both be true for insolvent positions or both false for solvent positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a86155c3-c5cc-4c3e-a05c-073702f3b5f6",
+    "timestamp": "2025-12-24 17:20:46.911707",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getMargin()] [Interest capping] In the insolvent-interest case (interest0 > balance0), can an attacker intentionally accumulate excessive interest to force the capping logic (interest0 = balance0, balance0 = 0), converting what should be a debt into a collateral requirement that makes liquidation less profitable?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0d96a434-499b-488c-83ba-db7cdbf2a951",
+    "timestamp": "2025-12-24 17:21:14.648833",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getMargin()] [Premium addition] Does the unchecked addition of balance0 += shortPremia.rightSlot() + creditAmounts.rightSlot() allow an attacker to overflow balance0 to 2^128, making an insolvent account appear solvent with artificially high collateral?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7a8674ae-c11a-4d72-8b34-fef7d9020882",
+    "timestamp": "2025-12-24 17:21:43.020473",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getMargin()] [Length mismatch] Can the length mismatch check (positionIdList.length != positionBalanceArray.length) be bypassed if an attacker passes arrays with intentionally mismatched but non-reverting lengths that cause incorrect margin calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_10d9fd5e-36e5-4d47-bc5e-5c36ef758b25",
+    "timestamp": "2025-12-24 17:22:12.058657",
+    "report_generated": false
+  },
+  {
+    "question": "[File: ./contracts/RiskEngine.sol] [Function: _getGlobalUtilization()] [Utilization overflow] Can the packed utilization (uint256(utilization0) + (uint256(utilization1) << 16)) overflow if utilization0 or utilization1 approach 2^16, causing incorrect global utilization values that reduce collateral requirements?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c53cd900-33c8-4829-a0b4-db4982a8816f",
+    "timestamp": "2025-12-24 17:22:41.292007",
+    "report_generated": false
   }
 ]
