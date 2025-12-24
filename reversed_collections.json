@@ -1348,5 +1348,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5db46759-315e-4d81-afbe-3e5b307b32d5",
     "timestamp": "2025-12-24 17:48:56.867944",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Unchecked arithmetic in hash update] The final return uses unchecked arithmetic when adding `(newLegCount << 248)` - could this allow an attacker to manipulate the full 256-bit hash value in unexpected ways that break assumptions in calling contracts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dfaebb4c-6613-4893-b0b5-7820b678e3dc",
+    "timestamp": "2025-12-24 17:50:11.401662",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Leg counter manipulation] Can an attacker exploit the separation between the hash (lower 248 bits) and leg counter (upper 8 bits) by causing the leg counter to wrap or manipulate just the counter without changing the hash, breaking position tracking integrity?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_64171ffa-da23-41b2-b29a-712d4fb60768",
+    "timestamp": "2025-12-24 17:50:24.368821",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Hash collision exploitation] Since updatePositionsHash uses XOR-based homomorphic hashing (or additive hashing), can an attacker deliberately create two different sets of positions that produce the same hash value, allowing them to bypass position uniqueness checks or manipulate solvency calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c1b51a29-a7bf-4128-a5fb-a21d6bd15a4c",
+    "timestamp": "2025-12-24 17:50:38.022007",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Zero legs revert bypass] The function reverts if `numberOfLegs == 0`, but could an attacker craft a tokenId that appears valid to other parts of the system but has countLegs() return 0, allowing them to bypass position tracking while maintaining the position in other state variables?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3c0ba1cb-bd96-4c51-a761-aafbe8351bfc",
+    "timestamp": "2025-12-24 17:50:52.027107",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Leg count underflow] When burning a position with addFlag=false, can an attacker close positions in a specific order where `uint8(existingHash >> 248) - numberOfLegs` underflows below 0, reverting the transaction and preventing legitimate position closures, effectively locking funds?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_9d4f4987-5e4f-410e-93d8-03716f0db1e9",
+    "timestamp": "2025-12-24 17:51:07.140196",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: updatePositionsHash()] [Leg count overflow] When adding a position with addFlag=true, can an attacker craft a sequence of position additions where `uint8(existingHash >> 248) + numberOfLegs` overflows uint8 (>255), causing the transaction to revert but potentially leaving the hash in an inconsistent state if called within a complex transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e6541441-a0e8-4d3e-86f2-ee9af98916b8",
+    "timestamp": "2025-12-24 17:51:23.458916",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: numberOfLeadingHexZeros()] [Nibble calculation error] Could the calculation `39 - Math.mostSignificantNibble(uint160(addr))` produce incorrect results for addresses near the uint160 boundaries, leading to wrong pool pattern calculations and potential pool ID collisions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_12005f42-9409-4155-9a84-65b8214a3490",
+    "timestamp": "2025-12-24 17:51:42.050909",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: numberOfLeadingHexZeros()] [Zero address handling] Does the function's special handling of address(0) returning 40 create edge cases in pool creation logic where zero addresses could be used to manipulate pool patterns or cause unexpected behavior in position tracking?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c3ff02dc-1f2d-471f-b34f-ab0277562504",
+    "timestamp": "2025-12-24 17:52:01.261038",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: numberOfLeadingHexZeros()] [Address validation bypass] Can an attacker create positions with specially crafted addresses that have specific numbers of leading hex zeros to manipulate pool pattern generation or collision resistance, potentially allowing them to predict or force pool ID conflicts?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c374c996-f4cc-4858-8c08-5d0a8c286b69",
+    "timestamp": "2025-12-24 17:52:21.566032",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: incrementPoolPattern()] [Unchecked arithmetic exploitation] Since the function uses unchecked arithmetic, can an attacker exploit the uint40 cast and addition to create duplicate poolIds across different pools, allowing cross-pool position manipulation and collateral theft?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0edc6b30-3f94-443f-b5c8-82389e86cefc",
+    "timestamp": "2025-12-24 17:52:42.996604",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: incrementPoolPattern()] [Mask collision] Can an attacker craft a poolId where the TICKSPACING_VEGOID_MASK (0xFFFFFF0000000000) masks out critical bits incorrectly, allowing manipulation of tickSpacing or vegoid parameters while incrementing the pool pattern, potentially bypassing risk calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2862932a-3409-46f5-9471-80ce9263f7ff",
+    "timestamp": "2025-12-24 17:53:05.527244",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: incrementPoolPattern()] [Bit manipulation error] Does the bitwise operation `(poolId & TICKSPACING_VEGOID_MASK) + (uint40(poolId + 1))` correctly handle the case where poolId + 1 overflows uint256, and could this lead to incorrect pool pattern increments that corrupt pool identification logic?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_54378004-147b-4a00-817c-41b86b400a08",
+    "timestamp": "2025-12-24 17:53:29.198465",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/libraries/PanopticMath.sol] [Function: incrementPoolPattern()] [Integer overflow] Can an attacker repeatedly call incrementPoolPattern() with a poolId where the pool pattern (first 40 bits) is near type(uint40).max, causing an overflow that wraps the pool pattern back to 0 and potentially allowing reuse of pool identifiers, leading to position tracking collisions and fund loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_39abefc2-9ca8-45ff-9796-d69b8b1b5df5",
+    "timestamp": "2025-12-24 17:53:54.922699",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: symbol()] [Token symbol dependency] Relies on underlyingToken() symbol - if the underlying token is upgradeable and changes its symbol, will this cause inconsistency?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0ebe9e02-6527-48be-bf9e-f30177d0cef7",
+    "timestamp": "2025-12-24 17:54:21.278165",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: name()] [External call in view] The function delegates to InteractionHelper.computeName() which makes external calls - can this fail or revert for malicious tokens, causing DoS?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4ec27e0c-1956-4b5d-b376-92083b37caf5",
+    "timestamp": "2025-12-24 17:54:49.145523",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: interestState()] [Unpacking order] Returns (rightSlot, leftSlot) as (userBorrowIndex, netBorrows) - is this order consistent with how the data is packed, or could this cause confusion?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fc1a597e-e452-45c3-b6de-05330de6a4c6",
+    "timestamp": "2025-12-24 17:55:17.618134",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: lastInteractionTimestamp()] [Epoch conversion] Returns marketEpoch << 2 to convert epochs back to timestamp - can this lose precision for timestamps not divisible by 4?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a6ff0b3a-33d3-4aa3-a267-87f3b32a61d6",
+    "timestamp": "2025-12-24 17:55:44.989696",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: borrowIndex()] [Index extraction] Returns s_marketState.borrowIndex() which extracts 80 bits - if borrowIndex grows beyond 80 bits over time, will this truncate and return incorrect values?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ed6a67af-97d7-47b2-8db5-57809bc1dad9",
+    "timestamp": "2025-12-24 17:56:12.245002",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: getPoolData()] [View consistency] The function returns s_depositedAssets, s_assetsInAMM, s_creditedShares without accruing interest first - can these values be significantly stale, causing users to make decisions on incorrect data?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_dc38d771-ec96-4dff-890c-e5328f5e728d",
+    "timestamp": "2025-12-24 17:56:41.829993",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _calculateCurrentBorrowIndex()] [View function state consistency] The function calls _interestRateView() which doesn't use transient storage - can this cause the preview to show different interest rates than actual accrual due to utilization differences?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_64fe9ae6-a272-483f-a414-cba626c99a0c",
+    "timestamp": "2025-12-24 17:57:10.366162",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: previewOwedInterest()] [Simulation divergence] This function simulates interest accrual but doesn't call _updateInterestRate() - can the simulated borrowIndex diverge significantly from actual accrual, causing users to be surprised by actual interest owed?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f1d3b865-ae71-45c6-bb48-11b60f78043e",
+    "timestamp": "2025-12-24 17:57:36.378468",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: owedInterest()] [Stale interest calculation] The function calls _owedInterest() which simulates current state without updating storage - can an attacker observe outdated interest amounts and act before interest is actually accrued?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ea46aace-6c39-4eae-b3f4-83d4c5cee0c4",
+    "timestamp": "2025-12-24 17:58:01.253622",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: poolFee()] [Fee extraction] The function uses shr(0xe8, calldataload(add(offset, 121))) to extract 24 bits - can this be manipulated during contract creation to set an incorrect poolFee?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7b0d0266-df55-4bbc-9aa3-d9f7835fdc11",
+    "timestamp": "2025-12-24 17:58:26.875755",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: underlyingIsToken0()] [Bit manipulation] The function uses shr(0xf8, calldataload(add(offset, 20))) to extract a boolean - can incorrect offset calculation or calldata size cause this to read garbage data?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_5c2fd95c-c90e-4a20-9ac4-ce997d626070",
+    "timestamp": "2025-12-24 17:58:53.467432",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: maxRedeem()] [Share conversion underflow] The function uses convertToShares(depositedAssets - 1) - if depositedAssets == 1 and convertToShares(0) rounds to non-zero shares, will this return incorrect max redeemable amount?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f52381c0-6623-4dfb-98ff-335ffc5e6950",
+    "timestamp": "2025-12-24 17:59:19.367576",
+    "report_generated": false
   }
 ]
