@@ -1798,5 +1798,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_17e2c304-640b-4b49-b249-8e1718670c97",
     "timestamp": "2025-12-24 18:19:47.300206",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _poolUtilizationView()] [Rounding manipulation] The calculation uses mulDivRoundingUp - can an attacker exploit the ceiling operation to cause utilization to be reported as higher than actual, triggering unnecessarily high interest rates?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_fb141150-5025-4763-bdfc-e62641c9b086",
+    "timestamp": "2025-12-24 18:20:57.833478",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _poolUtilizationView()] [Division by zero] The function divides by totalAssets() - if totalAssets() becomes 0 through donations or manipulation, will this cause DoS for all utilization-dependent operations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_390593b7-38fe-42d0-9cb3-5d32f5a992b6",
+    "timestamp": "2025-12-24 18:21:10.617161",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _poolUtilization()] [Flash deposit attack] Since the function stores max(storedUtilization, currentUtilization), can an attacker perform a flash deposit to temporarily lower utilization, bypass high interest rates, then withdraw in the same transaction?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4a75dc01-5ead-44b0-b77d-c64e233332a3",
+    "timestamp": "2025-12-24 18:21:23.996112",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _poolUtilization()] [Transient storage manipulation] The function stores utilization in UTILIZATION_TRANSIENT_SLOT using tstore/tload - can an attacker exploit transient storage behavior across multiple calls in the same transaction to manipulate the maximum utilization value used for interest rate calculations?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4d617378-2e66-4aca-b182-3343769af354",
+    "timestamp": "2025-12-24 18:21:37.902777",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateInterestRate()] [rateAtTarget overflow] The function updates s_marketState.rateAtTarget using uint40 - can endRateAtTarget from RiskEngine exceed uint40 max (2^40 - 1), causing truncation and incorrect rate storage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2cf7695b-8774-41f4-b09c-9b932d7c453f",
+    "timestamp": "2025-12-24 18:21:52.589657",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _updateInterestRate()] [Rate manipulation] This function calls riskEngine().updateInterestRate() with _poolUtilizationWad() - can an attacker manipulate pool utilization through flash deposits/withdrawals to cause interest rates to spike or drop unexpectedly?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_77ec1bc9-4bc9-4b0b-a74a-f3d9f1dfd36a",
+    "timestamp": "2025-12-24 18:22:09.094084",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _getUserInterest()] [Zero index bypass] If userBorrowIndex is 0 or currentBorrowIndex equals userBorrowIndex, the function returns 0 - can an attacker manipulate their stored index to be 0 to avoid paying interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3e6f72ff-603d-4d88-8263-bb1517007ebd",
+    "timestamp": "2025-12-24 18:22:26.906829",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _getUserInterest()] [Division precision loss] The interest calculation uses (currentBorrowIndex - userBorrowIndex) / userBorrowIndex - for users with very old positions where userBorrowIndex is small, can this cause precision loss or unexpected rounding that under/overcharges interest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e0d123b5-856d-4755-b59e-ec8d6f99d645",
+    "timestamp": "2025-12-24 18:22:45.989872",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _calculateCurrentInterestState()] [Interest accumulation overflow] The function uses checked arithmetic for _unrealizedGlobalInterest += interestOwed - if s_assetsInAMM is maximized and interest rates are high, can this overflow and revert all operations that call _accrueInterest?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_65afa49f-e264-4324-a567-f5d99dff2715",
+    "timestamp": "2025-12-24 18:23:06.794596",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _calculateCurrentInterestState()] [Epoch manipulation] The function calculates currentEpoch as block.timestamp >> 2 - can an attacker manipulate block.timestamp through miner/validator cooperation to cause deltaTime calculation errors?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c4e4184f-07c9-45e8-896d-5c25e09f543f",
+    "timestamp": "2025-12-24 18:23:28.751091",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _accrueInterest()] [Index update bypass] For insolvent users during deposits (isDeposit=true), the function skips updating their borrow index - can users exploit this by depositing 1 wei repeatedly to defer interest accrual indefinitely while maintaining positions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_6534fadf-2a9f-455a-b1b1-7a5bda311924",
+    "timestamp": "2025-12-24 18:23:51.892216",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _accrueInterest()] [Reentrancy in _burn] The function calls _burn() which updates balances - if _burn has a callback or event that allows reentrancy, can an attacker re-enter _accrueInterest() to manipulate interest state mid-calculation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_ad7d3788-4ef2-4d94-b872-c3b20a5ab629",
+    "timestamp": "2025-12-24 18:24:14.433729",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _accrueInterest()] [unrealizedGlobalInterest clamping] When burntInterestValue > _unrealizedGlobalInterest, the function clamps to 0 - can an attacker exploit this clamping to cause unrealizedGlobalInterest to become permanently zero, preventing future interest distribution?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a516d083-4db7-4379-a47c-1e72be77f0e8",
+    "timestamp": "2025-12-24 18:24:38.673666",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _accrueInterest()] [Borrow index manipulation] The function updates s_marketState.borrowIndex using Math.mulDivWadRoundingUp - can rounding errors accumulate over many interest accrual periods, causing the borrowIndex to grow faster than intended and overcharging borrowers?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0e73e083-b849-4d07-8196-b2a0c96fd327",
+    "timestamp": "2025-12-24 18:25:03.987856",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _accrueInterest()] [Insolvency penalty bypass] When shares > userBalance and !isDeposit, the function applies an insolvency penalty without updating the user's borrow index - can a user exploit this by repeatedly calling operations that trigger _accrueInterest with isDeposit=false, paying partial interest each time while their debt continues compounding?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_25aa65e0-fade-4a28-9b43-e9803d81667e",
+    "timestamp": "2025-12-24 18:25:29.877587",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _accrueInterest()] [Compound interest overflow] The interest calculation uses multiplicative compounding via wTaylorCompounded - if deltaTime is very large (e.g., protocol inactive for months), can the rawInterest calculation overflow uint128, causing interest accrual to fail and freeze the protocol?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e0291946-554b-4cbd-97d7-a434375ea095",
+    "timestamp": "2025-12-24 18:25:57.462381",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: donate()] [Position check bypass] The donate() function calls maxRedeem() which checks numberOfLegs - but can an attacker open a small position, donate shares to benefit their other account, then close the position before getting liquidated?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c06cb7b8-3c6f-410b-91c2-7952357f3ae9",
+    "timestamp": "2025-12-24 18:26:25.693507",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: donate()] [Donation attack] Can a malicious user donate shares in a way that causes the share price to spike, triggering liquidations for users whose collateral value drops below maintenance requirements due to the sudden price change?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4672f6a3-4550-4b8b-a448-7bf0cd80463c",
+    "timestamp": "2025-12-24 18:26:53.264670",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: donate()] [Share price manipulation] The donate() function burns shares without withdrawing assets, increasing share price for remaining holders - can an attacker with a large position donate a small amount, then immediately deposit to mint shares at the new higher price and profit from the price change?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f57a6484-867f-4080-b8c4-08505d416775",
+    "timestamp": "2025-12-24 18:27:21.560324",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: redeem()] [Zero asset redeem] If previewRedeem(shares) returns 0 assets, the function reverts - but can an attacker redeem such small share amounts that assets rounds to near-zero repeatedly, causing storage bloat or gas griefing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_97786e0c-da09-4cb5-90a0-1f259cc51fac",
+    "timestamp": "2025-12-24 18:27:48.525619",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: redeem()] [Max redeem bypass] The function checks shares > maxRedeem(owner) - but maxRedeem() returns 0 for users with positions - can this be bypassed by transferring shares to an address without positions, redeeming, and transferring assets back?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4ae01ff2-9b70-4a8a-a6ef-a985c035a598",
+    "timestamp": "2025-12-24 18:28:15.758425",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: redeem()] [Share manipulation] When redeem() converts shares to assets, if totalAssets() has increased due to donations but totalSupply() hasn't, can an attacker redeem at an artificially high rate, extracting more value than they deposited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_a40449cc-c13d-4757-9e16-55b89cab74b1",
+    "timestamp": "2025-12-24 18:28:42.494712",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: withdraw() with positionIdList] [Premium manipulation] The usePremiaAsCollateral parameter affects solvency calculation - can an attacker toggle this flag to withdraw more collateral than they should by selectively including/excluding accumulated premia?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f717256a-4a3e-4c98-ad83-4112f5faf9df",
+    "timestamp": "2025-12-24 18:29:09.024576",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: withdraw() with positionIdList] [Solvency bypass] The overloaded withdraw() that accepts positionIdList calls validateCollateralWithdrawable() AFTER burning shares and updating s_depositedAssets - can an attacker withdraw first, become insolvent, and have the transaction succeed if the validation is incorrectly implemented?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_8ad63703-1675-4d15-aa3a-585f79804377",
+    "timestamp": "2025-12-24 18:29:36.471586",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: withdraw()] [s_depositedAssets underflow] The function uses checked arithmetic for s_depositedAssets -= uint128(assets) - but if s_depositedAssets was corrupted or manipulated to be less than assets being withdrawn, can this cause DoS preventing all withdrawals?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e0185a30-03a4-4a92-a67a-abe1782049ef",
+    "timestamp": "2025-12-24 18:30:04.282132",
+    "report_generated": false
   }
 ]
