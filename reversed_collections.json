@@ -1948,5 +1948,155 @@
     "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e0185a30-03a4-4a92-a67a-abe1782049ef",
     "timestamp": "2025-12-24 18:30:04.282132",
     "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: withdraw()] [Allowance bypass] The withdraw() function checks allowance[owner][msg.sender] and decrements it by shares, not assets - if shares calculated is 0 but assets > 0, can an attacker withdraw assets without consuming allowance?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e9089f75-5103-4ffc-b012-46402b7d27fc",
+    "timestamp": "2025-12-24 18:31:13.563292",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: previewWithdraw()] [Rounding manipulation] Since previewWithdraw() uses mulDivRoundingUp, users pay slightly more shares than assets - can an attacker exploit this by withdrawing 1 wei repeatedly, causing cumulative rounding errors that drain users' share balances?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e84800e5-aa3b-47b8-b0ba-c05338a91183",
+    "timestamp": "2025-12-24 18:31:26.344110",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: _maxWithdrawWithPositions()] [Withdrawal with positions] This internal function doesn't check numberOfLegs - can it be called through the overloaded withdraw() function to allow users with positions to withdraw collateral, making them insolvent?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_d661e507-01e6-400a-8ac8-3390ed584557",
+    "timestamp": "2025-12-24 18:31:39.481030",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: maxWithdraw()] [Available assets manipulation] The calculation uses min(depositedAssets - 1, balance) - can an attacker drain the pool to exactly 1 asset, causing maxWithdraw() to return 0 for all users and temporarily freezing withdrawals?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3abd3723-8c49-4f55-adb1-e4315e9084f0",
+    "timestamp": "2025-12-24 18:31:53.335203",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: maxWithdraw()] [Position check bypass] The maxWithdraw() function returns 0 if panopticPool().numberOfLegs(owner) != 0 - can an attacker manipulate the numberOfLegs count through delegation or by having positions in a different pool to bypass withdrawal restrictions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f7f063c7-e0e5-469d-8cab-6eedcac3d739",
+    "timestamp": "2025-12-24 18:32:08.232902",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: mint()] [Zero share mint] If assets calculated from previewMint() equals 0, the function reverts with BelowMinimumRedemption - but can an attacker bypass this by minting exactly 1 share repeatedly, accumulating negligible share positions that clutter storage?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_93da930f-84a5-4146-89bd-5521a4860d35",
+    "timestamp": "2025-12-24 18:32:24.446909",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: mint()] [Asset calculation error] The mint() function calls previewMint() which rounds up - if an attacker mints the maximum possible shares (approaching uint256 max), can the asset calculation overflow or cause s_depositedAssets to exceed uint128 max?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_05778b09-4a82-4151-bec4-59cfc5b7401a",
+    "timestamp": "2025-12-24 18:32:41.722539",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: deposit()] [Share price manipulation] Can an attacker sandwich their deposit() between a large withdrawal and a donation, causing their shares to be minted at an artificially low price and then immediately redeemed at a higher price for profit?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e43b2789-4ce0-4b5d-b96c-b5abd7578221",
+    "timestamp": "2025-12-24 18:32:59.984597",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: deposit()] [V4 callback manipulation] For Uniswap V4 pools, deposit() calls _settleCurrencyDelta() after updating s_depositedAssets - can an attacker exploit the unlock callback to manipulate pool state or drain funds before the settlement completes?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c6acd173-4e28-40d7-b8fc-ce2731d3fcba",
+    "timestamp": "2025-12-24 18:33:20.126203",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: deposit()] [Max deposit bypass] The function checks assets > type(uint104).max and reverts - but can an attacker bypass this by making multiple deposits in the same transaction or by frontrunning their own deposits to gradually accumulate beyond uint104 max in s_depositedAssets?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e93b0447-64df-4a04-8e3c-9c24080b7a86",
+    "timestamp": "2025-12-24 18:33:41.507437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: deposit()] [Interest accrual timing] Since deposit() calls _accrueInterest(msg.sender, IS_DEPOSIT) at the start, if the user owes more interest than their balance, the isDeposit flag prevents index updates - can this allow users to defer interest payments indefinitely by continuously depositing?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_13ba0aa5-1be1-4204-984d-b82b585e6177",
+    "timestamp": "2025-12-24 18:34:04.422443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: deposit()] [Reentrancy via token callback] When deposit() calls SafeTransferLib.safeTransferFrom() before _mint(), if the underlying token has a callback (e.g., ERC777), can an attacker reenter deposit() to mint shares at a stale price before s_depositedAssets is updated?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_2d1ed81f-b628-4d3b-8453-170697528250",
+    "timestamp": "2025-12-24 18:34:28.601976",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: previewMint()] [Rounding exploit] The previewMint() function uses mulDivRoundingUp to prevent protocol loss - can an attacker exploit the ceiling operation by minting 1 share repeatedly, causing each operation to round up assets required by 1 wei, effectively donating to the protocol at a loss?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_0e0a89ca-dadc-406c-b387-f1bcf42b94c1",
+    "timestamp": "2025-12-24 18:34:53.903390",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: previewDeposit()] [Preview inconsistency] Since previewDeposit() uses the current totalAssets() and totalSupply() but doesn't call _accrueInterest(), can an attacker observe stale interest state and deposit at a more favorable rate than they would receive in the actual deposit() call?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e851aebf-a80a-441f-85ce-fbff526be414",
+    "timestamp": "2025-12-24 18:35:19.435442",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: convertToAssets()] [Price manipulation] Can an attacker manipulate the share price by causing s_depositedAssets to decrease while keeping totalSupply constant (e.g., through settleLiquidation with negative bonus), allowing them to redeem shares for more assets than they deposited?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_e884aa58-cb9a-468f-a7fe-360dbee8cc7e",
+    "timestamp": "2025-12-24 18:35:43.968646",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: convertToShares()] [Rounding manipulation] Does convertToShares() use Math.mulDiv which rounds down - can an attacker deposit amounts that round down to 0 shares repeatedly to drain assets without receiving shares, or does this create an exploitable rounding error accumulation?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3615579c-ca14-4f65-b57a-95472ab13993",
+    "timestamp": "2025-12-24 18:36:09.950777",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: totalSupply()] [Supply manipulation] Since totalSupply() returns _internalSupply + s_creditedShares, can an attacker exploit the credited shares mechanism to cause totalSupply() to overflow or become disproportionately large compared to totalAssets(), manipulating the share price?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_4c5edaef-1e91-40c4-92b3-bcc8eca74e92",
+    "timestamp": "2025-12-24 18:36:35.357413",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: totalAssets()] [Accounting invariant] The totalAssets() calculation sums s_depositedAssets + s_assetsInAMM + unrealizedInterest - can an attacker cause integer overflow in this unchecked block by manipulating s_assetsInAMM to near uint128 max through repeated position minting, causing totalAssets() to wrap and break all share conversions?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3b32734c-2199-40ff-a2e4-e1b96e816ad4",
+    "timestamp": "2025-12-24 18:37:00.570179",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: initialize()] [State corruption] If initialize() is called when s_initialized is false but other state variables have been modified through delegatecall or storage collision, can this lead to inconsistent state where s_marketState.borrowIndex() starts at WAD but s_assetsInAMM or s_creditedShares are non-zero?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_c97ccf09-a00e-438e-88e4-de9c3488f676",
+    "timestamp": "2025-12-24 18:37:27.723028",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: initialize()] [Virtual share manipulation] The initialization sets _internalSupply to 10^6 and s_depositedAssets to 1 - can an attacker exploit the initial share ratio to cause rounding errors in subsequent deposit/withdraw operations that accumulate over time?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_03a6f237-1c7d-4021-b294-ea97b24d1edf",
+    "timestamp": "2025-12-24 18:37:55.398489",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: initialize()] [Reentrancy] Can initialize() be called multiple times through reentrancy if the underlying token has a callback mechanism, allowing an attacker to reset s_depositedAssets and s_marketState while preserving existing user balances?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_aafe4a3b-ff92-45f2-831d-151715739d72",
+    "timestamp": "2025-12-24 18:38:23.205631",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/CollateralTracker.sol] [Function: initialize()] [First depositor attack] Can an attacker frontrun the first legitimate depositor after initialize() is called to manipulate the share price by depositing 1 wei and then donating large amounts of assets directly to the PanopticPool, causing the share price to become extremely high and preventing subsequent deposits?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_147ea470-a73b-44b9-a0ed-08b0d7393380",
+    "timestamp": "2025-12-24 18:38:51.354418",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Math: Premium Equations] [Equation Consistency] Do equations 1-4 in the comments (lines 189-293) correctly account for all edge cases like\n\n### Citations\n\n**File:** contracts/SemiFungiblePositionManager.sol (L154-188)\n```text\n    /// @notice Retrieve the corresponding poolId for a given Uniswap V3 pool address.\n    mapping(address univ3pool => mapping(uint256 vegoid => PoolData poolData))\n        internal s_addressToPoolData;\n\n    /// @notice Retrieve the PoolData struct corresponding to a given poolId.\n    mapping(uint64 poolId => address univ3pool) internal s_poolIdToAddress;\n\n    /*\n        We're tracking the amount of net and removed liquidity for the specific region:\n\n             net amount\n           received minted\n          ▲ for isLong=0     amount\n          │                 moved out      actual amount\n          │  ┌────┐-T      due isLong=1   in the UniswapV3Pool\n          │  │    │          mints\n          │  │    │                        ┌────┐-(T-R)\n          │  │    │         ┌────┐-R       │    │\n          │  │    │         │    │         │    │\n          └──┴────┴─────────┴────┴─────────┴────┴──────►\n             total=T       removed=R      net=(T-R)\n\n\n     *       removed liquidity r          net liquidity N=(T-R)\n     * |<------- 128 bits ------->|<------- 128 bits ------->|\n     * |<---------------------- 256 bits ------------------->|\n     */\n\n    /// @notice Retrieve the current liquidity state in a chunk for a given user.\n    /// @dev `removedAndNetLiquidity` is a LeftRight. The right slot represents the liquidity currently sold (added) in the AMM owned by the user and\n    // the left slot represents the amount of liquidity currently bought (removed) that has been removed from the AMM - the user owes it to a seller.\n    // The reason why it is called",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_3f192fcb-48f5-47b3-9dc6-4524e31564f3",
+    "timestamp": "2025-12-24 18:39:17.253200",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Cross-Function: swapInAMM->_createPositionInAMM] [ITM Swap Slippage] Can an attacker sandwich the ITM swap at line 902 to extract value from users minting positions with invertedLimits?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_7ed89e54-ceb6-4073-bd10-beedbbf773be",
+    "timestamp": "2025-12-24 18:39:44.562336",
+    "report_generated": false
+  },
+  {
+    "question": "[File: contracts/SemiFungiblePositionManager.sol] [Cross-Function: _createLegInAMM->_collectAndWritePositionData] [Fee Collection Timing] If _collectAndWritePositionData is called before Uniswap fees are actually collected, can this create a discrepancy between s_accountFeesBase and actual fees?",
+    "url": "https://deepwiki.com/search/-you-are-an-elite-defi-securit_f950ec97-5a69-401c-badc-c3164813e348",
+    "timestamp": "2025-12-24 18:40:12.843040",
+    "report_generated": false
   }
 ]
